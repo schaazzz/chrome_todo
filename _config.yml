@@ -1,7 +1,7 @@
-name: Simple TCP Client
+name: Chrome ToDo
 markdown: redcarpet
 highlighter: pygments
-baseurl: /simple_tcp_client
+baseurl: /chrome_todo
 permalink: pretty
 excerpt_separator: <!--more-->
 gems:

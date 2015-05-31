@@ -8,9 +8,9 @@
 
 <!-- CSS -->
 <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="/simple_tcp_client/stylesheets/stylesheet.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="/simple_tcp_client/stylesheets/pygment_trac.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="/simple_tcp_client/stylesheets/print.css" media="print" />
+<link rel="stylesheet" type="text/css" href="/chrome_todo/stylesheets/stylesheet.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/chrome_todo/stylesheets/pygment_trac.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/chrome_todo/stylesheets/print.css" media="print" />
 
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,15 +25,16 @@
   <div id="container">
     <div class="inner">
       <header>
-        <h1><a href="/simple_tcp_client/">Simple TCP Client</a></h1>
+        <h1><a href="/chrome_todo/">Chrome ToDo</a></h1>
         <h2>A simple packaged Chrome app and a tutorial on how to get started...</h2>
       </header>
 
       <section id="downloads" class="clearfix">
-    <a href="https://github.com/schaazzz/simple_tcp_client/archive/master.zip" id="download-zip" class="button"><span>Download .zip</span></a>
-    <a href="https://github.com/schaazzz/simple_tcp_client/archive/master.tar.gz" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-    <a href="https://github.com/schaazzz/simple_tcp_client/" id="view-on-github" class="button"><span>View on GitHub</span></a>
+    <a href="https://github.com/schaazzz/chrome_todo/archive/master.zip" id="download-zip" class="button"><span>Download .zip</span></a>
+    <a href="https://github.com/schaazzz/chrome_todo/archive/master.tar.gz" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+    <a href="https://github.com/schaazzz/chrome_todo/" id="view-on-github" class="button"><span>View on GitHub</span></a>
 </section>
+
       <hr/>
 
       <section id="main_content">
@@ -55,18 +56,20 @@ A great tutorial for building a packaged Chrome app is available in this <a href
   
     <dt>---<br>
     <p class="authorline">May 28, 2015 • Shahzeb Ihsan</p>
-    <h3><a class="post-link" href="/simple_tcp_client/2015/05/28/creating-a-simple-application/">Step 4 - Creating a Simple Application</a></h3>
+    <h3><a class="post-link" href="/chrome_todo/2015/05/28/creating-a-simple-application/">Step 4 - Creating a Simple Application</a></h3>
     </dt>
-    <dd><p><a href="/simple_tcp_client/2015/05/27/the-background-script/">Previous Step: The Background Script (background.js)</a></p>
+    <dd><p><a href="/chrome_todo/2015/05/27/the-background-script/">Previous Step: The Background Script (background.js)</a></p>
 
 <p>Let&#39;s create an HTML file, &quot;window.html&quot;, which will contain a text field, a button and a text area.</p>
 
-<p>&quot;window.html&quot; is loaded in <a href="/simple_tcp_client/2015/05/27/the-background-script/">background.js</a> in the &quot;onLaunched&quot; listener in following statement:</p>
+<p>&quot;window.html&quot; is loaded in <a href="/chrome_todo/2015/05/27/the-background-script/">background.js</a> in the &quot;onLaunched&quot; listener in following statement:</p>
 
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;window.html&#39;</span><span class="p">,</span>
                          <span class="p">{</span><span class="s1">&#39;bounds&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="o">:</span> <span class="mi">250</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="o">:</span> <span class="mi">250</span><span class="p">}});</span></code></pre></div>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html">Now, let&#39;s create &quot;window.html&quot; with the following contents:
+
+<span class="nt">&lt;html&gt;</span>
     <span class="nt">&lt;head&gt;</span>
         <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;title&gt;</span>Sample Chrome App<span class="nt">&lt;/title&gt;</span>
@@ -81,9 +84,9 @@ A great tutorial for building a packaged Chrome app is available in this <a href
 
 <p>Now you can load this intermediate app by going to <strong>chrome://extensions/</strong> and using the &quot;Load unpacked extension...&quot; option. Your directory should look like this:</p>
 
-<p><img src="/simple_tcp_client/images/directory_structure_1.jpg" alt="Directory structure"></p>
+<p><img src="/chrome_todo/images/directory_structure_1.jpg" alt="Directory structure"></p>
 
-<p>...or you can checkout the &quot;sandbox&quot; branch at the following commit (refer to this <a href="/simple_tcp_client/2015/05/25/git-reference/">post</a> if you need a quick reference to Git commands for doing this):</p>
+<p>...or you can checkout the &quot;sandbox&quot; branch at the following commit (refer to this <a href="/chrome_todo/2015/05/25/git-reference/">post</a> if you need a quick reference to Git commands for doing this):</p>
 
 <pre>
 git checkout 0ee524052b0a58f7234d55f3c61875d0545bb3bf
@@ -91,16 +94,16 @@ git checkout 0ee524052b0a58f7234d55f3c61875d0545bb3bf
 
 <p>At this point, it will look like this... I know, I know, its not too pretty at this point but we&#39;ll style it later with some CSS but for now we&#39;ll just focus on the functionality.</p>
 
-<p><img src="/simple_tcp_client/images/sample_chrome_app.jpg" alt="How your app looks like at this point..."></p>
+<p><img src="/chrome_todo/images/sample_chrome_app.jpg" alt="How your app looks like at this point..."></p>
 </dd><br/>
   
     <dt>---<br>
     <p class="authorline">May 27, 2015 • Shahzeb Ihsan</p>
-    <h3><a class="post-link" href="/simple_tcp_client/2015/05/27/the-background-script/">Step 3 - The Background Script (background.js)</a></h3>
+    <h3><a class="post-link" href="/chrome_todo/2015/05/27/the-background-script/">Step 3 - The Background Script (background.js)</a></h3>
     </dt>
-    <dd><p><a href="/simple_tcp_client/2015/05/27/creating-the-manifest/">Previous Step: Creating the Manifest (manifest.json)</a></p>
+    <dd><p><a href="/chrome_todo/2015/05/27/creating-the-manifest/">Previous Step: Creating the Manifest (manifest.json)</a></p>
 
-<p>In the manifest.json we created in the <a href="/simple_tcp_client/2015/05/27/creating-the-manifest/">previous step</a>, we configured the following path for background.js:</p>
+<p>In the manifest.json we created in the <a href="/chrome_todo/2015/05/27/creating-the-manifest/">previous step</a>, we configured the following path for background.js:</p>
 
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
     <span class="c1">//..........</span>
@@ -129,16 +132,16 @@ git checkout 0ee524052b0a58f7234d55f3c61875d0545bb3bf
 
 <p><a href="https://developer.chrome.com/apps/app_lifecycle">Lifecycle Diagram from Google Chrome Developer portal<img src="https://developer.chrome.com/static/images/applifecycle.png" alt="Lifecycle of a Chrome app"></a></p>
 
-<p>Now that we have the basic application framework setup, let&#39;s create a basic HTML view with some straight forward JavaScript in the <a href="(/simple_tcp_client/2015/05/28/creating-a-simple-application/)">next step</a> to create a simple application.</p>
+<p>Now that we have the basic application framework setup, let&#39;s create a basic HTML view with some straight forward JavaScript in the <a href="(/chrome_todo/2015/05/28/creating-a-simple-application/)">next step</a> to create a simple application.</p>
 
-<p><a href="/simple_tcp_client/2015/05/28/creating-a-simple-application/">Next Step: Creating a Simple Application</a></p>
+<p><a href="/chrome_todo/2015/05/28/creating-a-simple-application/">Next Step: Creating a Simple Application</a></p>
 </dd><br/>
   
     <dt>---<br>
     <p class="authorline">May 27, 2015 • Shahzeb Ihsan</p>
-    <h3><a class="post-link" href="/simple_tcp_client/2015/05/27/creating-the-manifest/">Step 2 - Creating the Manifest (manifest.json)</a></h3>
+    <h3><a class="post-link" href="/chrome_todo/2015/05/27/creating-the-manifest/">Step 2 - Creating the Manifest (manifest.json)</a></h3>
     </dt>
-    <dd><p><a href="/simple_tcp_client/2015/05/26/getting-started/">Previous Step: Getting Started</a></p>
+    <dd><p><a href="/chrome_todo/2015/05/26/getting-started/">Previous Step: Getting Started</a></p>
 
 <p>Creating a manifest is simple enough:</p>
 
@@ -153,23 +156,23 @@ git checkout 0ee524052b0a58f7234d55f3c61875d0545bb3bf
     <span class="p">}</span>
 <span class="p">}</span></code></pre></div>
 
-<p>You can download <a href="https://raw.githubusercontent.com/schaazzz/simple_tcp_client/sandbox/manifest.json">manifest.json</a>.</p>
+<p>You can download manifest.json <a href="https://raw.githubusercontent.com/schaazzz/simple_tcp_client/sandbox/manifest.json">here</a>.</p>
 
-<p><a href="/simple_tcp_client/2015/05/27/the-background-script/">Next Step: The Background Script (background.js)</a></p>
+<p><a href="/chrome_todo/2015/05/27/the-background-script/">Next Step: The Background Script (background.js)</a></p>
 </dd><br/>
   
     <dt>---<br>
     <p class="authorline">May 26, 2015 • Shahzeb Ihsan</p>
-    <h3><a class="post-link" href="/simple_tcp_client/2015/05/26/getting-started/">Step 1 - Getting Started</a></h3>
+    <h3><a class="post-link" href="/chrome_todo/2015/05/26/getting-started/">Step 1 - Getting Started</a></h3>
     </dt>
     <dd><p>The &quot;master&quot; branch for this project&#39;s repository contains the finished code, so I&#39;ve created a new branch called &quot;sandbox&quot;, in which we&#39;ll go through incremental steps of developing a packaged Chrome application.</p>
 
-<p>In case you, like me, are relatively new to GIT, I&#39;ve added a <a href="/simple_tcp_client/2015/05/25/git-reference/">post</a> containing references to some git commands that we&#39;ll need for this tutorial.</p>
+<p>In case you, like me, are relatively new to GIT, I&#39;ve added a <a href="/chrome_todo/2015/05/25/git-reference/">post</a> containing references to some git commands that we&#39;ll need for this tutorial.</p>
 </dd><br/>
   
     <dt>---<br>
     <p class="authorline">May 25, 2015 • Shahzeb Ihsan</p>
-    <h3><a class="post-link" href="/simple_tcp_client/2015/05/25/git-reference/">GIT Command Reference for this Tutorial</a></h3>
+    <h3><a class="post-link" href="/chrome_todo/2015/05/25/git-reference/">GIT Command Reference for this Tutorial</a></h3>
     </dt>
     <dd></dd><br/>
   
