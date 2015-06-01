@@ -20,7 +20,7 @@ In the manifest.json we created in the [previous step]({{ site.baseurl }}{% post
 }
 {% endhighlight %}
 
-Create a folder "js" and create file [background.js](https://raw.githubusercontent.com/schaazzz/simple_tcp_client/sandbox/js/background.js) with the following content:
+Create a folder "js" and create file [background.js](https://raw.githubusercontent.com/schaazzz/chrome_todo/sandbox/js/background.js) with the following content:
 
 {% highlight javascript %}
 /**
@@ -39,6 +39,6 @@ This "listener" will be called when the application is launched, for now, all we
 
 [Lifecycle Diagram from Google Chrome Developer portal![Lifecycle of a Chrome app](https://developer.chrome.com/static/images/applifecycle.png)](https://developer.chrome.com/apps/app_lifecycle)
 
-Now that we have the basic application framework setup, let's create a basic HTML view with some straight forward JavaScript in the [next step](({{ site.baseurl }}{% post_url 2015-05-28-creating-a-simple-application %})) to create a simple application.
+Now that we have the basic application framework setup, let's create a basic HTML view with some straight forward JavaScript in the [next step](({{ site.baseurl }}{% post_url 2015-05-28-creating-the-html-view %})) to setup the application framework.
 
-[Next Step: Creating a Simple Application]({{ site.baseurl }}{% post_url 2015-05-28-creating-a-simple-application %})
+[Next Step: Creating the HTML View]({{ site.baseurl }}{% post_url 2015-05-28-creating-the-html-view %})

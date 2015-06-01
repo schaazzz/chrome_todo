@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Step 4 - Creating a Simple Application
+title: Step 4 - Creating the HTML View
 author: Shahzeb Ihsan
 ---
 
