@@ -4,6 +4,8 @@ title: Step 1 - Getting Started
 author: Shahzeb Ihsan
 ---
 
+Much like [this](https://developer.chrome.com/apps/app_codelab_intro) Google code lab, we are going to create a simple to-do and note-taking app in this tutorial.
+
 The "master" branch for this project's repository contains the finished code, so I've created a new branch called "sandbox", in which we'll go through incremental steps of developing a packaged Chrome application.
 
 In case you, like me, are relatively new to GIT, I've added a [post]({{ site.baseurl }}{% post_url 2015-05-25-git-reference %}) containing references to some git commands that we'll need for this tutorial.
