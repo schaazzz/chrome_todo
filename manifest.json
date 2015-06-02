@@ -30,8 +30,8 @@
  */
 
 {
-   "name": "Sample Chrome App",
-   "description": "A simple chrome app to accompany the tutorial at http://schaazzz.github.io/simple_tcp_client/",
+   "name": "Chrome ToDo",
+   "description": "A simple to-do and note-taking Chrome app to accompany the tutorial at http://schaazzz.github.io/chrome_todo/",
    "version": "0.1",
    "app": {
       "background": {
