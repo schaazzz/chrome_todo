@@ -42,7 +42,7 @@ Now you can load this intermediate app by going to **chrome://extensions/** and 
 ...or you can checkout the "sandbox" branch at the following commit (refer to this [post]({{ site.baseurl }}{% post_url 2015-05-25-git-reference %}) if you need a quick reference to Git commands for doing this):
 
 <pre>
-git checkout 0ee524052b0a58f7234d55f3c61875d0545bb3bf
+git checkout 1bbb8810055ab75f12b645e1ffd7c8ef54ea8162
 </pre>
 
 At this point, it will look like this... I know, I know, its not too pretty at this point but we'll style it later with some CSS but for now we'll just focus on the functionality.
