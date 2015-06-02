@@ -24,7 +24,7 @@ Now, let's create "window.html" with the following contents:
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Sample Chrome App</title>
+        <title>Chrome ToDo</title>
     </head>
 
     <body>

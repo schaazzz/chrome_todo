@@ -51,7 +51,7 @@ I will be referring to the Google code labs tutorial quite a lot -- <em>BUT</em>
   
     <dt>---<br>
     <p class="authorline">May 28, 2015 • Shahzeb Ihsan</p>
-    <h3><a class="post-link" href="/chrome_todo/2015/05/28/creating-a-simple-application/">Step 4 - Creating a Simple Application</a></h3>
+    <h3><a class="post-link" href="/chrome_todo/2015/05/28/creating-the-html-view/">Step 4 - Creating the HTML View</a></h3>
     </dt>
     <dd><p><a href="/chrome_todo/2015/05/27/the-background-script/">Previous Step: The Background Script (background.js)</a></p>
 
@@ -110,7 +110,7 @@ git checkout 0ee524052b0a58f7234d55f3c61875d0545bb3bf
     <span class="p">}</span>
 <span class="p">}</span></code></pre></div>
 
-<p>Create a folder &quot;js&quot; and create file <a href="https://raw.githubusercontent.com/schaazzz/simple_tcp_client/sandbox/js/background.js">background.js</a> with the following content:</p>
+<p>Create a folder &quot;js&quot; and create file <a href="https://raw.githubusercontent.com/schaazzz/chrome_todo/sandbox/js/background.js">background.js</a> with the following content:</p>
 
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
 <span class="cm"> * &#39;onLaunched&#39; listener</span>
@@ -127,9 +127,9 @@ git checkout 0ee524052b0a58f7234d55f3c61875d0545bb3bf
 
 <p><a href="https://developer.chrome.com/apps/app_lifecycle">Lifecycle Diagram from Google Chrome Developer portal<img src="https://developer.chrome.com/static/images/applifecycle.png" alt="Lifecycle of a Chrome app"></a></p>
 
-<p>Now that we have the basic application framework setup, let&#39;s create a basic HTML view with some straight forward JavaScript in the <a href="(/chrome_todo/2015/05/28/creating-a-simple-application/)">next step</a> to create a simple application.</p>
+<p>Now that we have the basic application framework setup, let&#39;s create a basic HTML view with some straight forward JavaScript in the <a href="(/chrome_todo/2015/05/28/creating-the-html-view/)">next step</a> to setup the application framework.</p>
 
-<p><a href="/chrome_todo/2015/05/28/creating-a-simple-application/">Next Step: Creating a Simple Application</a></p>
+<p><a href="/chrome_todo/2015/05/28/creating-the-html-view/">Next Step: Creating the HTML View</a></p>
 </dd><br/>
   
     <dt>---<br>
@@ -141,8 +141,8 @@ git checkout 0ee524052b0a58f7234d55f3c61875d0545bb3bf
 <p>Creating a manifest is simple enough:</p>
 
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
-    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Sample Chrome App&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A simple chrome app to accompany the tutorial at http://schaazzz.github.io/simple_tcp_client/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Chrome ToDo&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A simple to-do and note-taking Chrome app to accompany the tutorial at http://schaazzz.github.io/chrome_todo/&quot;</span><span class="p">,</span>
     <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;0.1&quot;</span><span class="p">,</span>
     <span class="s2">&quot;app&quot;</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">&quot;background&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -151,7 +151,7 @@ git checkout 0ee524052b0a58f7234d55f3c61875d0545bb3bf
     <span class="p">}</span>
 <span class="p">}</span></code></pre></div>
 
-<p>You can download manifest.json <a href="https://raw.githubusercontent.com/schaazzz/simple_tcp_client/sandbox/manifest.json">here</a>.</p>
+<p>You can download manifest.json <a href="https://raw.githubusercontent.com/schaazzz/chrome_todo/sandbox/manifest.json">here</a>.</p>
 
 <p><a href="/chrome_todo/2015/05/27/the-background-script/">Next Step: The Background Script (background.js)</a></p>
 </dd><br/>
@@ -160,7 +160,9 @@ git checkout 0ee524052b0a58f7234d55f3c61875d0545bb3bf
     <p class="authorline">May 26, 2015 • Shahzeb Ihsan</p>
     <h3><a class="post-link" href="/chrome_todo/2015/05/26/getting-started/">Step 1 - Getting Started</a></h3>
     </dt>
-    <dd><p>The &quot;master&quot; branch for this project&#39;s repository contains the finished code, so I&#39;ve created a new branch called &quot;sandbox&quot;, in which we&#39;ll go through incremental steps of developing a packaged Chrome application.</p>
+    <dd><p>Much like <a href="https://developer.chrome.com/apps/app_codelab_intro">this</a> Google code lab, we are going to create a simple to-do and note-taking app in this tutorial.</p>
+
+<p>The &quot;master&quot; branch for this project&#39;s repository contains the finished code, so I&#39;ve created a new branch called &quot;sandbox&quot;, in which we&#39;ll go through incremental steps of developing a packaged Chrome application.</p>
 
 <p>In case you, like me, are relatively new to GIT, I&#39;ve added a <a href="/chrome_todo/2015/05/25/git-reference/">post</a> containing references to some git commands that we&#39;ll need for this tutorial.</p>
 </dd><br/>
