@@ -64,13 +64,33 @@ I will be referring to the Google code labs tutorial quite a lot -- <em>BUT</em>
     <span class="nt">&lt;/head&gt;</span>
 
     <span class="nt">&lt;body&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">id =</span><span class="err"> </span><span class="s">&quot;text&quot;</span> <span class="na">placeholder=</span><span class="err"> </span><span class="s">&quot;Type something here...&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">id =</span><span class="err"> </span><span class="s">&quot;enter&quot;</span><span class="nt">&gt;</span>Enter<span class="nt">&lt;/button&gt;</span>
-        <span class="nt">&lt;textarea</span> <span class="na">id =</span><span class="err"> </span><span class="s">&quot;output&quot;</span> <span class="na">rows =</span><span class="s">&quot;13&quot;</span> <span class="na">cols =</span><span class="s">&quot;25&quot;</span> <span class="na">readonly</span><span class="nt">&gt;</span>Data log...<span class="nt">&lt;/textarea&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Type something here...&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;enter&quot;</span><span class="nt">&gt;</span>Enter<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">&quot;output&quot;</span> <span class="na">rows=</span><span class="s">&quot;13&quot;</span> <span class="na">cols=</span><span class="s">&quot;25&quot;</span> <span class="na">readonly</span><span class="nt">&gt;</span>Data log...<span class="nt">&lt;/textarea&gt;</span>
 
         <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/application.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
     <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
+
+<p>For the JavaScript functionality, all we are going to do right now is to add anything typed in the <em>input</em> to the <em>textarea</em> when the <em>button</em> is pressed.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
+<span class="cm"> * Called on the &quot;onload&quot; event, sets event handlers for various elements.</span>
+<span class="cm"> */</span>
+<span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;enter&#39;</span><span class="p">).</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// When the &quot;Enter&quot; button is pressed, text is read from the input</span>
+        <span class="c1">// and updated in the textarea</span>
+        <span class="kd">var</span> <span class="nx">txt</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">+</span> <span class="s1">&#39;\r\n&#39;</span><span class="p">;</span>
+        <span class="nx">txt</span> <span class="o">+=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">txt</span><span class="p">;</span>
+    <span class="p">};</span>
+<span class="p">};</span></code></pre></div>
+
+<p>Now, go to <strong>chrome://extensions</strong> and reload your app and launch your application.
+<img src="/chrome_todo/images/chrome_todo_1.jpg" alt="Type something in the text field and click the &quot;Enter&quot; button"></p>
+
+<p>There you go, a fully functional, albeit useless, Chrome app :monkey_face:</p>
 </dd><br/>
   
     <dt>---<br>
@@ -95,9 +115,9 @@ I will be referring to the Google code labs tutorial quite a lot -- <em>BUT</em>
     <span class="nt">&lt;/head&gt;</span>
 
     <span class="nt">&lt;body&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">id =</span><span class="err"> </span><span class="s">&quot;text&quot;</span> <span class="na">placeholder=</span><span class="err"> </span><span class="s">&quot;Type something here...&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">id =</span><span class="err"> </span><span class="s">&quot;enter&quot;</span><span class="nt">&gt;</span>Enter<span class="nt">&lt;/button&gt;</span>
-        <span class="nt">&lt;textarea</span> <span class="na">id =</span><span class="err"> </span><span class="s">&quot;output&quot;</span> <span class="na">rows =</span><span class="s">&quot;13&quot;</span> <span class="na">cols =</span><span class="s">&quot;25&quot;</span> <span class="na">readonly</span><span class="nt">&gt;</span>Data log...<span class="nt">&lt;/textarea&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Type something here...&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;enter&quot;</span><span class="nt">&gt;</span>Enter<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">&quot;output&quot;</span> <span class="na">rows=</span><span class="s">&quot;13&quot;</span> <span class="na">cols=</span><span class="s">&quot;25&quot;</span> <span class="na">readonly</span><span class="nt">&gt;</span>Data log...<span class="nt">&lt;/textarea&gt;</span>
     <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
 
@@ -113,7 +133,7 @@ git checkout 1bbb8810055ab75f12b645e1ffd7c8ef54ea8162
 
 <p>At this point, it will look like this... I know, I know, its not too pretty at this point but we&#39;ll style it later with some CSS but for now we&#39;ll just focus on the functionality.</p>
 
-<p><img src="/chrome_todo/images/sample_chrome_app.jpg" alt="How your app looks like at this point..."></p>
+<p><img src="/chrome_todo/images/chrome_todo_0.jpg" alt="How your app looks like at this point..."></p>
 
 <p>Now let&#39;s add some JavaScript functionality...</p>
 
