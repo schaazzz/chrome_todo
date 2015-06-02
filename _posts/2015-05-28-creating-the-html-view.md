@@ -16,11 +16,9 @@ chrome.app.window.create('window.html',
 
 {% endhighlight %}
 
-
-{% highlight html %}
-
 Now, let's create "window.html" with the following contents:
 
+{% highlight html %}
 <html>
     <head>
         <meta charset="utf-8">
@@ -48,3 +46,7 @@ git checkout 1bbb8810055ab75f12b645e1ffd7c8ef54ea8162
 At this point, it will look like this... I know, I know, its not too pretty at this point but we'll style it later with some CSS but for now we'll just focus on the functionality.
 
 ![How your app looks like at this point...]({{ site.baseurl }}/images/sample_chrome_app.jpg)
+
+Now let's add some JavaScript functionality...
+
+[Next Step: Adding JavaScript Functionality]({{ site.baseurl }}{% post_url 2015-06-02-adding-some-js-functionality %})

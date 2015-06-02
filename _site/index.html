@@ -26,7 +26,7 @@
     <div class="inner">
       <header>
         <h1><a href="/chrome_todo/">Chrome ToDo</a></h1>
-        <h2>A simple packaged Chrome app and a tutorial on how to get started...</h2>
+        <h2>A simple packaged Chrome ToDo app and a tutorial on how to get started...</h2>
       </header>
 
       <section id="downloads" class="clearfix">
@@ -50,6 +50,30 @@ I will be referring to the Google code labs tutorial quite a lot -- <em>BUT</em>
 <dl class="posts">
   
     <dt>---<br>
+    <p class="authorline">Jun 2, 2015 • Shahzeb Ihsan</p>
+    <h3><a class="post-link" href="/chrome_todo/2015/06/02/adding-some-js-functionality/">Step 5 - Adding JavaScript Functionality</a></h3>
+    </dt>
+    <dd><p><a href="/chrome_todo/2015/05/28/creating-the-html-view/">Previous Step: Creating the HTML View</a></p>
+
+<p>In folder &quot;js&quot;, create a file called &quot;application.js&quot; and add the js path to the <em>end</em> of your HTML body (window.html)...</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Chrome ToDo<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">id =</span><span class="err"> </span><span class="s">&quot;text&quot;</span> <span class="na">placeholder=</span><span class="err"> </span><span class="s">&quot;Type something here...&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">id =</span><span class="err"> </span><span class="s">&quot;enter&quot;</span><span class="nt">&gt;</span>Enter<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;textarea</span> <span class="na">id =</span><span class="err"> </span><span class="s">&quot;output&quot;</span> <span class="na">rows =</span><span class="s">&quot;13&quot;</span> <span class="na">cols =</span><span class="s">&quot;25&quot;</span> <span class="na">readonly</span><span class="nt">&gt;</span>Data log...<span class="nt">&lt;/textarea&gt;</span>
+
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/application.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
+</dd><br/>
+  
+    <dt>---<br>
     <p class="authorline">May 28, 2015 • Shahzeb Ihsan</p>
     <h3><a class="post-link" href="/chrome_todo/2015/05/28/creating-the-html-view/">Step 4 - Creating the HTML View</a></h3>
     </dt>
@@ -62,12 +86,12 @@ I will be referring to the Google code labs tutorial quite a lot -- <em>BUT</em>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;window.html&#39;</span><span class="p">,</span>
                          <span class="p">{</span><span class="s1">&#39;bounds&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="o">:</span> <span class="mi">250</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="o">:</span> <span class="mi">250</span><span class="p">}});</span></code></pre></div>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html">Now, let&#39;s create &quot;window.html&quot; with the following contents:
+<p>Now, let&#39;s create &quot;window.html&quot; with the following contents:</p>
 
-<span class="nt">&lt;html&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
     <span class="nt">&lt;head&gt;</span>
         <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;title&gt;</span>Sample Chrome App<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Chrome ToDo<span class="nt">&lt;/title&gt;</span>
     <span class="nt">&lt;/head&gt;</span>
 
     <span class="nt">&lt;body&gt;</span>
@@ -84,12 +108,16 @@ I will be referring to the Google code labs tutorial quite a lot -- <em>BUT</em>
 <p>...or you can checkout the &quot;sandbox&quot; branch at the following commit (refer to this <a href="/chrome_todo/2015/05/25/git-reference/">post</a> if you need a quick reference to Git commands for doing this):</p>
 
 <pre>
-git checkout 0ee524052b0a58f7234d55f3c61875d0545bb3bf
+git checkout 1bbb8810055ab75f12b645e1ffd7c8ef54ea8162
 </pre>
 
 <p>At this point, it will look like this... I know, I know, its not too pretty at this point but we&#39;ll style it later with some CSS but for now we&#39;ll just focus on the functionality.</p>
 
 <p><img src="/chrome_todo/images/sample_chrome_app.jpg" alt="How your app looks like at this point..."></p>
+
+<p>Now let&#39;s add some JavaScript functionality...</p>
+
+<p><a href="/chrome_todo/2015/06/02/adding-some-js-functionality/">Next Step: Adding JavaScript Functionality</a></p>
 </dd><br/>
   
     <dt>---<br>
