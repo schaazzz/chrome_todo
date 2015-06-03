@@ -2,6 +2,7 @@
 layout: post
 title: Step 3 - The Background Script (background.js)
 author: Shahzeb Ihsan
+step: 3
 ---
 
 [Previous Step: Creating the Manifest (manifest.json)]({{ site.baseurl }}{% post_url 2015-05-27-creating-the-manifest %})

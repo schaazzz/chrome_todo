@@ -2,6 +2,7 @@
 layout: post
 title: Step 5 - Adding JavaScript Functionality
 author: Shahzeb Ihsan
+step: 5
 ---
 
 [Previous Step: Creating the HTML View]({{ site.baseurl }}{% post_url 2015-05-28-creating-the-html-view %})
@@ -46,3 +47,13 @@ Now, go to **chrome://extensions** and reload your app and launch your applicati
 ![Type something in the text field and click the "Enter" button]({{ site.baseurl }}/images/chrome_todo_1.jpg)
 
 There you go, a fully functional, albeit useless, Chrome app :monkey_face:
+
+Now we'll add some basic CSS in the [next step]({{ site.baseurl }}{% post_url 2015-06-02-styling-with-css %}) and that will wrap up the tutorial.
+
+You can checkout the "sandbox" branch at the following commit (refer to this [post]({{ site.baseurl }}{% post_url 2015-05-25-git-reference %}) if you need a quick reference to Git commands for doing this):
+
+<pre>
+git checkout c0c517a67b40445a3c0970725ef159db1fd4ff7c
+</pre>
+
+[Next Step: Styling with CSS]({{ site.baseurl }}{% post_url 2015-06-02-styling-with-css %})

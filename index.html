@@ -3,17 +3,29 @@ title: A step-wise tutorial for building a Chrome app
 layout: page
 ---
 
-A great tutorial for building a packaged Chrome app is available in this <a href = https://developer.chrome.com/apps/app_codelab_intro>Google Code Lab</a> and I used it as a starting point when I was working on my very first Chrome app, <a href = https://github.com/schaazzz/simple_tcp_client>Simple TCP Client</a>.
+A great tutorial for building a packaged Chrome app is available in this <a href = https://developer.chrome.com/apps/app_codelab_intro>Google Code Lab</a> and I used it as a starting point when I was working on my very first Chrome app, <a href = https://github.com/schaazzz/simple_tcp_client>Simple TCP Client</a> -- <em>BUT</em>.....
 <br><br>
-I will be referring to the Google code labs tutorial quite a lot -- <em>BUT</em> -- I found the example code in that code lab a little complex for a complete n00b such as myself, so in case you feel the same way, I hope you find the following tutorial useful.
+.....I found the example code in that code lab a little complex for a complete n00b such as myself, so in case you feel the same way, I hope you find the following tutorial useful.
 <br><br>
 <!-- <h1>List of posts</h1> -->
 <dl class="posts">
-  {% for post in site.posts %}
-    <dt>---<br>
-    <p class="authorline">{{ post.date | date: "%b %-d, %Y" }}{% if post.author %} • {{ post.author }}{% endif %}</p>
-    <h3><a class="post-link" href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></h3>
-    </dt>
-    <dd>{{ post.excerpt }}</dd><br/>
-  {% endfor %}
+    {% for post in site.posts reversed %}
+        {% if post.step %}
+            <dt>
+            <h4><a class="post-link" href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></h4>
+            </dt>
+        {% endif %}
+    {% endfor %}
+</dl>
+
+<dl class="posts">
+    {% for post in site.posts reversed %}
+        {% unless post.step %}
+            <dt>---<br>
+            <p class="authorline">{{ post.date | date: "%b %-d, %Y" }}{% if post.author %} • {{ post.author }}{% endif %}</p>
+            <h3><a class="post-link" href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></h3>
+            </dt>
+            <dd>{{ post.excerpt }}</dd><br/>
+        {% endunless %}
+    {% endfor %}
 </dl>

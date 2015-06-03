@@ -2,6 +2,7 @@
 layout: post
 title: Step 1 - Getting Started
 author: Shahzeb Ihsan
+step: 1
 ---
 
 Much like [this](https://developer.chrome.com/apps/app_codelab_intro) Google code lab, we are going to create a simple to-do and note-taking app in this tutorial.

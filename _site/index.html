@@ -42,185 +42,75 @@
     <u><h2>A step-wise tutorial for building a Chrome app</h2></u>
 </header>
 
-A great tutorial for building a packaged Chrome app is available in this <a href = https://developer.chrome.com/apps/app_codelab_intro>Google Code Lab</a> and I used it as a starting point when I was working on my very first Chrome app, <a href = https://github.com/schaazzz/simple_tcp_client>Simple TCP Client</a>.
+A great tutorial for building a packaged Chrome app is available in this <a href = https://developer.chrome.com/apps/app_codelab_intro>Google Code Lab</a> and I used it as a starting point when I was working on my very first Chrome app, <a href = https://github.com/schaazzz/simple_tcp_client>Simple TCP Client</a> -- <em>BUT</em>.....
 <br><br>
-I will be referring to the Google code labs tutorial quite a lot -- <em>BUT</em> -- I found the example code in that code lab a little complex for a complete n00b such as myself, so in case you feel the same way, I hope you find the following tutorial useful.
+.....I found the example code in that code lab a little complex for a complete n00b such as myself, so in case you feel the same way, I hope you find the following tutorial useful.
 <br><br>
 <!-- <h1>List of posts</h1> -->
 <dl class="posts">
-  
-    <dt>---<br>
-    <p class="authorline">Jun 2, 2015 • Shahzeb Ihsan</p>
-    <h3><a class="post-link" href="/chrome_todo/2015/06/02/adding-some-js-functionality/">Step 5 - Adding JavaScript Functionality</a></h3>
-    </dt>
-    <dd><p><a href="/chrome_todo/2015/05/28/creating-the-html-view/">Previous Step: Creating the HTML View</a></p>
+    
+        
+    
+        
+            <dt>
+            <h4><a class="post-link" href="/chrome_todo/2015/05/26/getting-started/">Step 1 - Getting Started</a></h4>
+            </dt>
+        
+    
+        
+            <dt>
+            <h4><a class="post-link" href="/chrome_todo/2015/05/27/creating-the-manifest/">Step 2 - Creating the Manifest (manifest.json)</a></h4>
+            </dt>
+        
+    
+        
+            <dt>
+            <h4><a class="post-link" href="/chrome_todo/2015/05/27/the-background-script/">Step 3 - The Background Script (background.js)</a></h4>
+            </dt>
+        
+    
+        
+            <dt>
+            <h4><a class="post-link" href="/chrome_todo/2015/05/28/creating-the-html-view/">Step 4 - Creating the HTML View</a></h4>
+            </dt>
+        
+    
+        
+            <dt>
+            <h4><a class="post-link" href="/chrome_todo/2015/06/02/adding-some-js-functionality/">Step 5 - Adding JavaScript Functionality</a></h4>
+            </dt>
+        
+    
+        
+            <dt>
+            <h4><a class="post-link" href="/chrome_todo/2015/06/02/styling-with-css/">Step 6 - Styling with CSS</a></h4>
+            </dt>
+        
+    
+</dl>
 
-<p>In folder &quot;js&quot;, create a file called &quot;application.js&quot; and add the js path to the <em>end</em> of your HTML body (window.html)...</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
-    <span class="nt">&lt;head&gt;</span>
-        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;title&gt;</span>Chrome ToDo<span class="nt">&lt;/title&gt;</span>
-    <span class="nt">&lt;/head&gt;</span>
-
-    <span class="nt">&lt;body&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Type something here...&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;enter&quot;</span><span class="nt">&gt;</span>Enter<span class="nt">&lt;/button&gt;</span>
-        <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">&quot;output&quot;</span> <span class="na">rows=</span><span class="s">&quot;13&quot;</span> <span class="na">cols=</span><span class="s">&quot;25&quot;</span> <span class="na">readonly</span><span class="nt">&gt;</span>Data log...<span class="nt">&lt;/textarea&gt;</span>
-
-        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/application.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></div>
-
-<p>For the JavaScript functionality, all we are going to do right now is to add anything typed in the <em>input</em> to the <em>textarea</em> when the <em>button</em> is pressed.</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
-<span class="cm"> * Called on the &quot;onload&quot; event, sets event handlers for various elements.</span>
-<span class="cm"> */</span>
-<span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;enter&#39;</span><span class="p">).</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// When the &quot;Enter&quot; button is pressed, text is read from the input</span>
-        <span class="c1">// and updated in the textarea</span>
-        <span class="kd">var</span> <span class="nx">txt</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">+</span> <span class="s1">&#39;\r\n&#39;</span><span class="p">;</span>
-        <span class="nx">txt</span> <span class="o">+=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
-        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">txt</span><span class="p">;</span>
-    <span class="p">};</span>
-<span class="p">};</span></code></pre></div>
-
-<p>Now, go to <strong>chrome://extensions</strong> and reload your app and launch your application.
-<img src="/chrome_todo/images/chrome_todo_1.jpg" alt="Type something in the text field and click the &quot;Enter&quot; button"></p>
-
-<p>There you go, a fully functional, albeit useless, Chrome app :monkey_face:</p>
-</dd><br/>
-  
-    <dt>---<br>
-    <p class="authorline">May 28, 2015 • Shahzeb Ihsan</p>
-    <h3><a class="post-link" href="/chrome_todo/2015/05/28/creating-the-html-view/">Step 4 - Creating the HTML View</a></h3>
-    </dt>
-    <dd><p><a href="/chrome_todo/2015/05/27/the-background-script/">Previous Step: The Background Script (background.js)</a></p>
-
-<p>Let&#39;s create an HTML file, &quot;window.html&quot;, which will contain a text field, a button and a text area.</p>
-
-<p>&quot;window.html&quot; is loaded in <a href="/chrome_todo/2015/05/27/the-background-script/">background.js</a> in the &quot;onLaunched&quot; listener in following statement:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;window.html&#39;</span><span class="p">,</span>
-                         <span class="p">{</span><span class="s1">&#39;bounds&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="o">:</span> <span class="mi">250</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="o">:</span> <span class="mi">250</span><span class="p">}});</span></code></pre></div>
-
-<p>Now, let&#39;s create &quot;window.html&quot; with the following contents:</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
-    <span class="nt">&lt;head&gt;</span>
-        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;title&gt;</span>Chrome ToDo<span class="nt">&lt;/title&gt;</span>
-    <span class="nt">&lt;/head&gt;</span>
-
-    <span class="nt">&lt;body&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Type something here...&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;enter&quot;</span><span class="nt">&gt;</span>Enter<span class="nt">&lt;/button&gt;</span>
-        <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">&quot;output&quot;</span> <span class="na">rows=</span><span class="s">&quot;13&quot;</span> <span class="na">cols=</span><span class="s">&quot;25&quot;</span> <span class="na">readonly</span><span class="nt">&gt;</span>Data log...<span class="nt">&lt;/textarea&gt;</span>
-    <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></div>
-
-<p>Now you can load this intermediate app by going to <strong>chrome://extensions/</strong> and using the &quot;Load unpacked extension...&quot; option. Your directory should look like this:</p>
-
-<p><img src="/chrome_todo/images/directory_structure_1.jpg" alt="Directory structure"></p>
-
-<p>...or you can checkout the &quot;sandbox&quot; branch at the following commit (refer to this <a href="/chrome_todo/2015/05/25/git-reference/">post</a> if you need a quick reference to Git commands for doing this):</p>
-
-<pre>
-git checkout 1bbb8810055ab75f12b645e1ffd7c8ef54ea8162
-</pre>
-
-<p>At this point, it will look like this... I know, I know, its not too pretty at this point but we&#39;ll style it later with some CSS but for now we&#39;ll just focus on the functionality.</p>
-
-<p><img src="/chrome_todo/images/chrome_todo_0.jpg" alt="How your app looks like at this point..."></p>
-
-<p>Now let&#39;s add some JavaScript functionality...</p>
-
-<p><a href="/chrome_todo/2015/06/02/adding-some-js-functionality/">Next Step: Adding JavaScript Functionality</a></p>
-</dd><br/>
-  
-    <dt>---<br>
-    <p class="authorline">May 27, 2015 • Shahzeb Ihsan</p>
-    <h3><a class="post-link" href="/chrome_todo/2015/05/27/the-background-script/">Step 3 - The Background Script (background.js)</a></h3>
-    </dt>
-    <dd><p><a href="/chrome_todo/2015/05/27/creating-the-manifest/">Previous Step: Creating the Manifest (manifest.json)</a></p>
-
-<p>In the manifest.json we created in the <a href="/chrome_todo/2015/05/27/creating-the-manifest/">previous step</a>, we configured the following path for background.js:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
-    <span class="c1">//..........</span>
-    <span class="c1">//..........</span>
-    <span class="s2">&quot;app&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;background&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;js/background.js&quot;</span><span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-
-<p>Create a folder &quot;js&quot; and create file <a href="https://raw.githubusercontent.com/schaazzz/chrome_todo/sandbox/js/background.js">background.js</a> with the following content:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
-<span class="cm"> * &#39;onLaunched&#39; listener</span>
-<span class="cm"> */</span>
-<span class="nx">chrome</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">onLaunched</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// We&#39;ll add more functionality later, for now we&#39;ll just create</span>
-    <span class="c1">// the window with dimensions 250x250</span>
-    <span class="nx">chrome</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;window.html&#39;</span><span class="p">,</span>
-                             <span class="p">{</span><span class="s1">&#39;bounds&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="o">:</span> <span class="mi">250</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="o">:</span> <span class="mi">250</span><span class="p">}});</span>
-
-<span class="p">});</span></code></pre></div>
-
-<p>This &quot;listener&quot; will be called when the application is launched, for now, all we are doing in this listener is creating the HTML view. For more details on a Chrome app&#39;s lifecycle, checkout <a href="https://developer.chrome.com/apps/app_lifecycle">this</a> Google page or the following lifecycle diagram for quick reference:</p>
-
-<p><a href="https://developer.chrome.com/apps/app_lifecycle">Lifecycle Diagram from Google Chrome Developer portal<img src="https://developer.chrome.com/static/images/applifecycle.png" alt="Lifecycle of a Chrome app"></a></p>
-
-<p>Now that we have the basic application framework setup, let&#39;s create a basic HTML view with some straight forward JavaScript in the <a href="(/chrome_todo/2015/05/28/creating-the-html-view/)">next step</a> to setup the application framework.</p>
-
-<p><a href="/chrome_todo/2015/05/28/creating-the-html-view/">Next Step: Creating the HTML View</a></p>
-</dd><br/>
-  
-    <dt>---<br>
-    <p class="authorline">May 27, 2015 • Shahzeb Ihsan</p>
-    <h3><a class="post-link" href="/chrome_todo/2015/05/27/creating-the-manifest/">Step 2 - Creating the Manifest (manifest.json)</a></h3>
-    </dt>
-    <dd><p><a href="/chrome_todo/2015/05/26/getting-started/">Previous Step: Getting Started</a></p>
-
-<p>Creating a manifest is simple enough:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
-    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Chrome ToDo&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A simple to-do and note-taking Chrome app to accompany the tutorial at http://schaazzz.github.io/chrome_todo/&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;0.1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;app&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;background&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;js/background.js&quot;</span><span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-
-<p>You can download manifest.json <a href="https://raw.githubusercontent.com/schaazzz/chrome_todo/sandbox/manifest.json">here</a>.</p>
-
-<p><a href="/chrome_todo/2015/05/27/the-background-script/">Next Step: The Background Script (background.js)</a></p>
-</dd><br/>
-  
-    <dt>---<br>
-    <p class="authorline">May 26, 2015 • Shahzeb Ihsan</p>
-    <h3><a class="post-link" href="/chrome_todo/2015/05/26/getting-started/">Step 1 - Getting Started</a></h3>
-    </dt>
-    <dd><p>Much like <a href="https://developer.chrome.com/apps/app_codelab_intro">this</a> Google code lab, we are going to create a simple to-do and note-taking app in this tutorial.</p>
-
-<p>The &quot;master&quot; branch for this project&#39;s repository contains the finished code, so I&#39;ve created a new branch called &quot;sandbox&quot;, in which we&#39;ll go through incremental steps of developing a packaged Chrome application.</p>
-
-<p>In case you, like me, are relatively new to GIT, I&#39;ve added a <a href="/chrome_todo/2015/05/25/git-reference/">post</a> containing references to some git commands that we&#39;ll need for this tutorial.</p>
-</dd><br/>
-  
-    <dt>---<br>
-    <p class="authorline">May 25, 2015 • Shahzeb Ihsan</p>
-    <h3><a class="post-link" href="/chrome_todo/2015/05/25/git-reference/">GIT Command Reference for this Tutorial</a></h3>
-    </dt>
-    <dd></dd><br/>
-  
+<dl class="posts">
+    
+        
+            <dt>---<br>
+            <p class="authorline">May 25, 2015 • Shahzeb Ihsan</p>
+            <h3><a class="post-link" href="/chrome_todo/2015/05/25/git-reference/">GIT Command Reference for this Tutorial</a></h3>
+            </dt>
+            <dd></dd><br/>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
 </dl>
 
 

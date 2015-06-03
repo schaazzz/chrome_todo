@@ -2,6 +2,7 @@
 layout: post
 title: Step 4 - Creating the HTML View
 author: Shahzeb Ihsan
+step: 4
 ---
 
 [Previous Step: The Background Script (background.js)]({{ site.baseurl }}{% post_url 2015-05-27-the-background-script %})
