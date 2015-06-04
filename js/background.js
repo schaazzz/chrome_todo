@@ -36,6 +36,6 @@ chrome.app.runtime.onLaunched.addListener(function() {
     // We'll add more functionality later, for now we'll just create
     // the window with dimensions 250x250
     chrome.app.window.create('window.html',
-                             {'bounds': {'width': 250, 'height': 250}});
+                             {'bounds': {'width': 505, 'height': 565}});
 
 });

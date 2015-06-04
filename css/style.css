@@ -38,12 +38,25 @@
 body {
     font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.4em;
-    background: #EAEAEA;
+    background: #F3F3F3;
     color: #4D4D4D;
     width: 550px;
     margin: 0 auto;
     border: 0;
     font-smoothing: antialiased;
+}
+
+/* Default "h6" style */
+h6 {
+   position: relative;
+   width: 100%;
+   font: 20px Impact, Charcoal, sans-serif;
+   font-size: 20px;
+   padding: 1px;
+   margin: 20px 5px 1px 5px;
+   color: #b3b3b3;
+   color: rgba(50, 50, 50, 0.8);
+   text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
 }
 
 /* Default "button" style */
@@ -58,7 +71,7 @@ button {
 /* Default "input" style */
 input {
     position: relative;
-    width: 40%;
+    width: 80%;
     font-size: 15px;
     font-family: inherit;
     line-height: 1em;
@@ -74,7 +87,7 @@ input {
 /* Default "textarea" style */
 textarea {
     position: relative;
-    width: 98%;
+    width: 90%;
     font-size: 15px;
     font-family: inherit;
     line-height: 1em;
