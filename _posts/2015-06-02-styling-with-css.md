@@ -21,4 +21,4 @@ I've already initialized a fiddle with the contents of "window.html" (slightly m
 </body>
 {% endhighlight %}
 
-Before we start, I should confess that I kinda-sorta suck at CSS and will probably never ever be comfortable with it. Now that that's out in the open, let's get cracking with some CSS.
+Before we start, I should confess that I kinda-sorta suck at CSS and will probably never ever be comfortable with it since I'm not a UI designer and there are lots of fantastic CSS UI kits available on the [internet](http://lmgtfy.com/?q=free+css+ui+kit). But that shouldn't stop us from experimenting with some basic UI design :wink:. Now that that's out in the open, let's get cracking with some CSS.
