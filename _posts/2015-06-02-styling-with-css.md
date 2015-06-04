@@ -129,6 +129,14 @@ chrome.app.runtime.onLaunched.addListener(function() {
 
 Reload the app now and all should be well.
 
+![After we are done with CSS styling]({{ site.baseurl }}/images/chrome_todo_4.jpg)
+
 In the last part of this tutorial, we'll take a look at how to use the [chrome.storage](https://developer.chrome.com/extensions/storage) for saving and retrieving your app's data.
+
+You can checkout the "sandbox" branch upto this point at the following commit (refer to this [post]({{ site.baseurl }}{% post_url 2015-05-25-git-reference %}) if you need a quick reference to Git commands for doing this):
+
+<pre>
+git checkout 8151ddec16549737f9bcc29bb5f3919be8b8ca01
+</pre>
 
 [Next Step: Using Chrome's Storage API]({{ site.baseurl }}{% post_url 2015-06-04-using-chrome-storage %})

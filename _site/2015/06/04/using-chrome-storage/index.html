@@ -45,6 +45,57 @@
 
 <p><a href="/chrome_todo/2015/06/02/styling-with-css/">Previous Step: Styling with CSS</a></p>
 
+<p>First things first, lets get the permissions out of the way, add the following line to <strong>background.js</strong>:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="s2">&quot;permissions&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;storage&quot;</span><span class="p">]</span></code></pre></div>
+
+<p><a href="https://developer.chrome.com/extensions/storage">chrome.storage</a> is relatively simple, with only calls to &quot;set&quot; and &quot;get&quot; required for writing and reading, respectively. Since <strong>chrome.storage</strong> is asynchronous, a callback function has to be provided during &quot;set&quot; and &quot;get&quot; calls for notification of when the storage operation is complete.</p>
+
+<p>In <strong>application.js</strong>, we add code to save data currently displayed in the textarea, the modified <strong>application.js</strong> script:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;enter&#39;</span><span class="p">).</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">txt</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">+</span> <span class="s1">&#39;\r\n&#39;</span><span class="p">;</span>
+        <span class="nx">txt</span> <span class="o">+=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">txt</span><span class="p">;</span>
+
+        <span class="nx">chrome</span><span class="p">.</span><span class="nx">storage</span><span class="p">.</span><span class="nx">sync</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span><span class="s1">&#39;todos&#39;</span><span class="o">:</span> <span class="nx">txt</span><span class="p">},</span>
+            <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;todos saved...&#39;</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">};</span></code></pre></div>
+
+<p>Let&#39;s relaunch the application and check if this works. Once open, right click anywhere on the app and click &quot;Inspect element&quot; and go to the &quot;Console&quot; tab. Now type something into the input and click &quot;Enter&quot;.</p>
+
+<p><img src="/chrome_todo/images/chrome_todo_2.jpg" alt="Saving data using chrome.storage.sync.set"></p>
+
+<p>Now, go to the &quot;Storage Explorer&quot; tab and check the contents of &quot;chrome.storage.sync&quot;:</p>
+
+<p><img src="/chrome_todo/images/chrome_todo_3.jpg" alt="Contents of chrome.storage.sync"></p>
+
+<p>Loading the data at startup and repopulating the text area is slightly trickier. First we read back the data in <strong>background.js</strong> as follows:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">onLaunched</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Read data from storage</span>
+    <span class="nx">chrome</span><span class="p">.</span><span class="nx">storage</span><span class="p">.</span><span class="nx">sync</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;todos&#39;</span><span class="p">,</span>
+        <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">){</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">);</span>
+
+    <span class="c1">// Create the HTML view</span>
+    <span class="nx">chrome</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;window.html&#39;</span><span class="p">,</span>
+                             <span class="p">{</span><span class="s1">&#39;bounds&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="o">:</span> <span class="mi">505</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="o">:</span> <span class="mi">565</span><span class="p">}});</span>
+
+<span class="p">});</span></code></pre></div>
+
+<p>Reload the app, right click anywhere and click &quot;Inspect background page&quot; and go to the &quot;Console&quot; tab, you should see this:</p>
+
+<p><img src="/chrome_todo/images/chrome_todo_5.jpg" alt="Loading data on launch"></p>
+
 
       </section>
       <footer>
