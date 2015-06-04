@@ -25,7 +25,7 @@
 
 /**
  * ---------------------------------------------------------------------
- * @file Sets up application functionality 
+ * @file Sets up application functionality
  * @author Shahzeb Ihsan
  */
 
@@ -37,6 +37,12 @@ onload = function() {
         var txt = document.getElementById('output').value + '\r\n';
         txt += document.getElementById('text').value;
         document.getElementById('output').value = txt;
+
+        // Save data to storage
+        chrome.storage.sync.set({'todos': txt},
+            function() {
+                console.log('todos saved...');
+            }
+        );
     };
 };
-

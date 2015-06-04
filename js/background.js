@@ -33,8 +33,15 @@
  * 'onLaunched' listener
  */
 chrome.app.runtime.onLaunched.addListener(function() {
-    // We'll add more functionality later, for now we'll just create
-    // the window with dimensions 250x250
+
+    // Read data from storage
+    chrome.storage.sync.get('todos',
+        function(obj){
+            console.log(obj);
+        }
+    );
+
+    // Create the HTML view
     chrome.app.window.create('window.html',
                              {'bounds': {'width': 505, 'height': 565}});
 
