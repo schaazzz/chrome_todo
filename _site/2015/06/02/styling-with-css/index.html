@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<!-- CSS -->
+<link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/chrome_todo/stylesheets/stylesheet.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/chrome_todo/stylesheets/pygment_trac.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/chrome_todo/stylesheets/print.css" media="print" />
+<script src="/chrome_todo/javascripts/popup.js""></script>
+
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<title>Step 6 - Styling with CSS</title>
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="inner">
+      <header>
+        <h1><a href="/chrome_todo/">Chrome ToDo</a></h1>
+        <h2>A simple packaged Chrome ToDo app and a tutorial on how to get started...</h2>
+      </header>
+
+      <section id="downloads" class="clearfix">
+    <a href="https://github.com/schaazzz/chrome_todo/archive/master.zip" id="download-zip" class="button"><span>Download .zip</span></a>
+    <a href="https://github.com/schaazzz/chrome_todo/archive/master.tar.gz" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+    <a href="https://github.com/schaazzz/chrome_todo/" id="view-on-github" class="button"><span>View on GitHub</span></a>
+</section>
+
+      <hr/>
+
+      <section id="main_content">
+        <header class="post-header">
+    <h1>Step 6 - Styling with CSS</h1>
+    <p class="meta">Jun 2, 2015 • Shahzeb Ihsan</p>
+</header>
+
+
+<section id = "blanket" style = "display:none;">
+</section>
+
+<section id = "popup" style = "display:none;">
+    <img id = image src="">
+</section>
+
+<p><a href="/chrome_todo/2015/06/02/adding-some-js-functionality/">Previous Step: Adding JavaScript Functionality</a></p>
+
+<p>Since a Chrome app&#39;s UI is basically just plain HTML, we can use the awesomeness of <a href="https://jsfiddle.net">JSFiddle</a> to create and test our CSS.</p>
+
+<p>I&#39;ve already initialized a fiddle with the contents of &quot;window.html&quot; (slightly modified), you can <a href="https://jsfiddle.net/schaazzz/xryaw01g/5/">use that fiddle</a> or you can create a new fiddle with the following contents i.e. the reference to &quot;application.js&quot; and the head/html tags and their contents have been removed:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Type something here...&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;enter&quot;</span><span class="nt">&gt;</span>Enter<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;textarea</span>
+        <span class="na">id=</span><span class="s">&quot;output&quot;</span> <span class="na">rows=</span><span class="s">&quot;13&quot;</span> <span class="na">cols=</span><span class="s">&quot;25&quot;</span> <span class="na">readonly</span><span class="nt">&gt;</span>Data log...
+    <span class="nt">&lt;/textarea&gt;</span>
+<span class="nt">&lt;/body&gt;</span></code></pre></div>
+
+<p>Before we start, I should confess that I kinda-sorta suck at CSS and will probably never ever be comfortable with it since I&#39;m not a UI designer and there are lots of fantastic CSS UI kits available on the <a href="http://lmgtfy.com/?q=free+css+ui+kit">internet</a>. But that shouldn&#39;t stop us from experimenting with some basic UI design <img class='emoji' title=':wink:' alt=':wink:' src='https://assets.github.com/images/icons/emoji/unicode/1f609.png' height='20' width='20' align='absmiddle' />. Now that that&#39;s out in the open, let&#39;s get cracking with some CSS.</p>
+
+<p>The following CSS has been added to this <a href="https://jsfiddle.net/schaazzz/xryaw01g/6/">fiddle</a>, play around with the CSS properties to modify how your elements look:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">html</span><span class="o">,</span>
+<span class="nt">body</span> <span class="p">{</span>
+    <span class="k">margin</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="k">padding</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="nt">body</span> <span class="p">{</span>
+   <span class="k">font</span><span class="o">:</span> <span class="m">14px</span> <span class="s1">&#39;Helvetica Neue&#39;</span><span class="o">,</span> <span class="n">Helvetica</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="k">sans-serif</span><span class="p">;</span>
+   <span class="k">line-height</span><span class="o">:</span> <span class="m">1.4em</span><span class="p">;</span>
+   <span class="k">background</span><span class="o">:</span> <span class="m">#F3F3F3</span><span class="p">;</span>
+   <span class="k">color</span><span class="o">:</span> <span class="m">#4D4D4D</span><span class="p">;</span>
+   <span class="k">width</span><span class="o">:</span> <span class="m">550px</span><span class="p">;</span>
+   <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="k">auto</span><span class="p">;</span>
+   <span class="k">border</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+   <span class="k">font</span><span class="o">-</span><span class="n">smoothing</span><span class="o">:</span> <span class="n">antialiased</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h6</span> <span class="p">{</span>
+  <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
+  <span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="k">font</span><span class="o">:</span> <span class="m">20px</span> <span class="n">Impact</span><span class="o">,</span> <span class="n">Charcoal</span><span class="o">,</span> <span class="k">sans-serif</span><span class="p">;</span>
+  <span class="k">font-size</span><span class="o">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="k">padding</span><span class="o">:</span> <span class="m">1px</span><span class="p">;</span>
+  <span class="k">margin</span><span class="o">:</span> <span class="m">20px</span> <span class="m">5px</span> <span class="m">1px</span> <span class="m">5px</span><span class="p">;</span>
+  <span class="k">color</span><span class="o">:</span> <span class="m">#b3b3b3</span><span class="p">;</span>
+  <span class="k">color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">50</span><span class="o">,</span> <span class="m">50</span><span class="o">,</span> <span class="m">50</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">8</span><span class="p">);</span>
+  <span class="k">text-shadow</span><span class="o">:</span> <span class="m">-1px</span> <span class="m">-1px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nt">button</span> <span class="p">{</span>
+   <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
+   <span class="k">font-size</span><span class="o">:</span> <span class="m">15px</span><span class="p">;</span>
+   <span class="k">font-family</span><span class="o">:</span> <span class="k">inherit</span><span class="p">;</span>
+   <span class="k">line-height</span><span class="o">:</span> <span class="m">1em</span><span class="p">;</span>
+   <span class="k">padding</span><span class="o">:</span> <span class="m">5px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">input</span> <span class="p">{</span>
+   <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
+   <span class="k">width</span><span class="o">:</span> <span class="m">80%</span><span class="p">;</span>
+   <span class="k">font-size</span><span class="o">:</span> <span class="m">15px</span><span class="p">;</span>
+   <span class="k">font-family</span><span class="o">:</span> <span class="k">inherit</span><span class="p">;</span>
+   <span class="k">line-height</span><span class="o">:</span> <span class="m">1em</span><span class="p">;</span>
+   <span class="k">outline</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+   <span class="k">color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">1</span><span class="o">.</span><span class="m">0</span><span class="p">);</span>
+   <span class="k">padding</span><span class="o">:</span> <span class="m">6px</span><span class="p">;</span>
+   <span class="k">margin</span><span class="o">:</span> <span class="m">5px</span> <span class="m">0px</span> <span class="m">5px</span> <span class="m">5px</span><span class="p">;</span>
+   <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#999</span><span class="p">;</span>
+   <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="k">inset</span> <span class="m">0</span> <span class="m">-1px</span> <span class="m">5px</span> <span class="m">0</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">2</span><span class="p">);</span>
+   <span class="n">box</span><span class="o">-</span><span class="n">sizing</span><span class="o">:</span> <span class="k">border</span><span class="o">-</span><span class="n">box</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">textarea</span> <span class="p">{</span>
+   <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
+   <span class="k">width</span><span class="o">:</span> <span class="m">90%</span><span class="p">;</span>
+   <span class="k">font-size</span><span class="o">:</span> <span class="m">15px</span><span class="p">;</span>
+   <span class="k">font-family</span><span class="o">:</span> <span class="k">inherit</span><span class="p">;</span>
+   <span class="k">line-height</span><span class="o">:</span> <span class="m">1em</span><span class="p">;</span>
+   <span class="k">outline</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+   <span class="k">color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">1</span><span class="o">.</span><span class="m">0</span><span class="p">);</span>
+   <span class="k">padding</span><span class="o">:</span> <span class="m">6px</span><span class="p">;</span>
+   <span class="k">margin</span><span class="o">:</span> <span class="m">5px</span> <span class="m">5px</span> <span class="m">5px</span> <span class="m">5px</span><span class="p">;</span>
+   <span class="k">margin-bottom</span><span class="o">:</span> <span class="m">0px</span><span class="p">;</span>
+   <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#999</span><span class="p">;</span>
+   <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="k">inset</span> <span class="m">0</span> <span class="m">-1px</span> <span class="m">5px</span> <span class="m">0</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">2</span><span class="p">);</span>
+   <span class="n">box</span><span class="o">-</span><span class="n">sizing</span><span class="o">:</span> <span class="k">border</span><span class="o">-</span><span class="n">box</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Let&#39;s add this CSS to a <em>cleaned-up</em> &quot;window.html&quot; using the &quot;link&quot; tag to the &quot;head&quot;:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+   <span class="nt">&lt;head&gt;</span>
+       <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;title&gt;</span>Chrome ToDo<span class="nt">&lt;/title&gt;</span>
+       <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/style.css&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;/head&gt;</span>
+
+   <span class="nt">&lt;body&gt;</span>
+        <span class="c">&lt;!--- Code removed ---&gt;</span>
+        <span class="nt">&lt;h6&gt;</span>#<span class="err">&amp;</span>nbsptodos...<span class="nt">&lt;/h6&gt;</span>
+        <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">&quot;output&quot;</span> <span class="na">rows=</span><span class="s">&quot;30&quot;</span> <span class="na">cols=</span><span class="s">&quot;25&quot;</span> <span class="na">readonly</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+        <span class="c">&lt;!--- Code removed ---&gt;</span>
+   <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
+
+<p>Now create a folder called &quot;css&quot; in your project folder and copy <a href="https://raw.githubusercontent.com/schaazzz/chrome_todo/sandbox/css/style.css">style.css</a>. Reload the app in Chrome and you&#39;ll see a bit of a mess because the elements don&#39;t fit into the HTML view anymore. So, lets modify &quot;background.js&quot; to adjust the dimensions of the window:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">onLaunched</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// We&#39;ll add more functionality later, for now we&#39;ll just create</span>
+    <span class="c1">// a window with the required dimensions...</span>
+    <span class="nx">chrome</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;window.html&#39;</span><span class="p">,</span>
+                             <span class="p">{</span><span class="s1">&#39;bounds&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="o">:</span> <span class="mi">505</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="o">:</span> <span class="mi">565</span><span class="p">}});</span>
+
+<span class="p">});</span></code></pre></div>
+
+<p>Reload the app now and all should be well.</p>
+
+<p><img src="/chrome_todo/images/chrome_todo_4.jpg" alt="After we are done with CSS styling"></p>
+
+<p>In the last part of this tutorial, we&#39;ll take a look at how to use the <a href="https://developer.chrome.com/extensions/storage">chrome.storage</a> for saving and retrieving your app&#39;s data.</p>
+
+<p>You can checkout the &quot;sandbox&quot; branch upto this point at the following commit (refer to this <a href="/chrome_todo/2015/05/25/git-reference/">post</a> if you need a quick reference to Git commands for doing this):</p>
+
+<pre>
+git checkout 8151ddec16549737f9bcc29bb5f3919be8b8ca01
+</pre>
+
+<p><a href="/chrome_todo/2015/06/04/using-chrome-storage/">Next Step: Using Chrome&#39;s Storage API</a></p>
+
+
+      </section>
+      <footer>
+        
+tactile-theme is maintained by <a href="https://github.com/jasonlong">jasonlang</a><br/>
+jekyll-tactile-theme is maintained by <a href="https://github.com/ankur-gupta">ankur-gupta</a><br/>
+This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Lang</a>.
+      </footer>
+    </div>
+  </div>
+</body>
+
+</html>

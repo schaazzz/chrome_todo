@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<!-- CSS -->
+<link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/chrome_todo/stylesheets/stylesheet.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/chrome_todo/stylesheets/pygment_trac.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/chrome_todo/stylesheets/print.css" media="print" />
+<script src="/chrome_todo/javascripts/popup.js""></script>
+
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<title>Step 3 - The Background Script (background.js)</title>
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="inner">
+      <header>
+        <h1><a href="/chrome_todo/">Chrome ToDo</a></h1>
+        <h2>A simple packaged Chrome ToDo app and a tutorial on how to get started...</h2>
+      </header>
+
+      <section id="downloads" class="clearfix">
+    <a href="https://github.com/schaazzz/chrome_todo/archive/master.zip" id="download-zip" class="button"><span>Download .zip</span></a>
+    <a href="https://github.com/schaazzz/chrome_todo/archive/master.tar.gz" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+    <a href="https://github.com/schaazzz/chrome_todo/" id="view-on-github" class="button"><span>View on GitHub</span></a>
+</section>
+
+      <hr/>
+
+      <section id="main_content">
+        <header class="post-header">
+    <h1>Step 3 - The Background Script (background.js)</h1>
+    <p class="meta">May 27, 2015 • Shahzeb Ihsan</p>
+</header>
+
+
+<section id = "blanket" style = "display:none;">
+</section>
+
+<section id = "popup" style = "display:none;">
+    <img id = image src="">
+</section>
+
+<p><a href="/chrome_todo/2015/05/27/creating-the-manifest/">Previous Step: Creating the Manifest (manifest.json)</a></p>
+
+<p>In the manifest.json we created in the <a href="/chrome_todo/2015/05/27/creating-the-manifest/">previous step</a>, we configured the following path for background.js:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
+    <span class="c1">//..........</span>
+    <span class="c1">//..........</span>
+    <span class="s2">&quot;app&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;background&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;js/background.js&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Create a folder &quot;js&quot; and create file <a href="https://raw.githubusercontent.com/schaazzz/chrome_todo/sandbox/js/background.js">background.js</a> with the following content:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
+<span class="cm"> * &#39;onLaunched&#39; listener</span>
+<span class="cm"> */</span>
+<span class="nx">chrome</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">onLaunched</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// We&#39;ll add more functionality later, for now we&#39;ll just create</span>
+    <span class="c1">// the window with dimensions 250x250</span>
+    <span class="nx">chrome</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;window.html&#39;</span><span class="p">,</span>
+                             <span class="p">{</span><span class="s1">&#39;bounds&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="o">:</span> <span class="mi">250</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="o">:</span> <span class="mi">250</span><span class="p">}});</span>
+
+<span class="p">});</span></code></pre></div>
+
+<p>This &quot;listener&quot; will be called when the application is launched, for now, all we are doing in this listener is creating the HTML view. For more details on a Chrome app&#39;s lifecycle, checkout <a href="https://developer.chrome.com/apps/app_lifecycle">this</a> Google page or the following lifecycle diagram for quick reference:</p>
+
+<p><a href="https://developer.chrome.com/apps/app_lifecycle">Lifecycle Diagram from Google Chrome Developer portal<img src="https://developer.chrome.com/static/images/applifecycle.png" alt="Lifecycle of a Chrome app"></a></p>
+
+<p>Now that we have the basic application framework setup, let&#39;s create a basic HTML view with some straight forward JavaScript in the <a href="(/chrome_todo/2015/05/28/creating-the-html-view/)">next step</a> to setup the application framework.</p>
+
+<p><a href="/chrome_todo/2015/05/28/creating-the-html-view/">Next Step: Creating the HTML View</a></p>
+
+
+      </section>
+      <footer>
+        
+tactile-theme is maintained by <a href="https://github.com/jasonlong">jasonlang</a><br/>
+jekyll-tactile-theme is maintained by <a href="https://github.com/ankur-gupta">ankur-gupta</a><br/>
+This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Lang</a>.
+      </footer>
+    </div>
+  </div>
+</body>
+
+</html>

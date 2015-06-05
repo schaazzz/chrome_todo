@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<!-- CSS -->
+<link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/chrome_todo/stylesheets/stylesheet.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/chrome_todo/stylesheets/pygment_trac.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/chrome_todo/stylesheets/print.css" media="print" />
+<script src="/chrome_todo/javascripts/popup.js""></script>
+
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<title>Step 4 - Creating the HTML View</title>
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="inner">
+      <header>
+        <h1><a href="/chrome_todo/">Chrome ToDo</a></h1>
+        <h2>A simple packaged Chrome ToDo app and a tutorial on how to get started...</h2>
+      </header>
+
+      <section id="downloads" class="clearfix">
+    <a href="https://github.com/schaazzz/chrome_todo/archive/master.zip" id="download-zip" class="button"><span>Download .zip</span></a>
+    <a href="https://github.com/schaazzz/chrome_todo/archive/master.tar.gz" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+    <a href="https://github.com/schaazzz/chrome_todo/" id="view-on-github" class="button"><span>View on GitHub</span></a>
+</section>
+
+      <hr/>
+
+      <section id="main_content">
+        <header class="post-header">
+    <h1>Step 4 - Creating the HTML View</h1>
+    <p class="meta">May 28, 2015 • Shahzeb Ihsan</p>
+</header>
+
+
+<section id = "blanket" style = "display:none;">
+</section>
+
+<section id = "popup" style = "display:none;">
+    <img id = image src="">
+</section>
+
+<p><a href="/chrome_todo/2015/05/27/the-background-script/">Previous Step: The Background Script (background.js)</a></p>
+
+<p>Let&#39;s create an HTML file, &quot;window.html&quot;, which will contain a text field, a button and a text area.</p>
+
+<p>&quot;window.html&quot; is loaded in <a href="/chrome_todo/2015/05/27/the-background-script/">background.js</a> in the &quot;onLaunched&quot; listener in following statement:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;window.html&#39;</span><span class="p">,</span>
+                         <span class="p">{</span><span class="s1">&#39;bounds&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="o">:</span> <span class="mi">250</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="o">:</span> <span class="mi">250</span><span class="p">}});</span></code></pre></div>
+
+<p>Now, let&#39;s create &quot;window.html&quot; with the following contents:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Chrome ToDo<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Type something here...&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;enter&quot;</span><span class="nt">&gt;</span>Enter<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">&quot;output&quot;</span> <span class="na">rows=</span><span class="s">&quot;13&quot;</span> <span class="na">cols=</span><span class="s">&quot;25&quot;</span> <span class="na">readonly</span><span class="nt">&gt;</span>Data log...<span class="nt">&lt;/textarea&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
+
+<p>Now you can load this intermediate app by going to <strong>chrome://extensions/</strong> and using the &quot;Load unpacked extension...&quot; option. Your directory should look like this:</p>
+
+<p><img src="/chrome_todo/images/directory_structure_1.jpg" alt="Directory structure"></p>
+
+<p>...or you can checkout the &quot;sandbox&quot; branch at the following commit (refer to this <a href="/chrome_todo/2015/05/25/git-reference/">post</a> if you need a quick reference to Git commands for doing this):</p>
+
+<pre>
+git checkout 1bbb8810055ab75f12b645e1ffd7c8ef54ea8162
+</pre>
+
+<p>At this point, it will look like this... I know, I know, its not too pretty at this point but we&#39;ll style it later with some CSS but for now we&#39;ll just focus on the functionality.</p>
+
+<p><img src="/chrome_todo/images/chrome_todo_0.jpg" alt="How your app looks like at this point..."></p>
+
+<p>Now let&#39;s add some JavaScript functionality...</p>
+
+<p><a href="/chrome_todo/2015/06/02/adding-some-js-functionality/">Next Step: Adding JavaScript Functionality</a></p>
+
+
+      </section>
+      <footer>
+        
+tactile-theme is maintained by <a href="https://github.com/jasonlong">jasonlang</a><br/>
+jekyll-tactile-theme is maintained by <a href="https://github.com/ankur-gupta">ankur-gupta</a><br/>
+This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Lang</a>.
+      </footer>
+    </div>
+  </div>
+</body>
+
+</html>
