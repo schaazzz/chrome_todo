@@ -34,13 +34,17 @@ onload = function() {
 };
 {% endhighlight %}
 
-Let's relaunch the application and check if this works. Once open, right click anywhere on the app and click "Inspect element" and go to the "Console" tab. Now type something into the input and click "Enter".
+Let's relaunch the application and check if this works. Once open:
+- right click anywhere on the app and click "Inspect element" and in the "Developer Tools" window go to the "Console" tab
+- enter something in the input and click enter
+- in the "Developer Tools" window, go to the "Storage Explorer" tab and select "chrome.storage.sync" and check the contents
 
-![Saving data using chrome.storage.sync.set]({{ site.baseurl }}/images/chrome_todo_2.jpg)
+<script>
+console.log("asdasda");
+popup();
+</script>
 
-Now, go to the "Storage Explorer" tab and check the contents of "chrome.storage.sync":
-
-![Contents of chrome.storage.sync]({{ site.baseurl }}/images/chrome_todo_3.jpg)
+<p><a href = "javascript:void(0);" onclick=console.log("yuuuu") id="test">If the gif is too small, right click and open in new tab<img src="/chrome_todo/images/set_animation.gif" alt="Saving data using chrome.storage.sync.set"></a></p>
 
 Loading the data at startup and repopulating the text area is slightly trickier. First we read back the data in **background.js** as follows:
 
