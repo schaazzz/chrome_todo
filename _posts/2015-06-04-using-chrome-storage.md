@@ -101,3 +101,9 @@ onload = function() {
 {% endhighlight %}
 
 Reload the app now and you should be able to see the textarea initialized with the values that were saved earlier.
+
+You can checkout the "sandbox" branch upto this point at the following commit (refer to this [post]({{ site.baseurl }}{% post_url 2015-05-25-git-reference %}) if you need a quick reference to Git commands for doing this):
+
+<pre>
+git checkout d84f1c1dc0f26e8bf3441f5117f306702416d697
+</pre>

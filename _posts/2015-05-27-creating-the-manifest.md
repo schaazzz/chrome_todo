@@ -16,12 +16,12 @@ Creating a manifest is simple enough:
     "version": "0.1",
     "app": {
         "background": {
-        "scripts": ["js/background.js"]
+            "scripts": ["js/background.js"]
         }
     }
 }
 {% endhighlight %}
 
-You can download manifest.json [here](https://raw.githubusercontent.com/schaazzz/chrome_todo/sandbox/manifest.json).
+You can download this manifest.json [here](https://raw.githubusercontent.com/schaazzz/chrome_todo/ac6d54dff5c5fb5ec77343be1bb3e7f116193c79/manifest.json).
 
 [Next Step: The Background Script (background.js)]({{ site.baseurl }}{% post_url 2015-05-27-the-background-script %})

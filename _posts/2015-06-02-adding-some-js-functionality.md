@@ -7,7 +7,7 @@ step: 5
 
 [Previous Step: Creating the HTML View]({{ site.baseurl }}{% post_url 2015-05-28-creating-the-html-view %})
 
-In folder "js", create a file called "application.js" and add the js path to the <em>end</em> of your HTML body (window.html)...
+In folder **js**, create a file called **application.js** and add the js path to the <em>end</em> of your HTML body (**window.html**)...
 
 {% highlight html %}
 <html>

@@ -21,7 +21,7 @@ In the manifest.json we created in the [previous step]({{ site.baseurl }}{% post
 }
 {% endhighlight %}
 
-Create a folder "js" and create file [background.js](https://raw.githubusercontent.com/schaazzz/chrome_todo/sandbox/js/background.js) with the following content:
+Create a folder "js" and create file [background.js](https://raw.githubusercontent.com/schaazzz/chrome_todo/ac6d54dff5c5fb5ec77343be1bb3e7f116193c79/js/background.js) with the following content:
 
 {% highlight javascript %}
 /**
