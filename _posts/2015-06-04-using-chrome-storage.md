@@ -39,12 +39,7 @@ Let's relaunch the application and check if this works. Once open:
 - enter something in the input and click enter
 - in the "Developer Tools" window, go to the "Storage Explorer" tab and select "chrome.storage.sync" and check the contents
 
-<script>
-console.log("asdasda");
-popup();
-</script>
-
-<p><a href = "javascript:void(0);" onclick=console.log("yuuuu") id="test">If the gif is too small, right click and open in new tab<img src="/chrome_todo/images/set_animation.gif" alt="Saving data using chrome.storage.sync.set"></a></p>
+<p><a href = "javascript:void(0);" onclick="popup()" id="test">If the gif is too small, right click and open in new tab<img src="/chrome_todo/images/set_animation.gif" alt="Saving data using chrome.storage.sync.set"></a></p>
 
 Loading the data at startup and repopulating the text area is slightly trickier. First we read back the data in **background.js** as follows:
 
