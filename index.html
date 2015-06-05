@@ -27,8 +27,8 @@ A great tutorial for building a packaged Chrome app is available in this <a href
 </dl>
 
 <dl class="posts">
-    {% for post in site.posts reversed %}
-        {% unless post.step %}
+    {% for post in site.posts %}
+        {% unless post.reference or post.step %}
             <dt>---<br>
             <p class="authorline">{{ post.date | date: "%b %-d, %Y" }}{% if post.author %} • {{ post.author }}{% endif %}</p>
             <h3><a class="post-link" href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></h3>
