@@ -2,6 +2,7 @@
 layout: post
 title: GIT Command Reference for this Tutorial
 author: Shahzeb Ihsan
+reference: 1
 ---
 
 <!--more-->

@@ -16,6 +16,14 @@ A great tutorial for building a packaged Chrome app is available in this <a href
             </dt>
         {% endif %}
     {% endfor %}
+
+    {% for post in site.posts reversed %}
+        {% if post.reference %}
+            <dt>
+            <h4><a class="post-link" href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></h4>
+            </dt>
+        {% endif %}
+    {% endfor %}
 </dl>
 
 <dl class="posts">
