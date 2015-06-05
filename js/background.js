@@ -29,20 +29,23 @@
  * @author Shahzeb Ihsan
  */
 
+var stored_todos;
+
 /**
  * 'onLaunched' listener
  */
 chrome.app.runtime.onLaunched.addListener(function() {
-
     // Read data from storage
-    chrome.storage.sync.get('todos',
-        function(obj){
-            console.log(obj);
+    chrome.storage.sync.get('todos', function(obj){
+        console.log(obj);
+        if (obj.todos === undefined) {
+            stored_todos = undefined;
+        } else {
+            stored_todos = obj.todos;
         }
-    );
+    });
 
     // Create the HTML view
     chrome.app.window.create('window.html',
                              {'bounds': {'width': 505, 'height': 565}});
-
 });

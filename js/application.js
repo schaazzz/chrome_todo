@@ -33,6 +33,20 @@
  * Called on the "onload" event, sets event handlers for various elements.
  */
 onload = function() {
+    chrome.runtime.getBackgroundPage(
+        function (bg_page) {
+            // Read the stored todos from the background page and save it to the window
+            // Note: "window" variables can created on the fly...
+            console.log(bg_page.stored_todos);
+            window.stored_todos = bg_page.stored_todos;
+
+            // Update the textarea with the stored todos
+            if (window.stored_todos !== undefined) {
+                document.getElementById('output').value = window.stored_todos;
+            }
+        }
+    );
+
     document.getElementById('enter').onclick = function() {
         var txt = document.getElementById('output').value + '\r\n';
         txt += document.getElementById('text').value;
