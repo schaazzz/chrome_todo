@@ -47,5 +47,5 @@ chrome.app.runtime.onLaunched.addListener(function() {
 
     // Create the HTML view
     chrome.app.window.create('window.html',
-                             {'bounds': {'width': 505, 'height': 565}});
+                             {'bounds': {'width': 505, 'height': 550}});
 });

@@ -36,35 +36,36 @@
   }
 
 body {
-    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.4em;
-    background: #F3F3F3;
-    color: #4D4D4D;
     width: 550px;
+    height: 550px;
     margin: 0 auto;
     border: 0;
-    font-smoothing: antialiased;
+    /*font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+    /*line-height: 1.4em;
+    background: #F3F3F3;
+    color: #4D4D4D;
+    margin: 0 auto;
+    border: 0;
+    font-smoothing: antialiased;*/
 }
 
 /* Default "h6" style */
-h6 {
-   position: relative;
-   width: 100%;
-   font: 20px Impact, Charcoal, sans-serif;
-   font-size: 20px;
-   padding: 1px;
-   margin: 20px 5px 1px 5px;
-   color: #b3b3b3;
-   color: rgba(50, 50, 50, 0.8);
-   text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
+h3 {
+    position: relative;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 1px;
+    margin: 20px 5px 1px 5px;
+    color: #b3b3b3;
+    color: rgba(50, 50, 50, 0.8);
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
 }
 
 /* Default "button" style */
 button {
     position: relative;
-    font-size: 15px;
-    font-family: inherit;
-    line-height: 1em;
+    font-size: 17px;
     padding: 5px;
 }
 
@@ -73,21 +74,15 @@ input {
     position: relative;
     width: 80%;
     font-size: 15px;
-    font-family: inherit;
-    line-height: 1em;
-    outline: none;
-    color: rgba(0, 0, 0, 1.0);
     padding: 6px;
     margin: 5px 0px 5px 5px;
-    border: 1px solid #999;
-    box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
 }
 
 /* Default "textarea" style */
 textarea {
     position: relative;
     width: 90%;
+    height: 80%;
     font-size: 15px;
     font-family: inherit;
     line-height: 1em;
