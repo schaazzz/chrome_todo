@@ -60,6 +60,26 @@ onload = function() {
         );
     };*/
 
+    document.getElementById('all_tasks').style.background = '#ffffff';
+
+    document.getElementById('all_tasks').onclick = function() {
+        document.getElementById('all_tasks').style.background = '#ffffff';
+        document.getElementById('today').style.background = '#f5f5f5';
+        document.getElementById('next_7_days').style.background = '#f5f5f5';
+    }
+
+    document.getElementById('today').onclick = function() {
+        document.getElementById('all_tasks').style.background = '#f5f5f5';
+        document.getElementById('today').style.background = '#ffffff';
+        document.getElementById('next_7_days').style.background = '#f5f5f5';
+    }
+
+    document.getElementById('next_7_days').onclick = function() {
+        document.getElementById('all_tasks').style.background = '#f5f5f5';
+        document.getElementById('today').style.background = '#f5f5f5';
+        document.getElementById('next_7_days').style.background = '#ffffff';
+    }
+
     document.getElementById('one').onclick = function() {
         document.getElementById('tab_selector').style.marginLeft = '3%';
         document.getElementsByClassName('projects_tab')[0].style.display = 'block';
