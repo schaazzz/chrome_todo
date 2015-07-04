@@ -32,30 +32,61 @@
 
     <body>
         <div id = "left_container">
-        <div class = "navbar_title">
-            <h3>YaYaTDL</h3>
-            <h3 style = "margin-right: 0 !important;">
-                <i class="fa fa-pencil-square-o"></i>
-            </h3>
-            <p style = "position: relative;"><b style = "color: rgba(150, 30, 30, 0.8) !important;">
-                    Yet another, yet another, ToDo List...
-            </b></p>
-            <hr>
+            <div class = "navbar_title">
+                <h3>YaYaTDL</h3>
+
+                <h3 style = "margin-right: 0 !important;">
+                    <i class="fa fa-pencil-square-o"></i>
+                </h3>
+
+                <p style = "position: relative;">
+                    <b style = "color: rgba(150, 30, 30, 0.8) !important;">
+                        Yet another, yet another, ToDo List...
+                </b></p>
+                <hr>
+            </div>
+
+            <div class = "navbar">
+                <button class="large">
+                    <i class="fa fa-list" style = "color: tomato !important;"></i>
+                    &nbsp;&nbsp;All tasks
+                </button>
+
+                <button class="large" style = "margin-top: 5px !important;">
+                    <i class="fa fa-calendar-o" style = "color: tomato !important;"></i>
+                    &nbsp;&nbsp;Today
+                </button>
+
+                <button class="large" style = "margin-top: 5px !important;">
+                    <i class="fa fa-calendar" style = "color: tomato !important;"></i>
+                    &nbsp;&nbsp;Next 7 days
+                </button>
+            </div>
+
+            <div class = "navbar_tabs">
+                <ul>
+                    <li><a id = "one" href="#">Projects</a></li><!--
+                --> <li><a id = "two" href="#">Labels</a></li><!--
+                --> <li><a id = "three" href="#">Filters</a></li>
+                    <hr id = "tab_selector" />
+                </ul>
+            </div>
+
+            <div class = "projects_tab">
+            </div>
+
+            <div class = "labels_tab">
+            </div>
+
+            <div class = "filters_tab">
+            </div>
+            <!--
+            -->
         </div>
-        <div class = "navbar">
-            <button class="large"><i class="fa fa-list"></i>&nbsp;&nbsp;All tasks</button>
-            <button class="large" style = "margin-top: 5px !important;"><i class="fa fa-calendar-o"></i>&nbsp;&nbsp;Today</button>
-            <button class="large" style = "margin-top: 5px !important;"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Next 7 days</button>
-        </div>
-        <div class = "navbar_tabs container">
-        <ul>
-            <li class="one"><a href="#">Uno</a></li><li class="two"><a href="#">Dos</a></li><li class="three"><a href="#">Tres</a></li><li class="four"><a href="#">Quatro</a></li>
-            <hr />
-        </ul>
-</div>
-        </div>
-    </div>
+
         <div class = "rightDiv">
         </div>
+
+        <script src="js/application.js"></script>
     </body>
 </html>

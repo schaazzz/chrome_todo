@@ -33,7 +33,7 @@
  * Called on the "onload" event, sets event handlers for various elements.
  */
 onload = function() {
-    chrome.runtime.getBackgroundPage(
+    /*chrome.runtime.getBackgroundPage(
         function (bg_page) {
             // Read the stored todos from the background page and save it to the window
             // Note: "window" variables can created on the fly...
@@ -45,9 +45,9 @@ onload = function() {
                 document.getElementById('output').value = window.stored_todos;
             }
         }
-    );
+    );*/
 
-    document.getElementById('enter').onclick = function() {
+    /*document.getElementById('enter').onclick = function() {
         var txt = document.getElementById('output').value + '\r\n';
         txt += document.getElementById('text').value;
         document.getElementById('output').value = txt;
@@ -58,5 +58,26 @@ onload = function() {
                 console.log('todos saved...');
             }
         );
-    };
+    };*/
+
+    document.getElementById('one').onclick = function() {
+        document.getElementById('tab_selector').style.marginLeft = '3%';
+        document.getElementsByClassName('projects_tab')[0].style.display = 'block';
+        document.getElementsByClassName('labels_tab')[0].style.display = 'none';
+        document.getElementsByClassName('filters_tab')[0].style.display = 'none';
+    }
+
+    document.getElementById('two').onclick = function() {
+        document.getElementById('tab_selector').style.marginLeft = '28%';
+        document.getElementsByClassName('projects_tab')[0].style.display = 'none';
+        document.getElementsByClassName('labels_tab')[0].style.display = 'block';
+        document.getElementsByClassName('filters_tab')[0].style.display = 'none';
+    }
+
+    document.getElementById('three').onclick = function() {
+        document.getElementById('tab_selector').style.marginLeft = '55%';
+        document.getElementsByClassName('projects_tab')[0].style.display = 'none';
+        document.getElementsByClassName('labels_tab')[0].style.display = 'none';
+        document.getElementsByClassName('filters_tab')[0].style.display = 'block';
+    }
 };
