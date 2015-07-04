@@ -31,13 +31,31 @@
     </head>
 
     <body>
-        <input id = "text" placeholder = "Type something here...">
-        <!--<button class="blue"><i class="fa fa-star"></i> .blue</button>-->
-        <button class = "blue" id = "enter">Enter</button>
-        <h3>#&nbspList of Tasks...</h3>
-        <textarea id = "output" rows ="90" cols ="25" readonly></textarea>
-        <script src="js/application.js"></script>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/kickstart.js"></script>
+        <div id = "left_container">
+        <div class = "navbar_title">
+            <h3>YaYaTDL</h3>
+            <h3 style = "margin-right: 0 !important;">
+                <i class="fa fa-pencil-square-o"></i>
+            </h3>
+            <p style = "position: relative;"><b style = "color: rgba(150, 30, 30, 0.8) !important;">
+                    Yet another, yet another, ToDo List...
+            </b></p>
+            <hr>
+        </div>
+        <div class = "navbar">
+            <button class="large"><i class="fa fa-list"></i>&nbsp;&nbsp;All tasks</button>
+            <button class="large" style = "margin-top: 5px !important;"><i class="fa fa-calendar-o"></i>&nbsp;&nbsp;Today</button>
+            <button class="large" style = "margin-top: 5px !important;"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Next 7 days</button>
+        </div>
+        <div class = "navbar_tabs container">
+        <ul>
+            <li class="one"><a href="#">Uno</a></li><li class="two"><a href="#">Dos</a></li><li class="three"><a href="#">Tres</a></li><li class="four"><a href="#">Quatro</a></li>
+            <hr />
+        </ul>
+</div>
+        </div>
+    </div>
+        <div class = "rightDiv">
+        </div>
     </body>
 </html>
