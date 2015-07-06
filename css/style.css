@@ -134,7 +134,7 @@ div.navbarTabs ul li {
   text-align: center;
 }
 
-div.navbar_tabs a {
+div.navbarTabs a {
   display: inline-block;
   width: 25%;
   padding: .75rem 0;
@@ -145,7 +145,7 @@ div.navbar_tabs a {
   font-size: 13px;
 }
 
-div.navbar_tabs hr {
+div.navbarTabs hr {
   height: .25rem;
   width: 20%;
   margin-top: 0;
@@ -155,7 +155,7 @@ div.navbar_tabs hr {
   transition: .1s ease-in-out;
 }
 
-div.projects_tab {
+div.projectsTab {
     position: relative;
     float: left;
     width: 100%;
@@ -166,7 +166,7 @@ div.projects_tab {
     display: none;
 }
 
-div.labels_tab {
+div.labelsTab {
     float: right;
     width: 100%;
     height: 100%;
@@ -176,7 +176,7 @@ div.labels_tab {
     display: none;
 }
 
-div.filters_tab {
+div.filtersTab {
     float: right;
     width: 100%;
     height: 100%;

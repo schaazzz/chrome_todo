@@ -44,12 +44,32 @@ function navBtnEvtHandler(e) {
  }
 
 function clickHandler(id) {
-    var elemAllTasks = document.getElementById('all_tasks').;
+    var elemAllTasks = document.getElementById('allTasks').;
     var elemToday = document.getElementById('today').;
-    var elemNxt7Days = document.getElementById('next_7_days').;
+    var elemNxt7Days = document.getElementById('nxt7Days').;
 
-    if (id == 'all_tasks') {
+    if (id == 'allTasks') {
         elemAllTasks.style.background = '#ffffff';
         elemTodaydocument.style.background = '#f5f5f5';
         elemNxt7Days.style.background = '#f5f5f5';
+
+        window.navBtnStates.allTasks = true;
+        window.navBtnStates.today = window.navBtnStates.nxt7Days = false;
+    }
+    else if (id == 'today') {
+        elemAllTasks.style.background = '#f5f5f5';
+        elemTodaydocument.style.background = '#ffffff';
+        elemNxt7Days.style.background = '#f5f5f5';
+
+        window.navBtnStates.today = true;
+        window.navBtnStates.allTasks = window.navBtnStates.nxt7Days = false;
+    }
+    else if (id == 'nxt7Days') {
+        elemAllTasks.style.background = '#f5f5f5';
+        elemTodaydocument.style.background = '#f5f5f5';
+        elemNxt7Days.style.background = '#ffffff';
+
+        window.navBtnStates.nxt7Days = true;
+        window.navBtnStates.allTasks = window.navBtnStates.today = false;
+    }
 }
