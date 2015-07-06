@@ -29,6 +29,8 @@
  * @author Shahzeb Ihsan
  */
 
+window.navBtnStates = {allTasks: false, today: false, nxt7Days: false};
+
 /**
  * Called on the "onload" event, sets event handlers for various elements.
  */
@@ -60,25 +62,52 @@ onload = function() {
         );
     };*/
 
+    window.navBtnStates.allTasks = true;
+
     document.getElementById('all_tasks').style.background = '#ffffff';
+
+    document.getElementById('all_tasks').onmouseover = function(e) {
+        console.log(e.type);console.log(e.srcElement.id);
+        document.getElementById('all_tasks').style.background = '#ffffff';
+    };
+
+    document.getElementById('all_tasks').onmouseleave = function() {
+        document.getElementById('all_tasks').style.background = '#f5f5f5';
+    };
+
+    document.getElementById('today').onmouseover = function() {
+        document.getElementById('today').style.background = '#ffffff';
+    };
+
+    document.getElementById('today').onmouseleave = function() {
+        document.getElementById('today').style.background = '#f5f5f5';
+    };
+
+    document.getElementById('next_7_days').onmouseover = function() {
+        document.getElementById('next_7_days').style.background = '#ffffff';
+    };
+
+    document.getElementById('next_7_days').onmouseleave = function() {
+        document.getElementById('next_7_days').style.background = '#f5f5f5';
+    };
 
     document.getElementById('all_tasks').onclick = function() {
         document.getElementById('all_tasks').style.background = '#ffffff';
         document.getElementById('today').style.background = '#f5f5f5';
         document.getElementById('next_7_days').style.background = '#f5f5f5';
-    }
+    };
 
     document.getElementById('today').onclick = function() {
         document.getElementById('all_tasks').style.background = '#f5f5f5';
         document.getElementById('today').style.background = '#ffffff';
         document.getElementById('next_7_days').style.background = '#f5f5f5';
-    }
+    };
 
     document.getElementById('next_7_days').onclick = function() {
         document.getElementById('all_tasks').style.background = '#f5f5f5';
         document.getElementById('today').style.background = '#f5f5f5';
         document.getElementById('next_7_days').style.background = '#ffffff';
-    }
+    };
 
     document.getElementById('one').onclick = function() {
         document.getElementById('tab_selector').style.marginLeft = '3%';
@@ -92,12 +121,12 @@ onload = function() {
         document.getElementsByClassName('projects_tab')[0].style.display = 'none';
         document.getElementsByClassName('labels_tab')[0].style.display = 'block';
         document.getElementsByClassName('filters_tab')[0].style.display = 'none';
-    }
+    };
 
     document.getElementById('three').onclick = function() {
         document.getElementById('tab_selector').style.marginLeft = '55%';
         document.getElementsByClassName('projects_tab')[0].style.display = 'none';
         document.getElementsByClassName('labels_tab')[0].style.display = 'none';
         document.getElementsByClassName('filters_tab')[0].style.display = 'block';
-    }
+    };
 };
