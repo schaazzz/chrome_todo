@@ -43,7 +43,7 @@ function navBtnEvtHandler(e) {
         state = window.navBtnStates.nxt7Days;
     }
 
-    if (e.type === 'onclick') {
+    if (e.type === 'click') {
         navBtnClickHandler(id);
     }
     else if (e.type == 'mouseover') {
@@ -64,14 +64,14 @@ function navBtnMouseoverHandler(id, state) {
     if(!state) element.style.background = '#ffffff';
 }
 
-function clickHandler(id) {
+function navBtnClickHandler(id) {
     var elemAllTasks = document.getElementById('allTasks');
     var elemToday = document.getElementById('today');
     var elemNxt7Days = document.getElementById('nxt7Days');
 
     if (id == 'allTasks') {
         elemAllTasks.style.background = '#ffffff';
-        elemTodaydocument.style.background = '#f5f5f5';
+        elemToday.style.background = '#f5f5f5';
         elemNxt7Days.style.background = '#f5f5f5';
 
         window.navBtnStates.allTasks = true;
@@ -79,7 +79,7 @@ function clickHandler(id) {
     }
     else if (id == 'today') {
         elemAllTasks.style.background = '#f5f5f5';
-        elemTodaydocument.style.background = '#ffffff';
+        elemToday.style.background = '#ffffff';
         elemNxt7Days.style.background = '#f5f5f5';
 
         window.navBtnStates.today = true;
@@ -87,7 +87,7 @@ function clickHandler(id) {
     }
     else if (id == 'nxt7Days') {
         elemAllTasks.style.background = '#f5f5f5';
-        elemTodaydocument.style.background = '#f5f5f5';
+        elemToday.style.background = '#f5f5f5';
         elemNxt7Days.style.background = '#ffffff';
 
         window.navBtnStates.nxt7Days = true;

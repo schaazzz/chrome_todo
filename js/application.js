@@ -63,51 +63,18 @@ onload = function() {
     };*/
 
     window.navBtnStates.allTasks = true;
+    document.getElementById('allTasks').style.background = '#ffffff';
 
-    document.getElementById('all_tasks').style.background = '#ffffff';
+    document.getElementById('allTasks').onmouseover =
+        document.getElementById('allTasks').onmouseleave =
+            document.getElementById('allTasks').onclick = function(e) {navBtnEvtHandler(e);};
+    document.getElementById('today').onmouseover =
+        document.getElementById('today').onmouseleave =
+            document.getElementById('today').onclick = function(e) {navBtnEvtHandler(e);};
 
-    document.getElementById('all_tasks').onmouseover = function(e) {
-        console.log(e.type);console.log(e.srcElement.id);
-        document.getElementById('all_tasks').style.background = '#ffffff';
-    };
-
-    document.getElementById('all_tasks').onmouseleave = function() {
-        document.getElementById('all_tasks').style.background = '#f5f5f5';
-    };
-
-    document.getElementById('today').onmouseover = function() {
-        document.getElementById('today').style.background = '#ffffff';
-    };
-
-    document.getElementById('today').onmouseleave = function() {
-        document.getElementById('today').style.background = '#f5f5f5';
-    };
-
-    document.getElementById('next_7_days').onmouseover = function() {
-        document.getElementById('next_7_days').style.background = '#ffffff';
-    };
-
-    document.getElementById('next_7_days').onmouseleave = function() {
-        document.getElementById('next_7_days').style.background = '#f5f5f5';
-    };
-
-    document.getElementById('all_tasks').onclick = function() {
-        document.getElementById('all_tasks').style.background = '#ffffff';
-        document.getElementById('today').style.background = '#f5f5f5';
-        document.getElementById('next_7_days').style.background = '#f5f5f5';
-    };
-
-    document.getElementById('today').onclick = function() {
-        document.getElementById('all_tasks').style.background = '#f5f5f5';
-        document.getElementById('today').style.background = '#ffffff';
-        document.getElementById('next_7_days').style.background = '#f5f5f5';
-    };
-
-    document.getElementById('next_7_days').onclick = function() {
-        document.getElementById('all_tasks').style.background = '#f5f5f5';
-        document.getElementById('today').style.background = '#f5f5f5';
-        document.getElementById('next_7_days').style.background = '#ffffff';
-    };
+    document.getElementById('nxt7Days').onmouseover =
+        document.getElementById('nxt7Days').onmouseleave =
+            document.getElementById('nxt7Days').onclick = function(e) {navBtnEvtHandler(e);};
 
     document.getElementById('one').onclick = function() {
         document.getElementById('tab_selector').style.marginLeft = '3%';
