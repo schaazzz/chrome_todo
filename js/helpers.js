@@ -31,26 +31,37 @@
 
 function navBtnEvtHandler(e) {
     var id = e.srcElement.id;
+    var state = false;
+
+    if (id == 'allTasks') {
+        state = window.navBtnStates.allTasks;
+    }
+    else if (id == 'today') {
+        state = window.navBtnStates.today;
+    }
+    else if (id == 'nxt7Days') {
+        state = window.navBtnStates.nxt7Days;
+    }
 
     if (e.type === 'onclick') {
         navBtnClickHandler(id);
     }
     else if (e.type == 'mouseover') {
-        navBtnMouseoverHandler(id);
+        navBtnMouseoverHandler(id, state);
     }
     else if (e.type == 'mouseleave') {
-        navBtnMouseleaveHandler(id);
+        navBtnMouseleaveHandler(id, state);
     }
  }
 
-function navBtnMouseleaveHandler(id) {
+function navBtnMouseleaveHandler(id, state) {
     var element = document.getElementById(id);
-    element.style.background = '#f5f5f5';
+    if(!state) element.style.background = '#f5f5f5';
 }
 
-function navBtnMouseoverHandler(id) {
+function navBtnMouseoverHandler(id, state) {
     var element = document.getElementById(id);
-    element.style.background = '#ffffff';
+    if(!state) element.style.background = '#ffffff';
 }
 
 function clickHandler(id) {
