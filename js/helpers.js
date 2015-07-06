@@ -43,10 +43,20 @@ function navBtnEvtHandler(e) {
     }
  }
 
+function navBtnMouseleaveHandler(id) {
+    var element = document.getElementById(id);
+    element.style.background = '#f5f5f5';
+}
+
+function navBtnMouseoverHandler(id) {
+    var element = document.getElementById(id);
+    element.style.background = '#ffffff';
+}
+
 function clickHandler(id) {
-    var elemAllTasks = document.getElementById('allTasks').;
-    var elemToday = document.getElementById('today').;
-    var elemNxt7Days = document.getElementById('nxt7Days').;
+    var elemAllTasks = document.getElementById('allTasks');
+    var elemToday = document.getElementById('today');
+    var elemNxt7Days = document.getElementById('nxt7Days');
 
     if (id == 'allTasks') {
         elemAllTasks.style.background = '#ffffff';
