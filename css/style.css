@@ -105,6 +105,7 @@ div.navbar {
 div.navbar button.large {
     background: #f5f5f5;
     border-style:none !important;
+    border-radius: 0 !important;
     margin-right: 21px;
     margin-top: 20px;
     margin-bottom: 0 !important;
@@ -117,7 +118,13 @@ div.navbar button.large {
 }
 
 div.navbar button.large:hover {
-    background: #ffffff;
+    background: #ffffff !important;
+}
+
+div.navbar button.large:focus {
+    box-shadow: none;
+    border: none;
+    outline: none;
 }
 
 div.navbarTabs {
