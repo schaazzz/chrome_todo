@@ -25,8 +25,14 @@
 
 /**
  * ---------------------------------------------------------------------
- * @file Default CSS style for Chrome ToDo.
- * @author Shahzeb Ihsan
+ * Default CSS style for Chrome ToDo.
+ * Author: Shahzeb Ihsan
+ */
+
+ /**
+ * -------------------------------
+ *  Default Document Wide Styles
+ * -------------------------------
  */
  html,
  body {
@@ -34,13 +40,13 @@
     padding: 0;
     height: 100%;
     width: 100%;
+    font-family: "Open Sans",sans-serif !important;
   }
 
 body {
     background-color: #d5d5d5;
  }
 
-/* Default "h6" style */
 h3 {
     position: relative;
     width: 100%;
@@ -52,6 +58,11 @@ h3 {
     text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
 }
 
+/**
+* -------------------------------
+*  Navigation Bar Container
+* -------------------------------
+*/
 #leftContainer {
     height: 100%;
     width: 31%;
@@ -60,6 +71,11 @@ h3 {
     float: left;
 }
 
+/**
+* -------------------------------
+*  Class for Navigation Bar Title
+* -------------------------------
+*/
 div.navbarTitle {
     position: relative;
     float: left;
@@ -80,19 +96,27 @@ div.navbarTitle hr {
 div.navbarTitle h3 {
     float: right;
     width: auto;
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 25px;
+    margin-top: 10px;
+    margin-left: 0;
+    margin-right: 120px;
     color: rgba(150, 30, 30, 0.8);
 }
 
 div.navbarTitle p {
     float: right;
-    width: auto;
-    margin-top: 2px;
-    margin-right: 25px;
+    margin-top: -30px;
+    margin-right: 50px;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 13px;
+    color: rgba(150, 30, 30, 0.8);
 }
 
+/**
+* -------------------------------
+*  Class for Navigation Bar
+* -------------------------------
+*/
 div.navbar {
     position: relative;
     float: left;
@@ -113,7 +137,6 @@ div.navbar button.large {
     text-align: left;
     padding-left: 3px !important;
     float: right;
-    font-weight: 600;
     font-size: 15px;
 }
 
@@ -127,6 +150,11 @@ div.navbar button.large:focus {
     outline: none;
 }
 
+/**
+* -------------------------------
+*  Class for Navigation Bar Tabs
+* -------------------------------
+*/
 div.navbarTabs {
     position: relative;
     float: left;
@@ -162,17 +190,47 @@ div.navbarTabs hr {
   transition: .1s ease-in-out;
 }
 
+/**
+* -------------------------------
+*  Class for Projects Tab
+* -------------------------------
+*/
 div.projectsTab {
     position: relative;
     float: left;
     width: 100%;
     height: 100%;
-    background-color: #ff0000;
+    background-color: #f5f5f5;
     margin: 0;
     bottom: 0;
-    display: none;
+    display: block;
 }
 
+div.projectsTab a {
+    display: inline-block;
+    color: tomato;
+    margin-left: 35px;
+    margin-top: 20px;
+    text-align: left;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+div.projectsTab a:hover {
+    text-decoration: underline; !important;
+}
+
+div.projectsTab a:focus, a:visited {
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
+/**
+* -------------------------------
+*  Class for Labels Tab
+* -------------------------------
+*/
 div.labelsTab {
     float: right;
     width: 100%;
@@ -183,6 +241,11 @@ div.labelsTab {
     display: none;
 }
 
+/**
+* -------------------------------
+*  Class for Filters Tab
+* -------------------------------
+*/
 div.filtersTab {
     float: right;
     width: 100%;
@@ -193,7 +256,12 @@ div.filtersTab {
     display: none;
 }
 
-div.rightDiv {
+/**
+* -------------------------------
+*  Class for Workspace
+* -------------------------------
+*/
+div.workspace {
     position: relative;
     float: right;
     width: 69%;
@@ -206,14 +274,14 @@ div.rightDiv {
 }
 
 /* Default "button" style */
-button.rightDiv {
+button.workspace {
     position: relative;
     font-size: 17px;
     padding: 5px;
 }
 
 /* Default "input" style */
-input.rightDiv {
+input.workspace {
     position: relative;
     display: block;
     font-size: 15px;
@@ -222,7 +290,7 @@ input.rightDiv {
 }
 
 /* Default "textarea" style */
-textarea.rightDiv {
+textarea.workspace {
     position: relative;
     width: 95%;
     height: 83%;
