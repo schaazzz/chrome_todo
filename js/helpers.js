@@ -30,65 +30,55 @@
  */
 
 function navBtnEvtHandler(e) {
-    var id = e.srcElement.id;
+    var id = '#' + e.target.id;
     var state = false;
 
-    if (id == 'allTasks') {
+    if (id == '#allTasks') {
         state = window.navBtnStates.allTasks;
     }
-    else if (id == 'today') {
+    else if (id == '#today') {
         state = window.navBtnStates.today;
     }
-    else if (id == 'nxt7Days') {
+    else if (id == '#nxt7Days') {
         state = window.navBtnStates.nxt7Days;
     }
 
     if (e.type === 'click') {
         navBtnClickHandler(id);
     }
-    else if (e.type == 'mouseover') {
-        navBtnMouseoverHandler(id, state);
+    else if (e.type == 'mouseenter') {
+        if(!state) $(id).css('background', '#fffFff');
     }
     else if (e.type == 'mouseleave') {
-        navBtnMouseleaveHandler(id, state);
+        if(!state) $(id).css('background', '#f5f5f5');
     }
  }
 
-function navBtnMouseleaveHandler(id, state) {
-    var element = document.getElementById(id);
-    if(!state) element.style.background = '#f5f5f5';
-}
-
-function navBtnMouseoverHandler(id, state) {
-    var element = document.getElementById(id);
-    if(!state) element.style.background = '#ffffff';
-}
-
 function navBtnClickHandler(id) {
-    var elemAllTasks = document.getElementById('allTasks');
-    var elemToday = document.getElementById('today');
-    var elemNxt7Days = document.getElementById('nxt7Days');
+    var elemAllTasks = $('#allTasks');
+    var elemToday = $('#today');
+    var elemNxt7Days = $('#nxt7Days');
 
-    if (id == 'allTasks') {
-        elemAllTasks.style.background = '#ffffff';
-        elemToday.style.background = '#f5f5f5';
-        elemNxt7Days.style.background = '#f5f5f5';
+    if (id == '#allTasks') {
+        $('#allTasks').css('background', '#ffffff');
+        $('#today').css('background', '#f5f5f5');
+        $('#nxt7Days').css('background', '#f5f5f5');
 
         window.navBtnStates.allTasks = true;
         window.navBtnStates.today = window.navBtnStates.nxt7Days = false;
     }
-    else if (id == 'today') {
-        elemAllTasks.style.background = '#f5f5f5';
-        elemToday.style.background = '#ffffff';
-        elemNxt7Days.style.background = '#f5f5f5';
+    else if (id == '#today') {
+        $('#allTasks').css('background', '#f5f5f5');
+        $('#today').css('background', '#ffffff');
+        $('#nxt7Days').css('background', '#f5f5f5');
 
         window.navBtnStates.today = true;
         window.navBtnStates.allTasks = window.navBtnStates.nxt7Days = false;
     }
-    else if (id == 'nxt7Days') {
-        elemAllTasks.style.background = '#f5f5f5';
-        elemToday.style.background = '#f5f5f5';
-        elemNxt7Days.style.background = '#ffffff';
+    else if (id == '#nxt7Days') {
+        $('#allTasks').css('background', '#f5f5f5');
+        $('#today').css('background', '#f5f5f5');
+        $('#nxt7Days').css('background', '#ffffff');
 
         window.navBtnStates.nxt7Days = true;
         window.navBtnStates.allTasks = window.navBtnStates.today = false;

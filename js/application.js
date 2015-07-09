@@ -34,7 +34,7 @@ window.navBtnStates = {allTasks: false, today: false, nxt7Days: false};
 /**
  * Called on the "onload" event, sets event handlers for various elements.
  */
-onload = function() {
+$(document).ready( function() {
     /*chrome.runtime.getBackgroundPage(
         function (bg_page) {
             // Read the stored todos from the background page and save it to the window
@@ -63,19 +63,16 @@ onload = function() {
     };*/
 
     window.navBtnStates.allTasks = true;
-    document.getElementById('allTasks').style.background = '#ffffff';
+    $('#allTasks').css('background', '#ffffff');
 
-    document.getElementById('allTasks').onmouseover =
-        document.getElementById('allTasks').onmouseleave =
-            document.getElementById('allTasks').onclick = function(e) {navBtnEvtHandler(e);};
+    $('#allTasks').click(navBtnEvtHandler);
+    $('#allTasks').hover(navBtnEvtHandler, navBtnEvtHandler);
 
-    document.getElementById('today').onmouseover =
-        document.getElementById('today').onmouseleave =
-            document.getElementById('today').onclick = function(e) {navBtnEvtHandler(e);};
+    $('#today').click(navBtnEvtHandler);
+    $('#today').hover(navBtnEvtHandler, navBtnEvtHandler);
 
-    document.getElementById('nxt7Days').onmouseover =
-        document.getElementById('nxt7Days').onmouseleave =
-            document.getElementById('nxt7Days').onclick = function(e) {navBtnEvtHandler(e);};
+    $('#nxt7Days').click(navBtnEvtHandler);
+    $('#nxt7Days').hover(navBtnEvtHandler, navBtnEvtHandler);
 
     document.getElementById('one').onclick = function() {
         document.getElementById('tab_selector').style.marginLeft = '3%';
@@ -97,4 +94,4 @@ onload = function() {
         document.getElementsByClassName('labelsTab')[0].style.display = 'none';
         document.getElementsByClassName('filtersTab')[0].style.display = 'block';
     };
-};
+});
