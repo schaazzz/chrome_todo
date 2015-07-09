@@ -68,6 +68,7 @@ onload = function() {
     document.getElementById('allTasks').onmouseover =
         document.getElementById('allTasks').onmouseleave =
             document.getElementById('allTasks').onclick = function(e) {navBtnEvtHandler(e);};
+
     document.getElementById('today').onmouseover =
         document.getElementById('today').onmouseleave =
             document.getElementById('today').onclick = function(e) {navBtnEvtHandler(e);};
@@ -78,22 +79,22 @@ onload = function() {
 
     document.getElementById('one').onclick = function() {
         document.getElementById('tab_selector').style.marginLeft = '3%';
-        document.getElementsByClassName('projects_tab')[0].style.display = 'block';
-        document.getElementsByClassName('labels_tab')[0].style.display = 'none';
-        document.getElementsByClassName('filters_tab')[0].style.display = 'none';
-    }
+        document.getElementsByClassName('projectsTab')[0].style.display = 'block';
+        document.getElementsByClassName('labelsTab')[0].style.display = 'none';
+        document.getElementsByClassName('filtersTab')[0].style.display = 'none';
+    };
 
     document.getElementById('two').onclick = function() {
         document.getElementById('tab_selector').style.marginLeft = '28%';
-        document.getElementsByClassName('projects_tab')[0].style.display = 'none';
-        document.getElementsByClassName('labels_tab')[0].style.display = 'block';
-        document.getElementsByClassName('filters_tab')[0].style.display = 'none';
+        document.getElementsByClassName('projectsTab')[0].style.display = 'none';
+        document.getElementsByClassName('labelsTab')[0].style.display = 'block';
+        document.getElementsByClassName('filtersTab')[0].style.display = 'none';
     };
 
     document.getElementById('three').onclick = function() {
         document.getElementById('tab_selector').style.marginLeft = '55%';
-        document.getElementsByClassName('projects_tab')[0].style.display = 'none';
-        document.getElementsByClassName('labels_tab')[0].style.display = 'none';
-        document.getElementsByClassName('filters_tab')[0].style.display = 'block';
+        document.getElementsByClassName('projectsTab')[0].style.display = 'none';
+        document.getElementsByClassName('labelsTab')[0].style.display = 'none';
+        document.getElementsByClassName('filtersTab')[0].style.display = 'block';
     };
 };
