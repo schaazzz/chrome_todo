@@ -96,16 +96,16 @@ div.navbarTitle hr {
 div.navbarTitle h3 {
     float: right;
     width: auto;
-    margin-top: 10px;
+    margin-top: 15px;
     margin-left: 0;
-    margin-right: 120px;
+    margin-right: 142px;
     color: rgba(150, 30, 30, 0.8);
 }
 
 div.navbarTitle p {
     float: right;
-    margin-top: -30px;
-    margin-right: 50px;
+    margin-top: -17px;
+    margin-right: 71px;
     margin-bottom: 0;
     font-weight: 600;
     font-size: 13px;
@@ -209,10 +209,10 @@ div.projectsTab {
 div.projectsTab a {
     display: inline-block;
     color: tomato;
-    margin-left: 35px;
-    margin-top: 20px;
+    margin-left: 50px;
+    margin-top: 10px;
     text-align: left;
-    font-size: 15px;
+    font-size: 13px;
     text-decoration: none;
 }
 
@@ -224,6 +224,42 @@ div.projectsTab a:focus, a:visited {
     box-shadow: none;
     border: none;
     outline: none;
+}
+
+div.projectsTab button.large {
+    background: #f5f5f5;
+    border-style:none !important;
+    border-radius: 0 !important;
+    margin-right: 21px;
+    margin-top: 5px;
+    margin-bottom: 0 !important;
+    width: 80%;
+    text-align: left;
+    padding-left: 3px !important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+    float: right;
+    font-size: 13px;
+}
+
+div.projectsTab button.large:hover {
+    background: #ffffff !important;
+}
+
+div.projectsTab button.large:focus {
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
+div.projectsTab input {
+    float: right;
+    margin-right: 85px;
+    margin-top: 5px;
+    margin-bottom: 0 !important;
+    width: 60%;
+    text-align: left;
+    font-size: 13px;
 }
 
 /**
