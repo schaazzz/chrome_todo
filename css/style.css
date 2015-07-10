@@ -140,6 +140,10 @@ div.navbar button.large {
     font-size: 15px;
 }
 
+div.navbar button.large span{
+    color: #606060;
+}
+
 div.navbar button.large:hover {
     background: #ffffff !important;
 }
