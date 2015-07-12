@@ -96,16 +96,16 @@ div.navbarTitle hr {
 div.navbarTitle h3 {
     float: right;
     width: auto;
-    margin-top: 15px;
+    margin-top: 0px;
     margin-left: 0;
-    margin-right: 142px;
+    margin-right: 150px;
     color: rgba(150, 30, 30, 0.8);
 }
 
 div.navbarTitle p {
     float: right;
-    margin-top: -17px;
-    margin-right: 71px;
+    margin-top: -18px;
+    margin-right: 79px;
     margin-bottom: 0;
     font-weight: 600;
     font-size: 13px;
@@ -301,6 +301,7 @@ div.filtersTab {
 *  Class for Workspace
 * -------------------------------
 */
+
 div.workspace {
     position: relative;
     float: right;
@@ -311,6 +312,43 @@ div.workspace {
     background-color: white;
     box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+}
+
+div.topbar {
+    position: relative;
+    float: left;
+    min-width: 95%;
+    margin-left: 20px;
+    border-bottom: 1px solid #cacaca;
+}
+
+div.topbar input {
+    float: left;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    width: 30%;
+    text-align: left;
+    font-size: 15px;
+    margin-left: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 1px;
+    border: none;
+    background-size: 30px auto;
+    background-repeat: no-repeat;
+    background-position: 100% 3px;
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+div.topbar input:focus {
+    box-shadow: none;
+    border: 1px solid #d5d5d5;
+    outline: none;
+    background-image: url(../icons/question22.png);
+    -webkit-transition: none;
+    transition: none;
+
 }
 
 /* Default "button" style */
