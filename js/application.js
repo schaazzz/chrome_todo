@@ -70,9 +70,11 @@ $(document).ready( function() {
         <button class = "red">Add Task</button>
     </div>`
 
+    $( "#patedicker" ).datepicker();
+    $('#patedicker').append('<button>X</button>')
+
     $('#addTask').click(function(){
         $('#addTask').before(x);
-    });
 
     $( "#datepicker" ).datepicker({
         showButtonPanel: true,
@@ -107,7 +109,7 @@ $(document).ready( function() {
                 }).appendTo( buttonPane ).addClass("red");
             }, 1 );
         }
-    });
+    });    });
 
     window.navBtnStates.allTasks = true;
     $('#allTasks').css('background', '#ffffff');

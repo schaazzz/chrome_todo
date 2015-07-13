@@ -388,7 +388,7 @@ div.tasks h2 {
 div.tasks a {
     display: inline-block;
     color: tomato;
-    margin: 35px 10px 5px 25px;
+    margin: 10px 10px 5px 25px;
     text-align: left;
     font-size: 20px;
     text-decoration: none;
@@ -420,7 +420,7 @@ div.newTask {
     min-width: 95%;
     min-height: 100%;
     margin-left: 25px;
-    padding-bottom: 3px;
+    padding-bottom: 7px;
 }
 
 div.newTask input {
@@ -447,4 +447,34 @@ div.newTask input#taskName {
 div.newTask input#datepicker {
     width: 25%;
     min-width: 10%;
+}
+
+div.newTask button.red {
+    margin-top: 5px;
+    padding: 7px 7px 7px 7px;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+/**
+* -------------------------------
+*  Class for Calendar
+* -------------------------------
+*/
+
+div.triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 100px;
+    left: 200px;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid red;
+    z-index: 9001;
+}
+
+div.calendar {
+    position: absolute;
+    background-color: tomato;
 }
