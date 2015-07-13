@@ -89,3 +89,45 @@ function navBtnClickHandler(id) {
 
     $('#selectedWorkspace').text(window.selectedWorkspace);
 }
+
+function addProject() {
+    if(!window.addProjectStatus) {
+        window.addProjectStatus = true;
+
+        $('#addProject').before('<input id = "projectName" type = "text" placeholder = "Project Name"/>');
+        $('#projectName').focus();
+
+        $('#projectName').keyup(function(e) {
+            var pattern = RegExp('^[A-Za-z0-9_]+$');
+
+            if(e.keyCode == 27) {
+                $('#projectName').remove();
+                window.addProjectStatus = false;
+                window.newProjectName = null;
+            }
+
+            if(e.keyCode == 13) {
+                name = $('#projectName').val();
+                if(pattern.test(name)) {
+                    $('#projectName').css('background', '#ffffff');
+                    window.newProjectName = name;
+                }
+                else {
+                    $('#projectName').css('background', 'pink');
+                }
+            }
+
+            if(window.newProjectName) {
+                $('#addProject').before(
+                                '<button id = "allTasks" class="large">' +
+                                    '<i class="fa fa-circle" style = "color: tomato !important;"></i>' +
+                                    '&nbsp;' + window.newProjectName +
+                                '</button>');
+
+                $('#projectName').remove();
+                window.addProjectStatus = false;
+                window.newProjectName = null;
+            }
+        });
+    }
+}

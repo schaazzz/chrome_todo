@@ -76,47 +76,7 @@ $(document).ready( function() {
     $('#nxt7Days').click(navBtnEvtHandler);
     $('#nxt7Days').hover(navBtnEvtHandler, navBtnEvtHandler);
 
-    $('#addProject').click(function() {
-        if(!window.addProjectStatus) {
-            window.addProjectStatus = true;
-
-            $('#addProject').before('<input id = "projectName" type = "text" placeholder = "Project Name"/>');
-            $('#projectName').focus();
-
-            $('#projectName').keyup(function(e) {
-                var pattern = RegExp('^[A-Za-z0-9_]+$');
-
-                if(e.keyCode == 27) {
-                    $('#projectName').remove();
-                    window.addProjectStatus = false;
-                    window.newProjectName = null;
-                }
-
-                if(e.keyCode == 13) {
-                    name = $('#projectName').val();
-                    if(pattern.test(name)) {
-                        $('#projectName').css('background', '#ffffff');
-                        window.newProjectName = name;
-                    }
-                    else {
-                        $('#projectName').css('background', 'pink');
-                    }
-                }
-
-                if(window.newProjectName) {
-                    $('#addProject').before(
-                                    '<button id = "allTasks" class="large">' +
-                                        '<i class="fa fa-circle" style = "color: tomato !important;"></i>' +
-                                        '&nbsp;' + window.newProjectName +
-                                    '</button>');
-
-                    $('#projectName').remove();
-                    window.addProjectStatus = false;
-                    window.newProjectName = null;
-                }
-            });
-        }
-    });
+    $('#addProject').click(addProject);
 
     document.getElementById('one').onclick = function() {
         document.getElementById('tab_selector').style.marginLeft = '3%';
