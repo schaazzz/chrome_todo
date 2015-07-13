@@ -32,7 +32,7 @@
 window.newProjectName = null;
 window.addProjectStatus = false;
 window.navBtnStates = {allTasks: false, today: false, nxt7Days: false};
-
+window.selectedWorkspace = 'Inbox';
 /**
  * Called on the "onload" event, sets event handlers for various elements.
  */

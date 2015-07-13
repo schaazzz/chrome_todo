@@ -213,15 +213,24 @@ div.projectsTab {
 div.projectsTab a {
     display: inline-block;
     color: tomato;
-    margin-left: 50px;
-    margin-top: 10px;
+    margin: 5px 10px 5px 40px;
     text-align: left;
-    font-size: 13px;
+    font-size: 20px;
     text-decoration: none;
 }
 
+div.projectsTab span {
+    margin-top: 7px;
+    font-size: 15px;
+    color: tomato;
+}
+
 div.projectsTab a:hover {
-    text-decoration: underline; !important;
+    text-decoration: none;
+}
+
+div.projectsTab a:hover span {
+    text-decoration: underline;
 }
 
 div.projectsTab a:focus, a:visited {
@@ -243,7 +252,7 @@ div.projectsTab button.large {
     padding-top: 7px !important;
     padding-bottom: 7px !important;
     float: right;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 div.projectsTab button.large:hover {
@@ -301,7 +310,6 @@ div.filtersTab {
 *  Class for Workspace
 * -------------------------------
 */
-
 div.workspace {
     position: relative;
     float: right;
@@ -341,6 +349,7 @@ div.topbar input {
     border: none;
     outline: none;
 }
+
 div.topbar input:focus {
     box-shadow: none;
     border: 1px solid #d5d5d5;
@@ -351,29 +360,51 @@ div.topbar input:focus {
 
 }
 
-/* Default "button" style */
-button.workspace {
+div.tasks {
     position: relative;
-    font-size: 17px;
-    padding: 5px;
+    float: left;
+    min-width: 95%;
+    min-height: 100%;
+    margin-left: 20px;
+    border-bottom: 1px solid #cacaca;
 }
 
-/* Default "input" style */
-input.workspace {
-    position: relative;
-    display: block;
-    font-size: 15px;
-    padding: 6px;
-    margin: 5px 5px 5px 5px;
+div.tasks a {
+    display: inline-block;
+    color: tomato;
+    margin: 5px 10px 5px 25px;
+    text-align: left;
+    font-size: 20px;
+    text-decoration: none;
 }
 
-/* Default "textarea" style */
-textarea.workspace {
-    position: relative;
-    width: 95%;
-    height: 83%;
+div.tasks span {
+    margin-top: 7px;
     font-size: 15px;
-    padding: 6px;
-    margin: 5px 5px 5px 5px;
-    margin-bottom: 0px;
+    color: tomato;
+}
+
+div.tasks a:hover {
+    text-decoration: none;
+}
+
+div.tasks a:hover span {
+    text-decoration: underline;
+}
+
+div.tasks a:focus, a:visited {
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
+div.tasks h2 {
+    position: relative;
+    width: 100%;
+    font-size: 30px;
+    font-weight:300;
+    padding: 1px;
+    margin: 20px 5px 5px 25px;
+    color: black;
+    text-shadow: none;
 }

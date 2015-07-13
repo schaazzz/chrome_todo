@@ -46,6 +46,12 @@ chrome.app.runtime.onLaunched.addListener(function() {
     });
 
     // Create the HTML view
-    chrome.app.window.create('window.html',
-                             {'bounds': {'width': 1025, 'height': 775}});
+    chrome.app.window.create('window.html', {
+                            'id': 'tomatoWinID',
+                            'innerBounds': {
+                                 'width': 1025,
+                                 'height': 775
+                             },
+                             'resizable': false,
+                         });
 });

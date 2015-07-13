@@ -64,6 +64,7 @@ function navBtnClickHandler(id) {
         $('#today').css('background', '#f5f5f5');
         $('#nxt7Days').css('background', '#f5f5f5');
 
+        window.selectedWorkspace = 'Inbox';
         window.navBtnStates.allTasks = true;
         window.navBtnStates.today = window.navBtnStates.nxt7Days = false;
     }
@@ -72,6 +73,7 @@ function navBtnClickHandler(id) {
         $('#today').css('background', '#ffffff');
         $('#nxt7Days').css('background', '#f5f5f5');
 
+        window.selectedWorkspace = 'Today';
         window.navBtnStates.today = true;
         window.navBtnStates.allTasks = window.navBtnStates.nxt7Days = false;
     }
@@ -80,7 +82,10 @@ function navBtnClickHandler(id) {
         $('#today').css('background', '#f5f5f5');
         $('#nxt7Days').css('background', '#ffffff');
 
+        window.selectedWorkspace = 'Next 7 Days';
         window.navBtnStates.nxt7Days = true;
         window.navBtnStates.allTasks = window.navBtnStates.today = false;
     }
+
+    $('#selectedWorkspace').text(window.selectedWorkspace);
 }
