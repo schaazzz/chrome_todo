@@ -322,6 +322,11 @@ div.workspace {
     box-sizing: border-box;
 }
 
+/**
+* -------------------------------
+*  Class for Workspace's Top Bar
+* -------------------------------
+*/
 div.topbar {
     position: relative;
     float: left;
@@ -369,10 +374,21 @@ div.tasks {
     border-bottom: 1px solid #cacaca;
 }
 
+div.tasks h2 {
+    position: relative;
+    width: 100%;
+    font-size: 30px;
+    font-weight:300;
+    padding: 1px;
+    margin: 20px 5px 5px 25px;
+    color: black;
+    text-shadow: none;
+}
+
 div.tasks a {
     display: inline-block;
     color: tomato;
-    margin: 5px 10px 5px 25px;
+    margin: 35px 10px 5px 25px;
     text-align: left;
     font-size: 20px;
     text-decoration: none;
@@ -398,13 +414,37 @@ div.tasks a:focus, a:visited {
     outline: none;
 }
 
-div.tasks h2 {
+div.newTask {
     position: relative;
-    width: 100%;
-    font-size: 30px;
-    font-weight:300;
-    padding: 1px;
-    margin: 20px 5px 5px 25px;
-    color: black;
-    text-shadow: none;
+    float: left;
+    min-width: 95%;
+    min-height: 100%;
+    margin-left: 25px;
+    padding-bottom: 3px;
+}
+
+div.newTask input {
+    float: left;
+    margin-right: 0;
+    box-shadow: none;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-size: 15px;
+}
+
+div.newTask input:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #c0c0c0;
+}
+
+div.newTask input#taskName {
+    min-width: 70% !important;
+}
+
+div.newTask input#datepicker {
+    width: 25%;
+    min-width: 10%;
 }

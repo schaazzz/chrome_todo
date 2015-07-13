@@ -64,6 +64,51 @@ $(document).ready( function() {
         );
     };*/
 
+    var x = `<div class = "newTask">
+        <input type="text" id="taskName" name = "taskName"/>
+        <input type="text" id="datepicker" name = "taskDate"/>
+        <button class = "red">Add Task</button>
+    </div>`
+
+    $('#addTask').click(function(){
+        $('#addTask').before(x);
+    });
+
+    $( "#datepicker" ).datepicker({
+        showButtonPanel: true,
+        showOptions: {direction: "up"},
+        beforeShow: function( input ) {
+            setTimeout(function() {
+                var buttonPane = $( input )
+                    .datepicker( "widget" )
+                    .find( ".ui-datepicker-buttonpane" );
+
+                $( "<button>", {
+                    text: "Clear",
+                    click: function() {
+                    //Code to clear your date field (text box, read only field etc.) I had to remove the line below and add custom code here
+                        $.datepicker._clearDate( input );
+                    }
+                }).appendTo( buttonPane ).addClass("red");
+            }, 1 );
+
+        },
+        onChangeMonthYear: function( year, month, instance ) {
+            setTimeout(function() {
+                var buttonPane = $( instance )
+                    .datepicker( "widget" )
+                    .find( ".ui-datepicker-buttonpane" );
+
+                $( "<button>", {
+                    text: "Clear",
+                    click: function() {
+                        $.datepicker._clearDate( instance.input );
+                    }
+                }).appendTo( buttonPane ).addClass("red");
+            }, 1 );
+        }
+    });
+
     window.navBtnStates.allTasks = true;
     $('#allTasks').css('background', '#ffffff');
 
