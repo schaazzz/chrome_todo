@@ -66,17 +66,34 @@ $(document).ready( function() {
 
     var x = `<div class = "newTask">
         <input type="text" id="taskName" name = "taskName"/>
-        <input type="text" id="datepicker" name = "taskDate"/>
+        <input type="text" id="clicker" name = "taskDate"/>
         <button class = "red">Add Task</button>
     </div>`
 
-    $( "#patedicker" ).datepicker();
-    $('#patedicker').append('<button>X</button>')
 
     $('#addTask').click(function(){
         $('#addTask').before(x);
+        $('#clicker').click(function(){
 
-    $( "#datepicker" ).datepicker({
+            z = $('#clicker').offset();
+            topp = z.top +
+                    parseInt($('#temp').css('marginTop')) + parseInt($('#clicker').css('height'));
+            z = $('#clicker').offset();
+            leftt = 446;//z.left;// + parseInt($('#patedicker').css('marginLeft'));
+            $('#temp').css('top', topp);
+            $('#temp').css('left', leftt);
+            $('#tingle').css('display', 'block');
+            $( "#patedicker" ).datepicker();
+            $("#blanket").css('display', 'block');
+            w = parseInt($('#patedicker').css('width'));
+            h = parseInt($('#patedicker').css('height'));
+            $('#patedicker').css('marginLeft', (-1 * w) / 2);
+            $('#temp').css('width', w, 'height', h);
+        });
+    });
+
+
+    /*$( "#datepicker" ).datepicker({
         showButtonPanel: true,
         showOptions: {direction: "up"},
         beforeShow: function( input ) {
@@ -109,7 +126,7 @@ $(document).ready( function() {
                 }).appendTo( buttonPane ).addClass("red");
             }, 1 );
         }
-    });    });
+    });*/
 
     window.navBtnStates.allTasks = true;
     $('#allTasks').css('background', '#ffffff');
