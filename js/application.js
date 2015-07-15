@@ -84,7 +84,7 @@ $(document).ready( function() {
             $('#temp').css('left', leftt);
             $('#tingle').css('display', 'block');
             $( "#patedicker" ).datepicker();
-            $("#blanket").css('display', 'block');
+            $("#semiXOverlay").css('display', 'block');
             w = parseInt($('#patedicker').css('width'));
             h = parseInt($('#patedicker').css('height'));
             $('#patedicker').css('marginLeft', (-1 * w) / 2);

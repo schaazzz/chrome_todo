@@ -324,6 +324,23 @@ div.workspace {
 
 /**
 * -------------------------------
+*  Semi-Transparent Container
+* -------------------------------
+*/
+#semiXOverlay {
+    position: fixed;
+    float: right;
+    width: 100%;
+    height: 100%;
+    min-height:100%;
+    top: 0px;
+    background-color: rgba(250,250,250,0.5);
+    display: none;
+    z-index: 9000;
+}
+
+/**
+* -------------------------------
 *  Class for Workspace's Top Bar
 * -------------------------------
 */
@@ -362,7 +379,6 @@ div.topbar input:focus {
     background-image: url(../icons/question22.png);
     -webkit-transition: none;
     transition: none;
-
 }
 
 div.tasks {
@@ -462,7 +478,7 @@ div.newTask button.red {
 * -------------------------------
 */
 
-#blanket {
+/*#blanket {
    background-color: rgba(250,250,250,0.5);
    position: absolute;
    z-index: 9000;
@@ -471,7 +487,7 @@ div.newTask button.red {
    width: 1000px;
    height: 1000px;
    display: none;
-}
+}*/
 
 #temp {
     box-shadow: 0px 0px 50px 3px rgba(77, 77, 77, 0.5);
