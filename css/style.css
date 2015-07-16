@@ -52,7 +52,7 @@ h3 {
     width: 100%;
     font-size: 20px;
     font-weight:900;
-    padding: 1px;
+    padding: 0px;
     margin: 10px 5px 1px 5px;
     color: rgba(50, 50, 50, 0.8);
     text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
@@ -98,12 +98,19 @@ div.navbarTitle hr {
 }
 
 div.navbarTitle h3 {
-    float: right;
+    float: left;
     width: auto;
-    margin-top: 0px;
-    margin-left: 0;
-    margin-right: 150px;
+    margin-top: 3px;
+    margin-left: 145px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    font-size: 38px;
+    font-variant: small-caps;
     color: rgba(150, 30, 30, 0.8);
+    font-family: "Lucida Console", Monaco, monospace;
+    font-weight: bolder;
+    padding-bottom: 0px;
+    display: block;
 }
 
 div.navbarTitle p {
@@ -114,6 +121,7 @@ div.navbarTitle p {
     font-weight: 600;
     font-size: 13px;
     color: rgba(150, 30, 30, 0.8);
+    display: none;
 }
 
 /**

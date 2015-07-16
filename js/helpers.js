@@ -67,6 +67,9 @@ function navBtnClickHandler(id) {
         window.selectedWorkspace = 'Inbox';
         window.navBtnStates.allTasks = true;
         window.navBtnStates.today = window.navBtnStates.nxt7Days = false;
+
+        $('#filterTasks').attr('placeholder', 'Filter tasks');
+
     }
     else if (id == '#today') {
         $('#allTasks').css('background', '#f5f5f5');
@@ -76,6 +79,8 @@ function navBtnClickHandler(id) {
         window.selectedWorkspace = 'Today';
         window.navBtnStates.today = true;
         window.navBtnStates.allTasks = window.navBtnStates.nxt7Days = false;
+
+        $('#filterTasks').attr('placeholder', 'overdue, today');
     }
     else if (id == '#nxt7Days') {
         $('#allTasks').css('background', '#f5f5f5');
@@ -85,6 +90,8 @@ function navBtnClickHandler(id) {
         window.selectedWorkspace = 'Next 7 Days';
         window.navBtnStates.nxt7Days = true;
         window.navBtnStates.allTasks = window.navBtnStates.today = false;
+
+        $('#filterTasks').attr('placeholder', 'overdue, 7 days');
     }
 
     $('#selectedWorkspace').text(window.selectedWorkspace);
@@ -155,7 +162,15 @@ function addTask() {
             $('#calendarBorder').css('top', top);
             $('#calendarBorder').css('left', left);
 
-            $( "#datepicker" ).datepicker();
+            $( "#datepicker" ).datepicker({
+                altField: "#taskDate",
+                altFormat: "yy-mm-dd",
+                dateFormat: "dd/mm/yy",
+                onSelect: function (date) {
+                    $("#semiXOverlay").css('display', 'none');
+                }
+            });
+
             $("#semiXOverlay").css('display', 'block');
 
             var width = parseInt($('#datepicker').css('width'));
