@@ -29,6 +29,7 @@
  * @author Shahzeb Ihsan
  */
 
+window.addTaskStatus = false;
 window.newProjectName = null;
 window.addProjectStatus = false;
 window.navBtnStates = {allTasks: false, today: false, nxt7Days: false};

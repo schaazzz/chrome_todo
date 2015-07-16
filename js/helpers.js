@@ -133,48 +133,55 @@ function addProject() {
 }
 
 function addTask() {
-    $('#addTask').before(
-                    '<div class = "newTask" id = "newTask">' +
-                        '<input type = "text" id = "taskName"/>' +
-                        '<input type = "text" id = "taskDate" placeholder = "no due date"/>' +
-                        '<button class = "red">Add Task</button>' +
-                    '</div>');
-    $('#taskName').focus();
+    if(!window.addTaskStatus) {
+        $('#addTask').before(
+                        '<div class = "newTask" id = "newTask">' +
+                            '<input type = "text" id = "taskName"/>' +
+                            '<input type = "text" id = "taskDate" placeholder = "no due date"/>' +
+                            '<button class = "red">Add Task</button><a id = "cancelAddTask" href = #>Cancel</a>' +
+                        '</div>');
+        window.addTaskStatus = true;
+        $('#taskName').focus();
 
-    $('#taskDate').click(function() {
-        var top = $('#taskDate').offset().top + parseInt($('#taskDate').css('height'));
-        var left = $('#taskDate').position().left;
+        $('#cancelAddTask').click(function() {
+            $('#newTask').remove();
+            window.addTaskStatus = false;
+        });
 
-        $('#calendarBorder').css('top', top);
-        $('#calendarBorder').css('left', left);
+        $('#taskDate').click(function() {
+            var top = $('#taskDate').offset().top + parseInt($('#taskDate').css('height'));
+            var left = $('#taskDate').position().left;
 
-        $( "#datepicker" ).datepicker();
-        $("#semiXOverlay").css('display', 'block');
+            $('#calendarBorder').css('top', top);
+            $('#calendarBorder').css('left', left);
 
-        var width = parseInt($('#datepicker').css('width'));
-        var height = parseInt($('#datepicker').css('height'));
-        $('#datepicker').css('marginLeft', (-1 * width) / 2);
-        $('#calendarBorder').css('width', width);
-        $('#calendarBorder').css('min-height', height);
-        $('#datepicker').focus();
-        
-        $('#datepicker').keyup(function(e) {
-            console.log(e);
-            if(e.keyCode == 27) {
+            $( "#datepicker" ).datepicker();
+            $("#semiXOverlay").css('display', 'block');
+
+            var width = parseInt($('#datepicker').css('width'));
+            var height = parseInt($('#datepicker').css('height'));
+            $('#datepicker').css('marginLeft', (-1 * width) / 2);
+            $('#calendarBorder').css('width', width);
+            $('#calendarBorder').css('min-height', height);
+            $('#datepicker').focus();
+
+            $('#datepicker').keyup(function(e) {
+                console.log(e);
+                if(e.keyCode == 27) {
+                    $("#semiXOverlay").css('display', 'none');
+                }
+            });
+
+            $('#semiXOverlay').click(function() {
                 $("#semiXOverlay").css('display', 'none');
+            });
+        });
+
+        $('#taskName').keyup(function(e) {
+            if(e.keyCode == 27) {
+                $('#newTask').remove();
+                window.addTaskStatus = false;
             }
         });
-
-        $('#semiXOverlay').click(function() {
-            $("#semiXOverlay").css('display', 'none');
-        });
-    });
-
-    $('#taskName').keyup(function(e) {
-        if(e.keyCode == 27) {
-            $('#newTask').remove();
-            /*window.addProjectStatus = false;
-            window.newProjectName = null;*/
-        }
-    });
+    }
 }

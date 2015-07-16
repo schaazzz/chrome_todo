@@ -40,7 +40,7 @@
     padding: 0;
     height: 100%;
     width: 100%;
-    font-family: "Open Sans",sans-serif !important;
+    font-family: "Open Sans", sans-serif !important;
   }
 
 body {
@@ -470,10 +470,27 @@ div.newTask input#taskDate {
 }
 
 div.newTask button.red {
+    float: left;
     margin-top: 5px;
     padding: 7px 7px 7px 7px;
     -webkit-border-radius: 0 !important;
     border-radius: 0 !important;
+}
+
+div.newTask a {
+    float: left;
+    display: inline-block;
+    color: black;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    margin-top: 11px;
+    text-align: left;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+div.newTask a:hover {
+    text-decoration: underline;
 }
 
 /**
