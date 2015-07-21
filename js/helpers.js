@@ -29,6 +29,14 @@
  * @author Shahzeb Ihsan
  */
 
+var Task = function(name, dueDate, priority, done, project) {
+    this.name = name;
+    this.dueDate = dueDate;
+    this.priority = priority;
+    this.done = done;
+    this.project = project;
+};
+
 function navBtnEvtHandler(e) {
     var id = '#' + e.target.id;
     var state = false;
@@ -145,7 +153,7 @@ function addTask() {
                         '<div class = "newTask" id = "newTask">' +
                             '<input type = "text" id = "taskName"/>' +
                             '<input type = "text" id = "taskDate" placeholder = "no due date"/>' +
-                            '<button class = "red">Add Task</button><a id = "cancelAddTask" href = #>Cancel</a>' +
+                            '<button id = "createTask" class = "red">Add Task</button><a id = "cancelAddTask" href = #>Cancel</a>' +
                         '</div>');
         window.addTaskStatus = true;
         $('#taskName').focus();
@@ -153,6 +161,19 @@ function addTask() {
         $('#cancelAddTask').click(function() {
             $('#newTask').remove();
             window.addTaskStatus = false;
+        });
+
+        $('#createTask').click(function() {
+            var task = new Task(
+                            $('#taskName').val(),
+                            new Date($('#taskDate').val()),
+                            0,
+                            false,
+                            null);
+
+            $('#newTask').remove();
+            window.addTaskStatus = false;
+            console.log(task);
         });
 
         $('#taskDate').click(function() {
