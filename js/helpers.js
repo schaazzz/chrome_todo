@@ -210,6 +210,8 @@ function addTask() {
                             '<input type = "text" id = "taskDate" placeholder = "no due date"/>' +
                             '<button id = "createTask" class = "red">Add Task</button>' +
                             '<a id = "cancelAddTask" href = #>Cancel</a>' +
+                            '<a id="icon" style = "margin-right: 50px;" href=#><i class="fa fa-flag-o"></i></a>' +
+                            '<a id="icon" style = "margin-right: 15px;" href=#><i class="fa fa-bell"></i></a>' +
                         '</div>');
         window.addTaskStatus = true;
         $('#taskName').focus();

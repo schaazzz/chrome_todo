@@ -518,12 +518,31 @@ div.newTask a:hover {
     text-decoration: underline;
 }
 
+div.newTask a#icon {
+    float: right;
+    font-size:17px;
+    color: #c0c0c0;
+    margin-left: 0px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+div.newTask a#icon:hover {
+    color: #000000 !important;
+}
+
+div.newTask a#icon:hover, a#icon:active, a#icon:focus, a#icon:visited  {
+    border-bottom: 0px !important;
+    text-decoration: none !important;
+    outline: 0;
+}
+
 div.showTask {
     float: right;
     width: 90%;
     border-bottom: 1px solid rgba(202, 202, 202, 0.5);
     padding-bottom: 10px;
-    margin-top:15px;
+    margin-top: 15px;
     margin-bottom: 10px;
     margin-right: 45px;
     background-color: #ffffff !important;
@@ -634,9 +653,9 @@ div.calendar button {
 
 div.calendar a#icon {
     font-size:27px;
-    color:#c0c0c0;
+    color: #c0c0c0;
     margin-left: 10px;
-    font-weight: 400;
+    font-weight: lighter;
     text-decoration: none;
 }
 
