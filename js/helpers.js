@@ -179,18 +179,19 @@ function handleTaskClick(e) {
     var done = false;
     var hash = e.target.id;
 
-    if($('#' + hash).is(':checked')) {
-        $('label[for = "' + hash + '"] + p').css('text-decoration', 'line-through');
-        done = true;
-
-    }
-    else {
-        $('label[for = "' + hash + '"] + p').css('text-decoration', 'none');
-        done = false;
-    }
+    done = $('#' + hash).is(':checked') ? true : false;
 
     for(i = 0; i < window.storedTasks.length; i++) {
         if(window.storedTasks[i].hash.toString() === hash) {
+            if(done) {
+                $('label[for = "' + hash + '"] + p').css('text-decoration', 'line-through');
+                $('label[for = "' + hash + '"] + p + a').text('');
+            }
+            else {
+                $('label[for = "' + hash + '"] + p').css('text-decoration', 'none');
+                $('label[for = "' + hash + '"] + p + a').text(window.storedTasks[i].dueDate);
+            }
+
             window.storedTasks[i].done = done;
 
             /* Save data to storage */
