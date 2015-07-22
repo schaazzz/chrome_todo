@@ -574,7 +574,7 @@ div.showTask input[type="checkbox"]:checked + label {
 }
 
 div.showTask input[type="checkbox"]:checked + label:after {
-    content: '\2714';
+    content: '\2713';
     font-size: 31px;
     position: absolute;
     top: -18px;

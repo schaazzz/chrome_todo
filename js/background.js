@@ -29,29 +29,29 @@
  * @author Shahzeb Ihsan
  */
 
-var stored_todos;
+var storedTasks = [];
 
 /**
  * 'onLaunched' listener
  */
 chrome.app.runtime.onLaunched.addListener(function() {
-    // Read data from storage
-    chrome.storage.sync.get('todos', function(obj){
-        console.log(obj);
-        if (obj.todos === undefined) {
-            stored_todos = undefined;
-        } else {
-            stored_todos = obj.todos;
+    /* Read data from storage */
+    chrome.storage.sync.get('tasks', function(obj) {
+        if (obj.tasks === undefined) {
+            storedTasks = [];
+        }
+        else {
+            storedTasks = obj.tasks;
         }
     });
 
     // Create the HTML view
     chrome.app.window.create('window.html', {
-                            'id': 'tomatoWinID',
-                            'innerBounds': {
-                                 'width': 1025,
-                                 'height': 775
-                             },
-                             'resizable': false,
-                         });
+                                'id': 'tomatoWinID',
+                                'resizable': false,
+                                'innerBounds': {
+                                    'width': 1025,
+                                    'height': 775
+                                },
+                            });
 });

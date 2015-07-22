@@ -38,71 +38,15 @@ window.selectedWorkspace = 'Inbox';
  * Called on the "onload" event, sets event handlers for various elements.
  */
 $(document).ready( function() {
-    /*chrome.runtime.getBackgroundPage(
-        function (bg_page) {
-            // Read the stored todos from the background page and save it to the window
-            // Note: "window" variables can created on the fly...
-            console.log(bg_page.stored_todos);
-            window.stored_todos = bg_page.stored_todos;
-
-            // Update the textarea with the stored todos
-            if (window.stored_todos !== undefined) {
-                document.getElementById('output').value = window.stored_todos;
-            }
+    chrome.runtime.getBackgroundPage(
+        function (backgroundPage) {
+            /* Read the stored todos from the background page and save it to the window */
+            window.storedTasks = backgroundPage.storedTasks;
+            populateTasks();
         }
-    );*/
-
-    /*document.getElementById('enter').onclick = function() {
-        var txt = document.getElementById('output').value + '\r\n';
-        txt += document.getElementById('text').value;
-        document.getElementById('output').value = txt;
-
-        // Save data to storage
-        chrome.storage.sync.set({'todos': txt},
-            function() {
-                console.log('todos saved...');
-            }
-        );
-    };*/
+    );
 
     $('#addTask').click(addTask);
-
-
-
-    /*$( "#datepicker" ).datepicker({
-        showButtonPanel: true,
-        showOptions: {direction: "up"},
-        beforeShow: function( input ) {
-            setTimeout(function() {
-                var buttonPane = $( input )
-                    .datepicker( "widget" )
-                    .find( ".ui-datepicker-buttonpane" );
-
-                $( "<button>", {
-                    text: "Clear",
-                    click: function() {
-                    //Code to clear your date field (text box, read only field etc.) I had to remove the line below and add custom code here
-                        $.datepicker._clearDate( input );
-                    }
-                }).appendTo( buttonPane ).addClass("red");
-            }, 1 );
-
-        },
-        onChangeMonthYear: function( year, month, instance ) {
-            setTimeout(function() {
-                var buttonPane = $( instance )
-                    .datepicker( "widget" )
-                    .find( ".ui-datepicker-buttonpane" );
-
-                $( "<button>", {
-                    text: "Clear",
-                    click: function() {
-                        $.datepicker._clearDate( instance.input );
-                    }
-                }).appendTo( buttonPane ).addClass("red");
-            }, 1 );
-        }
-    });*/
 
     window.navBtnStates.allTasks = true;
     $('#allTasks').css('background', '#ffffff');

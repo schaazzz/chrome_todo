@@ -35,6 +35,18 @@ var Task = function(name, dueDate, priority, done, project) {
     this.priority = priority;
     this.done = done;
     this.project = project;
+    this.hash = calcHash();
+
+    function calcHash() {
+        var hashVal = 0;
+        var str = name + '' + dueDate + '' + new Date().getTime();
+
+        for(i = 0; i < str.length; i++) {
+            hashVal = (hashVal << 5) + str.charCodeAt(i);
+            hashVal &= hashVal;
+        }
+        return Math.abs(hashVal);
+    }
 };
 
 function navBtnEvtHandler(e) {
@@ -147,6 +159,18 @@ function addProject() {
     }
 }
 
+function populateTasks() {
+    for(i = 0; i < window.storedTasks.length; i++) {
+        $('#addTask').before(
+                        '<div class = "showTask">' +
+                            '<input id = "'+ window.storedTasks[i].hash + '" type = "checkbox"/>' +
+                            '<label for = "'+ window.storedTasks[i].hash + '"></label>' +
+                            '<p>' + window.storedTasks[i].name + '</p>' +
+                            '<a href = #>' + window.storedTasks[i].dueDate + '</a>' +
+                        '</div>');
+    }
+}
+
 function addTask() {
     if(!window.addTaskStatus) {
         $('#addTask').before(
@@ -164,25 +188,33 @@ function addTask() {
         });
 
         $('#createTask').click(function() {
-            var task = new Task(
-                            $('#taskName').val(),
-                            new Date($('#taskDate').val()),
-                            0,
-                            false,
-                            null);
+            if($('#taskName').val() !== '') {
+                var tempDate = new Date($('#taskDate').val());
+                var dateString = ('Invalid Date' === tempDate.toDateString()) ?  '' : tempDate.toDateString().split(' ');
+                if (dateString !== '') dateString = dateString[2] + ' ' + dateString[1] + ' ' + dateString[3];
 
-            $('#newTask').remove();
-            window.addTaskStatus = false;
+                var task = new Task(
+                                $('#taskName').val(),
+                                dateString,
+                                0,
+                                false,
+                                null);
 
-            var dateString = ('Invalid Date' === task.dueDate.toDateString()) ?  '' : task.dueDate.toDateString().split(' ');
-            if (dateString !== '') dateString = dateString[2] + ' ' + dateString[1] + ' ' + dateString[3];
+                $('#newTask').before(
+                                '<div class = "showTask">' +
+                                    '<input id = "'+ task.hash + '" type = "checkbox"/>' +
+                                    '<label for = "'+ task.hash + '"></label>' +
+                                    '<p>' + task.name + '</p>' +
+                                    '<a href = #>' + task.dueDate + '</a>' +
+                                '</div>');
 
-            $('#addTask').before(
-                            '<div class = "showTask">' +
-                                '<input id = "c1" type = "checkbox"/><label for = "c1"></label>' +
-                                '<p>' + task.name + '</p>' +
-                                '<a href = #>' + dateString + '</a>' +
-                            '</div>');
+                window.storedTasks.push(task);
+
+                /* Save data to storage */
+                chrome.storage.sync.set(
+                            {'tasks': window.storedTasks},
+                            function() {});
+            }
         });
 
         $('#taskDate').click(function() {
@@ -192,16 +224,16 @@ function addTask() {
             $('#calendarBorder').css('top', top);
             $('#calendarBorder').css('left', left);
 
-            $( "#datepicker" ).datepicker({
-                altField: "#taskDate",
-                altFormat: "yy-mm-dd",
-                dateFormat: "dd/mm/yy",
+            $('#datepicker').datepicker({
+                altField: '#taskDate',
+                altFormat: 'yy-mm-dd',
+                dateFormat: 'dd/mm/yy',
                 onSelect: function (date) {
-                    $("#semiXOverlay").css('display', 'none');
+                    $('#semiXOverlay').css('display', 'none');
                 }
             });
 
-            $("#semiXOverlay").css('display', 'block');
+            $('#semiXOverlay').css('display', 'block');
 
             var width = parseInt($('#datepicker').css('width'));
             var height = parseInt($('#datepicker').css('height'));
@@ -212,12 +244,12 @@ function addTask() {
 
             $('#datepicker').keyup(function(e) {
                 if(e.keyCode == 27) {
-                    $("#semiXOverlay").css('display', 'none');
+                    $('#semiXOverlay').css('display', 'none');
                 }
             });
 
             $('#semiXOverlay').click(function() {
-                $("#semiXOverlay").css('display', 'none');
+                $('#semiXOverlay').css('display', 'none');
             });
         });
 
