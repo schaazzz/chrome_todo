@@ -173,7 +173,16 @@ function addTask() {
 
             $('#newTask').remove();
             window.addTaskStatus = false;
-            console.log(task);
+
+            var dateString = ('Invalid Date' === task.dueDate.toDateString()) ?  '' : task.dueDate.toDateString().split(' ');
+            if (dateString !== '') dateString = dateString[2] + ' ' + dateString[1] + ' ' + dateString[3];
+
+            $('#addTask').before(
+                            '<div class = "showTask">' +
+                                '<input id = "c1" type = "checkbox"/><label for = "c1"></label>' +
+                                '<p>' + task.name + '</p>' +
+                                '<a href = #>' + dateString + '</a>' +
+                            '</div>');
         });
 
         $('#taskDate').click(function() {
@@ -202,7 +211,6 @@ function addTask() {
             $('#datepicker').focus();
 
             $('#datepicker').keyup(function(e) {
-                console.log(e);
                 if(e.keyCode == 27) {
                     $("#semiXOverlay").css('display', 'none');
                 }
