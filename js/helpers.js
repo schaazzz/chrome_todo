@@ -161,13 +161,43 @@ function addProject() {
 
 function populateTasks() {
     for(i = 0; i < window.storedTasks.length; i++) {
-        $('#addTask').before(
-                        '<div class = "showTask">' +
-                            '<input id = "'+ window.storedTasks[i].hash + '" type = "checkbox"/>' +
-                            '<label for = "'+ window.storedTasks[i].hash + '"></label>' +
-                            '<p>' + window.storedTasks[i].name + '</p>' +
-                            '<a href = #>' + window.storedTasks[i].dueDate + '</a>' +
-                        '</div>');
+        if(!window.storedTasks[i].done) {
+            $('#addTask').before(
+                            '<div class = "showTask">' +
+                                '<input id = "'+ window.storedTasks[i].hash + '" type = "checkbox"/>' +
+                                '<label for = "'+ window.storedTasks[i].hash + '"></label>' +
+                                '<p>' + window.storedTasks[i].name + '</p>' +
+                                '<a href = #>' + window.storedTasks[i].dueDate + '</a>' +
+                            '</div>');
+
+            $('#' + window.storedTasks[i].hash).click(handleTaskClick);
+        }
+    }
+}
+
+function handleTaskClick(e) {
+    var done = false;
+    var hash = e.target.id;
+
+    if($('#' + hash).is(':checked')) {
+        $('label[for = "' + hash + '"] + p').css('text-decoration', 'line-through');
+        done = true;
+
+    }
+    else {
+        $('label[for = "' + hash + '"] + p').css('text-decoration', 'none');
+        done = false;
+    }
+
+    for(i = 0; i < window.storedTasks.length; i++) {
+        if(window.storedTasks[i].hash.toString() === hash) {
+            window.storedTasks[i].done = done;
+
+            /* Save data to storage */
+            chrome.storage.sync.set(
+                        {'tasks': window.storedTasks},
+                        function() {});
+        }
     }
 }
 
@@ -177,7 +207,8 @@ function addTask() {
                         '<div class = "newTask" id = "newTask">' +
                             '<input type = "text" id = "taskName"/>' +
                             '<input type = "text" id = "taskDate" placeholder = "no due date"/>' +
-                            '<button id = "createTask" class = "red">Add Task</button><a id = "cancelAddTask" href = #>Cancel</a>' +
+                            '<button id = "createTask" class = "red">Add Task</button>' +
+                            '<a id = "cancelAddTask" href = #>Cancel</a>' +
                         '</div>');
         window.addTaskStatus = true;
         $('#taskName').focus();
@@ -209,6 +240,7 @@ function addTask() {
                                 '</div>');
 
                 window.storedTasks.push(task);
+                $('#' + task.hash).click(handleTaskClick);
 
                 /* Save data to storage */
                 chrome.storage.sync.set(
