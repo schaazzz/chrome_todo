@@ -48,6 +48,12 @@ $(document).ready( function() {
 
     $('#addTask').click(addTask);
 
+    $('a[name = "dateToday"]').click(dateShortcutHandler);
+    $('a[name = "dateTomorrow"]').click(dateShortcutHandler);
+    $('a[name = "dateNextWeek"]').click(dateShortcutHandler);
+    $('a[name = "dateNextMonth"]').click(dateShortcutHandler);
+    $('a[name = "dateClear"]').click(dateShortcutHandler);
+
     window.navBtnStates.allTasks = true;
     $('#allTasks').css('background', '#ffffff');
 
