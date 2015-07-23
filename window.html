@@ -83,14 +83,25 @@
                 <div id= "calendarBorder">
                     <div class = "triangle" id = "tingle">
                         <div tabindex="0" class = "calendar" id = "datepicker">
-                            <a id="icon" href=#>
-                                <span class="fa-stack fa-1x">
-                                    <i class="fa fa-calendar-o fa-stack-1x"></i>
-                                    <p style = "font-size: 15px;" class="fa-stack-1x calendar-text">27</p>
+                            <a id = "icon" class = "tooltip-bottom" data-delay = "100" title = "Today" href = "#">
+                                <span id = "scheduleStacker" class = "fa-stack">
+                                    <i class = "fa fa-calendar-o"></i>
+                                    <p id = "scheduleToday"></p>
                                 </span>
                             </a>
-                            <a id="icon" href=#><i class="fa fa-calendar-o"></i></a>
-                            <a id="icon" href=#><i class="fa fa-sun-o"></i></a>
+
+                            <a id = "icon" class = "tooltip-bottom" data-delay = "100" title = "Tomorrow" href = #><i class = "fa fa-sun-o"></i></a>
+
+                            <a id = "icon" class = "tooltip-bottom" data-delay = "100" title = "In 1 week" href = "#">
+                                <span id = "scheduleStacker" class = "fa-stack">
+                                    <i class = "fa fa-calendar-o"></i>
+                                    <p id = "scheduleNextMonth">⟳</p>
+                                </span>
+                            </a>
+
+                            <a id = "icon" class = "tooltip-bottom" data-delay = "100" title = "In 1 Month" href = #><i class = "fa fa-moon-o"></i></a>
+
+                            <a id = "icon" class = "tooltip-bottom" data-delay = "100" title = "Clear" href = #><i class = "fa fa-times"></i></a>
                             <hr style = "margin: 15px 0 !important;">
                         </div>
                     </div>

@@ -276,6 +276,7 @@ function addTask() {
             $('#calendarBorder').css('width', width);
             $('#calendarBorder').css('min-height', height);
             $('#datepicker').focus();
+            $('#scheduleToday').text(new Date().getDate());
 
             $('#datepicker').keyup(function(e) {
                 if(e.keyCode == 27) {

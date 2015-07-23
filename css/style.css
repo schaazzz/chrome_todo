@@ -659,6 +659,31 @@ div.calendar a#icon {
     text-decoration: none;
 }
 
+div.calendar a#icon:first-child {
+  margin-left: 19px;
+}
+
+div.calendar span#scheduleStacker {
+    width: auto;
+    height: 1em;
+    line-height: normal;
+    vertical-align: baseline;
+}
+
+div.calendar p#scheduleToday {
+    font-size: 12px;
+    margin-top: -18px;
+    margin-left: 6px;
+    line-height: normal !important;
+}
+
+div.calendar p#scheduleNextMonth {
+    font-size: 21px;
+    margin-top: -25px;
+    margin-left: 5px;
+    line-height: normal !important;
+}
+
 div.calendar a#icon:hover {
   color: #000000;
 }
