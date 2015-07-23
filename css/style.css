@@ -523,7 +523,7 @@ div.newTask a#icon {
     font-size:17px;
     color: #c0c0c0;
     margin-left: 0px;
-    font-weight: 400;
+    font-weight: lighter;
     text-decoration: none;
 }
 
@@ -655,7 +655,7 @@ div.calendar a#icon {
     font-size:27px;
     color: #c0c0c0;
     margin-left: 10px;
-    font-weight: lighter;
+    font-weight: 400;
     text-decoration: none;
 }
 
