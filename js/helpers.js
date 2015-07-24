@@ -206,28 +206,28 @@ function dateShortcutHandler(e) {
     var source = e.currentTarget.attributes.name.nodeValue;
 
     if(source === 'dateToday') {
-        console.log(formatDate(new Date().toString()));
+        $('#taskDate').val(formatDate(new Date().toString()));
     }
     else if(source === 'dateTomorrow') {
         var today = new Date();
         var tomorrow = new Date();
         tomorrow.setDate(today.getDate() + 1);
-        console.log(formatDate(tomorrow.toString()));
+        $('#taskDate').val(formatDate(tomorrow.toString()));
     }
     else if(source === 'dateNextWeek') {
         var today = new Date();
         var nextWeek = new Date();
         nextWeek.setDate(today.getDate() + 7);
-        console.log(formatDate(nextWeek.toString()));
+        $('#taskDate').val(formatDate(nextWeek.toString()));
     }
     else if(source === 'dateNextMonth') {
         var today = new Date();
         var nextMonth = new Date();
         nextMonth.setMonth(today.getMonth() + 1);
-        console.log(formatDate(nextMonth.toString()));
+        $('#taskDate').val(formatDate(nextMonth.toString()));
     }
     else if(source === 'dateClear') {
-        console.log('');
+        $('#taskDate').val('');
     }
 }
 
@@ -295,8 +295,8 @@ function addTask() {
 
             $('#datepicker').datepicker({
                 altField: '#taskDate',
-                altFormat: 'yy-mm-dd',
-                dateFormat: 'dd/mm/yy',
+                altFormat: 'dd M yy',
+                dateFormat: 'dd M yy',
                 onSelect: function (date) {
                     $('#semiXOverlay').css('display', 'none');
                 }
