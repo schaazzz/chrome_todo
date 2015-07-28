@@ -651,6 +651,34 @@ div.calendar button {
     font-size: 15px;
 }
 
+div.calendar input {
+    border-radius: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    width: 55%;
+    font-size: 13px;
+    padding: 2px;
+}
+
+div.calendar input::-webkit-clear-button,
+             input::-webkit-outer-spin-button,
+             input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0px; }
+
+div.calendar input::-webkit-datetime-edit-hour-field { color: black; padding-left: 5px; }
+
+div.calendar input::-webkit-datetime-edit-text { color: black; padding-left: 5px; padding-right: 5px; }
+
+div.calendar input::-webkit-datetime-edit-minute-field { color: black; }
+
+div.calendar input::-webkit-datetime-edit-ampm-field { color: black; padding: 0px; margin: 0px; }
+
+div.calendar label {
+    font-size: 13px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
 div.calendar a#icon {
     font-size:27px;
     color: #c0c0c0;

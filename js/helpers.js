@@ -344,6 +344,11 @@ function addTask() {
             $('#datepicker').focus();
             $('#scheduleToday').text(new Date().getDate());
 
+            $('#selectTime').click(function(e) {
+                console.log(e);
+                return false;
+            });
+
             $('#datepicker').keyup(function(e) {
                 if(e.keyCode == 27) {
                     $('#semiXOverlay').css('display', 'none');
