@@ -29,13 +29,25 @@
  * @author Shahzeb Ihsan
  */
 
-var Task = function(name, dueDate, priority, done, project) {
+var Task = function(name, dueDate, priority, done, setAlarm, project) {
     this.name = name;
     this.dueDate = dueDate;
     this.priority = priority;
     this.done = done;
     this.project = project;
     this.hash = calcHash();
+
+    if(setAlarm) {
+        this.alarm = 'alarm' + this.hash;
+
+        var d = new Date(this.dueDate);
+        d.setHours(14);
+        d.setMinutes(new Date().getMinutes() + 5);
+        console.log(d);
+        chrome.alarms.create(
+                        this.alarm,
+                        {when: d.getTime()});
+    }
 
     function calcHash() {
         var hashVal = 0;
@@ -55,21 +67,17 @@ function navBtnEvtHandler(e) {
 
     if (id == '#allTasks') {
         state = window.navBtnStates.allTasks;
-    }
-    else if (id == '#today') {
+    } else if (id == '#today') {
         state = window.navBtnStates.today;
-    }
-    else if (id == '#nxt7Days') {
+    } else if (id == '#nxt7Days') {
         state = window.navBtnStates.nxt7Days;
     }
 
     if (e.type === 'click') {
         navBtnClickHandler(id);
-    }
-    else if (e.type == 'mouseenter') {
+    } else if (e.type == 'mouseenter') {
         if(!state) $(id).css('background', '#fffFff');
-    }
-    else if (e.type == 'mouseleave') {
+    } else if (e.type == 'mouseleave') {
         if(!state) $(id).css('background', '#f5f5f5');
     }
  }
@@ -90,8 +98,7 @@ function navBtnClickHandler(id) {
 
         $('#filterTasks').attr('placeholder', 'Filter tasks');
 
-    }
-    else if (id == '#today') {
+    } else if (id == '#today') {
         $('#allTasks').css('background', '#f5f5f5');
         $('#today').css('background', '#ffffff');
         $('#nxt7Days').css('background', '#f5f5f5');
@@ -101,8 +108,7 @@ function navBtnClickHandler(id) {
         window.navBtnStates.allTasks = window.navBtnStates.nxt7Days = false;
 
         $('#filterTasks').attr('placeholder', 'overdue, today');
-    }
-    else if (id == '#nxt7Days') {
+    } else if (id == '#nxt7Days') {
         $('#allTasks').css('background', '#f5f5f5');
         $('#today').css('background', '#f5f5f5');
         $('#nxt7Days').css('background', '#ffffff');
@@ -236,23 +242,39 @@ function formatDate(dateString) {
     return (dateString[2] + ' ' + dateString[1] + ' ' + dateString[3]);
 }
 
+function toggleTaskIcon(name, state) {
+    if(state) {
+        $('a[name = "' + name + '"]').css('color', '#000000');
+    } else {
+        $('a[name = "' + name + '"]').css('color', '#c0c0c0');
+    }
+}
+
 function addTask() {
     if(!window.addTaskStatus) {
+        var setAlarm = false;
+
         $('#addTask').before(
                         '<div class = "newTask" id = "newTask">' +
                             '<input type = "text" id = "taskName"/>' +
                             '<input type = "text" id = "taskDate" placeholder = "no due date"/>' +
                             '<button id = "createTask" class = "red">Add Task</button>' +
                             '<a id = "cancelAddTask" href = #>Cancel</a>' +
-                            '<a id="icon" style = "margin-right: 50px;" href=#><i class="fa fa-flag-o"></i></a>' +
-                            '<a id="icon" style = "margin-right: 15px;" href=#><i class="fa fa-bell"></i></a>' +
+                            '<a id="icon" style = "margin-right: 50px;" name = "setPriority" href=#><i class="fa fa-flag-o"></i></a>' +
+                            '<a id="icon" style = "margin-right: 15px;" name = "setAlarm" href=#><i class="fa fa-bell"></i></a>' +
                         '</div>');
         window.addTaskStatus = true;
         $('#taskName').focus();
 
+        $('a[name = "setAlarm"]').click(function() {
+            setAlarm = !setAlarm;
+            toggleTaskIcon('setAlarm', setAlarm);
+        });
+
         $('#cancelAddTask').click(function() {
             $('#newTask').remove();
             window.addTaskStatus = false;
+            setAlarm = false;
         });
 
         $('#createTask').click(function() {
@@ -266,8 +288,18 @@ function addTask() {
                                 dateString,
                                 0,
                                 false,
+                                setAlarm,
                                 null);
 
+                $('#taskName').val('');
+                $('#taskDate').val('');
+                $('#setAlarm').css('color', '#c0c0c0');
+                toggleTaskIcon('setAlarm', false);
+
+                if(setAlarm) {
+                    console.log(task.dueDate);
+                    setAlarm = false;
+                }
                 $('#newTask').before(
                                 '<div class = "showTask">' +
                                     '<input id = "'+ task.hash + '" type = "checkbox"/>' +
@@ -327,6 +359,7 @@ function addTask() {
             if(e.keyCode == 27) {
                 $('#newTask').remove();
                 window.addTaskStatus = false;
+                setAlarm = false;
             }
         });
     }

@@ -30,6 +30,7 @@
  */
 
 var storedTasks = [];
+var pendingAlarms = [];
 
 /**
  * 'onLaunched' listener
@@ -54,4 +55,29 @@ chrome.app.runtime.onLaunched.addListener(function() {
                                     'height': 775
                                 },
                             });
+});
+
+/**
+ * 'onAlarm' listener
+ */
+ chrome.alarms.onAlarm.addListener(function(alarm) {
+    pendingAlarms.push(alarm.name);
+
+    /* Read data from storage */
+    chrome.storage.sync.get('tasks', function(obj) {
+        tasks = obj.tasks;
+        alarm = pendingAlarms.pop();
+
+        for(i = 0; i < tasks.length; i++) {
+            if(tasks[i].alarm === alarm) {
+                var opt = {
+                    type: 'basic',
+                    title: tasks[i].name,
+                    message: 'Task "' + tasks[i].name + '" due today...',
+                    iconUrl: 'icons/tomato.png'
+                };
+                chrome.notifications.create('', opt, null);
+             }
+         }
+    });
 });

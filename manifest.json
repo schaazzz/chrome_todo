@@ -42,5 +42,5 @@
                "48":    "icons/tomato48.png",
                "128":   "icons/tomato128.png"
     },
-    "permissions" : ["notifications",  "storage"]
+    "permissions" : ["notifications",  "storage", "alarms"]
 }
