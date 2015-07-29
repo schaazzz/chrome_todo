@@ -60,7 +60,7 @@ chrome.app.runtime.onLaunched.addListener(function() {
 /**
  * 'onAlarm' listener
  */
- chrome.alarms.onAlarm.addListener(function(alarm) {
+chrome.alarms.onAlarm.addListener(function(alarm) {
     pendingAlarms.push(alarm.name);
 
     /* Read data from storage */

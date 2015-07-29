@@ -652,12 +652,14 @@ div.calendar button {
 }
 
 div.calendar input {
-    border-radius: 25px;
+    border-radius: 10px;
     margin-left: 5px;
     margin-top: 0px;
     width: 55%;
     font-size: 13px;
     padding: 2px;
+    box-shadow: none;
+    border: 2px solid rgba(100,100,100, 0.1);
 }
 
 div.calendar input::-webkit-clear-button,

@@ -41,9 +41,6 @@ var Task = function(name, dueDate, priority, done, setAlarm, project) {
         this.alarm = 'alarm' + this.hash;
 
         var d = new Date(this.dueDate);
-        d.setHours(14);
-        d.setMinutes(new Date().getMinutes() + 5);
-        console.log(d);
         chrome.alarms.create(
                         this.alarm,
                         {when: d.getTime()});
@@ -168,7 +165,7 @@ function addProject() {
 function populateTasks() {
     for(i = 0; i < window.storedTasks.length; i++) {
         if(!window.storedTasks[i].done) {
-            $('#addTask').before(
+            $('#addTask').after(
                             '<div class = "showTask">' +
                                 '<input id = "'+ window.storedTasks[i].hash + '" type = "checkbox"/>' +
                                 '<label for = "'+ window.storedTasks[i].hash + '"></label>' +
@@ -235,7 +232,14 @@ function dateShortcutHandler(e) {
     else if(source === 'dateClear') {
         $('#taskDate').val('');
     }
+
+    if(source !== 'dateClear') {
+        $('#taskDate').val($('#taskDate').val() + ' @ ' + $('#selectTime').val());
+    }
+
+    return true;
 }
+
 
 function formatDate(dateString) {
     dateString = dateString.split(' ');
@@ -254,7 +258,7 @@ function addTask() {
     if(!window.addTaskStatus) {
         var setAlarm = false;
 
-        $('#addTask').before(
+        $('#addTask').after(
                         '<div class = "newTask" id = "newTask">' +
                             '<input type = "text" id = "taskName"/>' +
                             '<input type = "text" id = "taskDate" placeholder = "no due date"/>' +
@@ -280,8 +284,12 @@ function addTask() {
         $('#createTask').click(function() {
             if($('#taskName').val() !== '') {
                 var tempDate = new Date($('#taskDate').val());
-                var dateString = ('Invalid Date' === tempDate.toDateString()) ?  '' : tempDate.toDateString().split(' ');
-                if (dateString !== '') dateString = dateString[2] + ' ' + dateString[1] + ' ' + dateString[3];
+                var dateString = ('Invalid Date' === tempDate.toString()) ?  '' : tempDate.toString().split(' ');
+                if (dateString !== '') {
+                    dateString = dateString[2] + ' ' + dateString[1] + ' ' + dateString[3] +
+                                ' @ ' +
+                                dateString[4].split(':')[0] + ':' + dateString[4].split(':')[1];
+                }
 
                 var task = new Task(
                                 $('#taskName').val(),
@@ -297,10 +305,9 @@ function addTask() {
                 toggleTaskIcon('setAlarm', false);
 
                 if(setAlarm) {
-                    console.log(task.dueDate);
                     setAlarm = false;
                 }
-                $('#newTask').before(
+                $('#newTask').after(
                                 '<div class = "showTask">' +
                                     '<input id = "'+ task.hash + '" type = "checkbox"/>' +
                                     '<label for = "'+ task.hash + '"></label>' +
@@ -331,6 +338,7 @@ function addTask() {
                 dateFormat: 'dd M yy',
                 onSelect: function (date) {
                     $('#semiXOverlay').css('display', 'none');
+                    $('#taskDate').val($('#taskDate').val() + ' @ ' + $('#selectTime').val());
                 }
             });
 
@@ -345,7 +353,6 @@ function addTask() {
             $('#scheduleToday').text(new Date().getDate());
 
             $('#selectTime').click(function(e) {
-                console.log(e);
                 return false;
             });
 
