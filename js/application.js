@@ -48,6 +48,12 @@ $(document).ready( function() {
 
     $('#addTask').click(addTask);
 
+    $('a[priority = "0"]').click(priorityIconHandler);
+    $('a[priority = "1"]').click(priorityIconHandler);
+    $('a[priority = "2"]').click(priorityIconHandler);
+    $('a[priority = "3"]').click(priorityIconHandler);
+    $('a[priority = "4"]').click(priorityIconHandler);
+
     $('a[name = "dateToday"]').click(dateShortcutHandler);
     $('a[name = "dateTomorrow"]').click(dateShortcutHandler);
     $('a[name = "dateNextWeek"]').click(dateShortcutHandler);

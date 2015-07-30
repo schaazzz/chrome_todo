@@ -80,8 +80,20 @@
 
         <div class = "workspace">
             <div tabindex="0" id = "semiXOverlay">
+                <div id = "taskPriorityBorder">
+                    <div class ="taskPriorityTriangle">
+                        <div class = "taskPriority" id = "taskPriority">
+                            <p>Priority:</p>
+                            <a id="priorityIcon" priority = "0" style = "color: green;" href=#><i class="fa fa-flag"></i></a>
+                            <a id="priorityIcon" priority = "1" style = "color: lightblue;" href=#><i class="fa fa-flag"></i></a>
+                            <a id="priorityIcon" priority = "2" style = "color: pink;" href=#><i class="fa fa-flag"></i></a>
+                            <a id="priorityIcon" priority = "3" style = "color: orange;" href=#><i class="fa fa-flag"></i></a>
+                            <a id="priorityIcon" priority = "4" style = "color: tomato;" href=#><i class="fa fa-flag"></i></a>
+                        </div>
+                    </div>
+                </div>
                 <div id= "calendarBorder">
-                    <div class = "triangle" id = "tingle">
+                    <div class = "calendarTriangle">
                         <div tabindex="0" class = "calendar" id = "datepicker">
                             <a id = "icon" name = "dateToday" class = "tooltip-bottom" data-delay = "100" title = "Today" href = "#">
                                 <span id = "scheduleStacker" class = "fa-stack">

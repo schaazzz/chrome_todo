@@ -254,6 +254,10 @@ function toggleTaskIcon(name, state) {
     }
 }
 
+function priorityIconHandler(e) {
+    console.log(e.currentTarget.attributes.priority);
+}
+
 function addTask() {
     if(!window.addTaskStatus) {
         var setAlarm = false;
@@ -273,6 +277,12 @@ function addTask() {
         $('a[name = "setAlarm"]').click(function() {
             setAlarm = !setAlarm;
             toggleTaskIcon('setAlarm', setAlarm);
+        });
+
+        $('a[name = "setPriority"]').click(function(e) {
+            $('#semiXOverlay').css('display', 'block');
+            $('#taskPriorityBorder').css('display', 'block');
+            $('#taskPriority').focus();
         });
 
         $('#cancelAddTask').click(function() {
@@ -338,11 +348,13 @@ function addTask() {
                 dateFormat: 'dd M yy',
                 onSelect: function (date) {
                     $('#semiXOverlay').css('display', 'none');
+                    $('#calendarBorder').css('display', 'none');
                     $('#taskDate').val($('#taskDate').val() + ' @ ' + $('#selectTime').val());
                 }
             });
 
             $('#semiXOverlay').css('display', 'block');
+            $('#calendarBorder').css('display', 'block');
 
             var width = parseInt($('#datepicker').css('width'));
             var height = parseInt($('#datepicker').css('height'));
@@ -359,12 +371,16 @@ function addTask() {
             $('#datepicker').keyup(function(e) {
                 if(e.keyCode == 27) {
                     $('#semiXOverlay').css('display', 'none');
+                    $('#calendarBorder').css('display', 'none');
                 }
             });
 
-            $('#semiXOverlay').click(function() {
-                $('#semiXOverlay').css('display', 'none');
-            });
+        });
+
+        $('#semiXOverlay').click(function() {
+            $('#semiXOverlay').css('display', 'none');
+            $('#calendarBorder').css('display', 'none');
+            $('#taskPriorityBorder').css('display', 'none');
         });
 
         $('#taskName').keyup(function(e) {
