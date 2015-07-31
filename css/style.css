@@ -756,7 +756,7 @@ div.calendar a#icon:hover, a#icon:active, a#icon:focus, a#icon:visited  {
     width: 153px;
     min-height: 64px;
     top: 205px;
-    left: 521px;
+    left: 497px;
     border-radius: 10px;
     position: absolute;
     z-index: 9001;
@@ -782,7 +782,7 @@ div.taskPriority {
     background-color: #ffffff;
     margin-top: 10px;
     margin-right: 30px;
-    margin-left: -120px;
+    margin-left: -128px;
     border-radius: 5px;
     z-index: 9002;
     width: 153px;

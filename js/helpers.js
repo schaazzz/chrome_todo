@@ -300,6 +300,13 @@ function addTask() {
             $('#taskPriority').focus();
         });
 
+        $('#taskPriority').keyup(function(e) {
+            if(e.keyCode == 27) {
+                $('#semiXOverlay').css('display', 'none');
+                $('#taskPriorityBorder').css('display', 'none');
+            }
+        });
+
         $('a[priority = "0"]').click(function(e) {newPriority = 0; setPriorityFlagStyle('#c0c0c0', 'fa-flag-o', newPriority, 1);});
         $('a[priority = "1"]').click(function(e) {newPriority = 1; setPriorityFlagStyle('lightblue', 'fa-flag', newPriority, 1);});
         $('a[priority = "2"]').click(function(e) {newPriority = 2; setPriorityFlagStyle('pink', 'fa-flag', newPriority, 1);});
@@ -403,7 +410,6 @@ function addTask() {
                     $('#calendarBorder').css('display', 'none');
                 }
             });
-
         });
 
         $('#semiXOverlay').click(function() {
