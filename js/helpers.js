@@ -254,6 +254,24 @@ function toggleTaskIcon(name, state) {
     }
 }
 
+function setPriorityFlagStyle(color, newIcon, index, opacity) {
+    var html = $('a[name = "setPriority"]').html();
+    html = html.replace('-o', '');
+    html = html.replace('fa-flag', newIcon);
+    $('a[name = "setPriority"]').html(html);
+
+    $('a[name = "setPriority"]').css('color', color);
+    $('a[name = "setPriority"]').css('opacity', opacity);
+
+    $('#taskPriority').children('a').each(function(i, v) {
+        if(i == index) {
+            $(v).css('border-color', '#505050');
+        } else {
+            $(v).css('border-color', '#ffffff');
+        }
+    });
+}
+
 function addTask() {
     if(!window.addTaskStatus) {
         var setAlarm = false;
@@ -280,32 +298,13 @@ function addTask() {
             $('#semiXOverlay').css('display', 'block');
             $('#taskPriorityBorder').css('display', 'block');
             $('#taskPriority').focus();
-
         });
 
-        function setPriorityFlagStyle(color, newIcon, index) {
-            var html = $('a[name = "setPriority"]').html();
-            html = html.replace('-o', '');
-            html = html.replace('fa-flag', newIcon);
-            $('a[name = "setPriority"]').html(html);
-
-            $('a[name = "setPriority"]').css('color', color);
-            $('a[name = "setPriority"]').css('opacity', '1');
-
-            $('#taskPriority').children('a').each(function(i, v) {
-                if(i == index) {
-                    $(v).css('border-color', '#505050');
-                } else {
-                    $(v).css('border-color', '#ffffff');
-                }
-            });
-        }
-
-        $('a[priority = "0"]').click(function(e) {newPriority = 0; setPriorityFlagStyle('#c0c0c0', 'fa-flag-o', newPriority);});
-        $('a[priority = "1"]').click(function(e) {newPriority = 1; setPriorityFlagStyle('lightblue', 'fa-flag', newPriority);});
-        $('a[priority = "2"]').click(function(e) {newPriority = 2; setPriorityFlagStyle('pink', 'fa-flag', newPriority);});
-        $('a[priority = "3"]').click(function(e) {newPriority = 3; setPriorityFlagStyle('orange', 'fa-flag', newPriority);});
-        $('a[priority = "4"]').click(function(e) {newPriority = 4; setPriorityFlagStyle('red', 'fa-flag', newPriority);});
+        $('a[priority = "0"]').click(function(e) {newPriority = 0; setPriorityFlagStyle('#c0c0c0', 'fa-flag-o', newPriority, 1);});
+        $('a[priority = "1"]').click(function(e) {newPriority = 1; setPriorityFlagStyle('lightblue', 'fa-flag', newPriority, 1);});
+        $('a[priority = "2"]').click(function(e) {newPriority = 2; setPriorityFlagStyle('pink', 'fa-flag', newPriority, 1);});
+        $('a[priority = "3"]').click(function(e) {newPriority = 3; setPriorityFlagStyle('orange', 'fa-flag', newPriority, 1);});
+        $('a[priority = "4"]').click(function(e) {newPriority = 4; setPriorityFlagStyle('red', 'fa-flag', newPriority, 1);});
 
         $('#cancelAddTask').click(function() {
             $('#newTask').remove();
@@ -333,8 +332,16 @@ function addTask() {
 
                 $('#taskName').val('');
                 $('#taskDate').val('');
-                $('#setAlarm').css('color', '#c0c0c0');
                 toggleTaskIcon('setAlarm', false);
+                setPriorityFlagStyle('#c0c0c0', 'fa-flag-o', 0, 0.5);
+
+                $('a[name = "setPriority"]').hover(
+                    function() {
+                        $('a[name = "setPriority"]').css('opacity', '1');
+                    }, function() {
+                        $('a[name = "setPriority"]').css('opacity', '0.5');
+                    }
+                );
 
                 if(setAlarm) {
                     setAlarm = false;
