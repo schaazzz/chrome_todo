@@ -540,10 +540,11 @@ div.newTask a#icon {
     margin-left: 0px;
     font-weight: lighter;
     text-decoration: none;
+    opacity: 0.5;
 }
 
 div.newTask a#icon:hover {
-    color: #000000 !important;
+    opacity: 1;
 }
 
 div.newTask a#icon:hover, a#icon:active, a#icon:focus, a#icon:visited  {
@@ -781,10 +782,10 @@ div.taskPriority {
     background-color: #ffffff;
     margin-top: 10px;
     margin-right: 30px;
-    margin-left: -105px;
+    margin-left: -120px;
     border-radius: 5px;
     z-index: 9002;
-    width: 130px;
+    width: 150px;
 }
 
 div.taskPriority p {
@@ -796,14 +797,19 @@ div.taskPriority a#priorityIcon {
     margin-right: 3px;
     font-weight: lighter;
     text-decoration: none;
+    padding: 2px;
+    border: solid 1px;
+    border-color: #ffffff;
+    text-decoration: none !important;
+    opacity: 1;
 }
 
 div.taskPriority a#priorityIcon:hover {
-    color: #000000 !important;
+    opacity: 1;
+    text-decoration: none !important;
 }
 
 div.taskPriority a#priorityIcon:hover, a#priorityIcon:active, a#priorityIcon:focus, a#priorityIcon:visited  {
-    border-bottom: 0px !important;
     text-decoration: none !important;
     outline: 0;
 }

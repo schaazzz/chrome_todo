@@ -254,13 +254,10 @@ function toggleTaskIcon(name, state) {
     }
 }
 
-function priorityIconHandler(e) {
-    console.log(e.currentTarget.attributes.priority);
-}
-
 function addTask() {
     if(!window.addTaskStatus) {
         var setAlarm = false;
+        var newPriority = 0;
 
         $('#addTask').after(
                         '<div class = "newTask" id = "newTask">' +
@@ -283,7 +280,32 @@ function addTask() {
             $('#semiXOverlay').css('display', 'block');
             $('#taskPriorityBorder').css('display', 'block');
             $('#taskPriority').focus();
+
         });
+
+        function setPriorityFlagStyle(color, newIcon, index) {
+            var html = $('a[name = "setPriority"]').html();
+            html = html.replace('-o', '');
+            html = html.replace('fa-flag', newIcon);
+            $('a[name = "setPriority"]').html(html);
+
+            $('a[name = "setPriority"]').css('color', color);
+            $('a[name = "setPriority"]').css('opacity', '1');
+
+            $('#taskPriority').children('a').each(function(i, v) {
+                if(i == index) {
+                    $(v).css('border-color', '#505050');
+                } else {
+                    $(v).css('border-color', '#ffffff');
+                }
+            });
+        }
+
+        $('a[priority = "0"]').click(function(e) {newPriority = 0; setPriorityFlagStyle('#c0c0c0', 'fa-flag-o', newPriority);});
+        $('a[priority = "1"]').click(function(e) {newPriority = 1; setPriorityFlagStyle('lightblue', 'fa-flag', newPriority);});
+        $('a[priority = "2"]').click(function(e) {newPriority = 2; setPriorityFlagStyle('pink', 'fa-flag', newPriority);});
+        $('a[priority = "3"]').click(function(e) {newPriority = 3; setPriorityFlagStyle('orange', 'fa-flag', newPriority);});
+        $('a[priority = "4"]').click(function(e) {newPriority = 4; setPriorityFlagStyle('red', 'fa-flag', newPriority);});
 
         $('#cancelAddTask').click(function() {
             $('#newTask').remove();
@@ -304,7 +326,7 @@ function addTask() {
                 var task = new Task(
                                 $('#taskName').val(),
                                 dateString,
-                                0,
+                                newPriority,
                                 false,
                                 setAlarm,
                                 null);
