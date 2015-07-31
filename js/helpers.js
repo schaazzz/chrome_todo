@@ -425,6 +425,10 @@ function addTask() {
                 window.addTaskStatus = false;
                 setAlarm = false;
             }
+
+            if(e.keyCode == 13) {
+                $('#createTask').trigger('click');
+            }
         });
     }
 }
