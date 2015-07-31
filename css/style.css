@@ -562,11 +562,12 @@ div.showTask {
     float: right;
     width: 90%;
     border-bottom: 1px solid rgba(202, 202, 202, 0.5);
+    padding-top: 5px;
     padding-bottom: 10px;
     margin-top: 15px;
     margin-bottom: 10px;
     margin-right: 45px;
-    background-color: #ffffff !important;
+    background-color: #ffffff;
 }
 
 div.showTask p {

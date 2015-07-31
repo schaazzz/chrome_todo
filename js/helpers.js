@@ -355,12 +355,22 @@ function addTask() {
                     setAlarm = false;
                 }
                 $('#newTask').after(
-                                '<div class = "showTask">' +
+                                '<div id = "div' + task.hash + '" class = "showTask">' +
                                     '<input id = "'+ task.hash + '" type = "checkbox"/>' +
                                     '<label for = "'+ task.hash + '"></label>' +
                                     '<p>' + task.name + '</p>' +
                                     '<a href = #>' + task.dueDate + '</a>' +
                                 '</div>');
+
+                $('#div' + task.hash).hover(
+                    function() {
+                        console.log(this);
+                        console.log($('#div' + task.hash).css('background-color'));
+                        $('#div' + task.hash).css('background-color','#fc0000');
+                    }, function() {
+                        $('#div' + task.hash).css('background-color','white');
+                    }
+                );
 
                 window.storedTasks.push(task);
                 $('#' + task.hash).click(handleTaskClick);
