@@ -36,8 +36,9 @@ var Task = function(name, dueDate, priority, done, setAlarm, project) {
     this.done = done;
     this.project = project;
     this.hash = calcHash();
+    this.alarm = null;
 
-    if(setAlarm) {
+    if(setAlarm && dueDate) {
         this.alarm = 'alarm' + this.hash;
 
         var d = new Date(this.dueDate);
