@@ -468,6 +468,7 @@ div.tasks a:focus, a:visited {
     box-shadow: none;
     border: none;
     outline: none;
+    border-bottom: none !important;
 }
 
 /**
@@ -562,10 +563,11 @@ div.showTask {
     float: right;
     width: 90%;
     border-bottom: 1px solid rgba(202, 202, 202, 0.5);
-    padding-top: 5px;
+    border-radius: 10px;
+    padding-top: 13px;
     padding-bottom: 10px;
-    margin-top: 15px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     margin-right: 45px;
     background-color: #ffffff;
 }
@@ -573,7 +575,7 @@ div.showTask {
 div.showTask p {
     float: left;
     font-size: 17px;
-    margin: 0px 0px 0px 10px;
+    margin: 3px 0px 0px 15px;
     padding: 0px;
 }
 
@@ -605,6 +607,8 @@ div.showTask input[type="checkbox"] + label {
 	border-radius: 3px;
 	display: inline-block;
 	position: relative;
+    top: 2px;
+    left: 5px;
 }
 
 div.showTask input[type="checkbox"]:checked + label {
