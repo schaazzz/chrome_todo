@@ -594,6 +594,31 @@ div.showTask a:hover, a:visited, a:focus, a:active {
     text-decoration: none !important;
 }
 
+div.showTask a#editIcon {
+    float: right;
+    font-size: 15px;
+    color: #ffffff;
+    margin-right: 3px;
+    font-weight: lighter;
+    text-decoration: none;
+    border: solid 1px;
+    border-color: #ffffff;
+    text-decoration: none !important;
+    border-bottom: none;
+}
+
+div.showTask a#editIcon:hover {
+    color: #cacaca;
+    border-bottom: none !important;
+    text-decoration: none !important;
+}
+
+div.showTask a#editIcon:hover, a#editIcon:active, a#editIcon:focus, a#editIcon:visited  {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    outline: 0;
+}
+
 div.showTask input[type = "checkbox"] {
     float: left;
     display: none;

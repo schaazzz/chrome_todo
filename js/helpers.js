@@ -164,13 +164,13 @@ function addProject() {
 }
 
 function taskHoverIn() {
-    console.log(this);
-    console.log($(this).css('background-color'));
     $(this).css('background-color','#fafafa');
+    $('#' + this.id + ' > #editIcon').css('color', '#cacaca');
 }
 
 function taskHoverOut() {
     $(this).css('background-color','white');
+    $('#' + this.id + ' > #editIcon').css('color', '#ffffff');
 }
 
 function populateTasks() {
@@ -178,16 +178,22 @@ function populateTasks() {
         if(!window.storedTasks[i].done) {
             $('#addTask').after(
                             '<div id = "div' + window.storedTasks[i].hash + '" class = "showTask">' +
-                                '<input id = "'+ window.storedTasks[i].hash + '" type = "checkbox"/>' +
-                                '<label for = "'+ window.storedTasks[i].hash + '"></label>' +
+                                '<input id = "' + window.storedTasks[i].hash + '" type = "checkbox"/>' +
+                                '<label for = "' + window.storedTasks[i].hash + '"></label>' +
                                 '<p>' + window.storedTasks[i].name + '</p>' +
                                 '<a href = #>' + window.storedTasks[i].dueDate + '</a>' +
+                                '<a id = "editIcon" name = "editIcon' + window.storedTasks[i].hash + '" href = #><i class = "fa fa-ellipsis-h"></i></a>' +
                             '</div>');
 
             $('#div' + window.storedTasks[i].hash).hover(taskHoverIn, taskHoverOut);
             $('#' + window.storedTasks[i].hash).click(handleTaskClick);
+            $('[name = "editIcon' + window.storedTasks[i].hash + '"]').click(handleTaskEdit);
         }
     }
+}
+
+function handleTaskEdit() {
+    console.log(this);
 }
 
 function handleTaskClick(e) {
@@ -367,13 +373,15 @@ function addTask() {
                 }
                 $('#newTask').after(
                                 '<div id = "div' + task.hash + '" class = "showTask">' +
-                                    '<input id = "'+ task.hash + '" type = "checkbox"/>' +
-                                    '<label for = "'+ task.hash + '"></label>' +
+                                    '<input id = "' + task.hash + '" type = "checkbox"/>' +
+                                    '<label for = "' + task.hash + '"></label>' +
                                     '<p>' + task.name + '</p>' +
                                     '<a href = #>' + task.dueDate + '</a>' +
+                                    '<a id = "editIcon" name = "editIcon' + task.hash + '" href = #><i class = "fa fa-ellipsis-h"></i></a>' +
                                 '</div>');
 
                 $('#div' + task.hash).hover(taskHoverIn, taskHoverOut);
+                $('[name = "editIcon' + task.hash + '"]').click(handleTaskEdit);
 
                 window.storedTasks.push(task);
                 $('#' + task.hash).click(handleTaskClick);
