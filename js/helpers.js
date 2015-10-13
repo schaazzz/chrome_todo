@@ -193,7 +193,18 @@ function populateTasks() {
 }
 
 function handleTaskEdit() {
-    console.log(this);
+    children = $(this).parent().children();
+    taskName = $(children[2]).text();
+    taskDate = $(children[3]).text();
+
+    $(this).parent().remove();
+
+    $('#addTask').trigger('click');
+    $('#taskName').val(taskName);
+    $('#taskDate').val(taskDate);
+
+    window.editedTaskDate = taskDate;
+    window.taskEditingInProgress = true;
 }
 
 function handleTaskClick(e) {
@@ -257,7 +268,6 @@ function dateShortcutHandler(e) {
 
     return true;
 }
-
 
 function formatDate(dateString) {
     dateString = dateString.split(' ');
@@ -400,11 +410,14 @@ function addTask() {
             $('#calendarBorder').css('top', top);
             $('#calendarBorder').css('left', left);
 
+            $('#selectTime').val($('#taskDate').val().split(' @ ')[1]);
+
             $('#datepicker').datepicker({
                 altField: '#taskDate',
                 altFormat: 'dd M yy',
                 dateFormat: 'dd M yy',
-                onSelect: function (date) {
+                defaultDate: new Date($('#taskDate').val().split(' @ ')[0]),
+                onSelect: function(date) {
                     $('#semiXOverlay').css('display', 'none');
                     $('#calendarBorder').css('display', 'none');
                     $('#taskDate').val($('#taskDate').val() + ' @ ' + $('#selectTime').val());
@@ -430,6 +443,11 @@ function addTask() {
                 if(e.keyCode == 27) {
                     $('#semiXOverlay').css('display', 'none');
                     $('#calendarBorder').css('display', 'none');
+
+                    if(window.taskEditingInProgress) {
+                        $('#taskDate').val(window.editedTaskDate);
+                        window.taskEditingInProgress = false;
+                    }
                 }
             });
         });
@@ -438,6 +456,11 @@ function addTask() {
             $('#semiXOverlay').css('display', 'none');
             $('#calendarBorder').css('display', 'none');
             $('#taskPriorityBorder').css('display', 'none');
+
+            if(window.taskEditingInProgress) {
+                $('#taskDate').val(window.editedTaskDate);
+                window.taskEditingInProgress = false;
+            }
         });
 
         $('#taskName').keyup(function(e) {
