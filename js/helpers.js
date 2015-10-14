@@ -165,12 +165,14 @@ function addProject() {
 
 function taskHoverIn() {
     $(this).css('background-color','#fafafa');
-    $('#' + this.id + ' > #editIcon').css('color', '#cacaca');
+    $('#' + this.id + ' > #editIcon').css('color', '#5a5a5a');
+    $('#' + this.id + ' > #deleteIcon').css('color', '#5a5a5a');
 }
 
 function taskHoverOut() {
     $(this).css('background-color','white');
     $('#' + this.id + ' > #editIcon').css('color', '#ffffff');
+    $('#' + this.id + ' > #deleteIcon').css('color', '#ffffff');
 }
 
 function populateTasks() {
@@ -181,13 +183,15 @@ function populateTasks() {
                                 '<input id = "' + window.storedTasks[i].hash + '" type = "checkbox"/>' +
                                 '<label for = "' + window.storedTasks[i].hash + '"></label>' +
                                 '<p>' + window.storedTasks[i].name + '</p>' +
+                                '<a id = "editIcon" name = "editIcon' + window.storedTasks[i].hash + '" href = #><i class = "fa fa-pencil"></i></a>' +
+                                '<a id = "deleteIcon" name = "deleteIcon' + window.storedTasks[i].hash + '" href = #><i class = "fa fa-trash"></i></a>' +
                                 '<a href = #>' + window.storedTasks[i].dueDate + '</a>' +
-                                '<a id = "editIcon" name = "editIcon' + window.storedTasks[i].hash + '" href = #><i class = "fa fa-ellipsis-h"></i></a>' +
                             '</div>');
 
             $('#div' + window.storedTasks[i].hash).hover(taskHoverIn, taskHoverOut);
             $('#' + window.storedTasks[i].hash).click(handleTaskClick);
             $('[name = "editIcon' + window.storedTasks[i].hash + '"]').click(handleTaskEdit);
+            $('[name = "deleteIcon' + window.storedTasks[i].hash + '"]').click(handleTaskDelete);
         }
     }
 }
@@ -195,7 +199,7 @@ function populateTasks() {
 function handleTaskEdit() {
     children = $(this).parent().children();
     taskName = $(children[2]).text();
-    taskDate = $(children[3]).text();
+    taskDate = $(children[5]).text();
 
     window.editedTaskDiv = $(this).parent();
     window.editedTaskDate = taskDate;
@@ -206,6 +210,24 @@ function handleTaskEdit() {
     $('#taskName').val(taskName);
     $('#taskDate').val(taskDate);
     $('#createTask').text('Update');
+}
+
+function handleTaskDelete() {
+    var hash = Number($(this).parent().attr('id').split('div')[1]);
+
+    for(i = 0; i < window.storedTasks.length; i++) {
+        if(window.storedTasks[i].hash === hash) {
+            window.storedTasks.splice(i, 1);
+            break;
+        }
+    }
+
+    /* Save data to storage */
+    chrome.storage.sync.set(
+                {'tasks': window.storedTasks},
+                function() {});
+
+    $(this).parent().remove();
 }
 
 function handleTaskClick(e) {
@@ -237,6 +259,8 @@ function handleTaskClick(e) {
 
 function dateShortcutHandler(e) {
     var source = e.currentTarget.attributes.name.nodeValue;
+
+    window.dateShortcutUsed = true;
 
     if(source === 'dateToday') {
         $('#taskDate').val(formatDate(new Date().toString()));
@@ -359,6 +383,7 @@ function addTask() {
                 $('#newTask').replaceWith($(window.editedTaskDiv));
                 $(window.editedTaskDiv).hover(taskHoverIn, taskHoverOut);
                 $('#' + window.editedTaskDiv.attr('id') + ' > #editIcon').click(handleTaskEdit);
+                $('#' + window.editedTaskDiv.attr('id') + ' > #deleteIcon').click(handleTaskDelete);
             }
             else {
                 $('#newTask').remove();
@@ -369,6 +394,18 @@ function addTask() {
             if($('#taskName').val() !== '') {
                 var tempDate = new Date($('#taskDate').val());
                 var dateString = ('Invalid Date' === tempDate.toString()) ?  '' : tempDate.toString().split(' ');
+                var editedTaskIndex = 0;
+
+                if(window.taskEditingInProgress) {
+                    var hash = Number(window.editedTaskDiv.attr('id').split('div')[1]);
+                    for(i = 0; i < window.storedTasks.length; i++) {
+                        if(window.storedTasks[i].hash === hash) {
+                            editedTaskIndex = i;
+                            break;
+                        }
+                    }
+                }
+
                 if (dateString !== '') {
                     dateString = dateString[2] + ' ' + dateString[1] + ' ' + dateString[3] +
                                 ' @ ' +
@@ -405,14 +442,22 @@ function addTask() {
                                     '<input id = "' + task.hash + '" type = "checkbox"/>' +
                                     '<label for = "' + task.hash + '"></label>' +
                                     '<p>' + task.name + '</p>' +
+                                    '<a id = "editIcon" name = "editIcon' + task.hash + '" href = #><i class = "fa fa-pencil"></i></a>' +
+                                    '<a id = "deleteIcon" name = "deleteIcon' + task.hash + '" href = #><i class = "fa fa-trash"></i></a>' +
                                     '<a href = #>' + task.dueDate + '</a>' +
-                                    '<a id = "editIcon" name = "editIcon' + task.hash + '" href = #><i class = "fa fa-ellipsis-h"></i></a>' +
                                 '</div>');
 
                 $('#div' + task.hash).hover(taskHoverIn, taskHoverOut);
                 $('[name = "editIcon' + task.hash + '"]').click(handleTaskEdit);
+                $('[name = "deleteIcon' + task.hash + '"]').click(handleTaskDelete);
 
-                window.storedTasks.push(task);
+                if(window.taskEditingInProgress) {
+                    window.storedTasks[editedTaskIndex] = task;
+                }
+                else {
+                    window.storedTasks.push(task);
+                }
+
                 $('#' + task.hash).click(handleTaskClick);
 
                 /* Save data to storage */
@@ -421,8 +466,9 @@ function addTask() {
                             function() {});
 
                 if(window.taskEditingInProgress) {
-                    $('#cancelAddTask').trigger('click');
+                    window.addTaskStatus = false;
                     window.taskEditingInProgress = false;
+                    $('#newTask').remove();
                 }
             }
         });
@@ -484,9 +530,10 @@ function addTask() {
             $('#calendarBorder').css('display', 'none');
             $('#taskPriorityBorder').css('display', 'none');
 
-            if(window.taskEditingInProgress) {
+            if(window.taskEditingInProgress && !window.dateShortcutUsed) {
                 $('#taskDate').val(window.editedTaskDate);
                 window.taskEditingInProgress = false;
+                window.dateShortcutUsed = false;
             }
         });
 

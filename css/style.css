@@ -581,11 +581,11 @@ div.showTask p {
 
 div.showTask a {
     float: right;
-    font-size: 15px;
+    font-size: 13px;
     color: black;
     margin: 0px 0px 0px 10px;
     padding: 0px;
-    border-bottom: 2px solid tomato;
+    border-bottom: 1px solid tomato;
     text-decoration: none;
 }
 
@@ -594,11 +594,11 @@ div.showTask a:hover, a:visited, a:focus, a:active {
     text-decoration: none !important;
 }
 
-div.showTask a#editIcon {
+div.showTask a#editIcon, a#deleteIcon {
     float: right;
     font-size: 15px;
     color: #ffffff;
-    margin-right: 3px;
+    margin-right: 1px;
     font-weight: lighter;
     text-decoration: none;
     border: solid 1px;
@@ -607,13 +607,14 @@ div.showTask a#editIcon {
     border-bottom: none;
 }
 
-div.showTask a#editIcon:hover {
-    color: #cacaca;
+div.showTask a#editIcon:hover, a#deleteIcon:hover {
+    color: #5a5a5a;
     border-bottom: none !important;
     text-decoration: none !important;
 }
 
-div.showTask a#editIcon:hover, a#editIcon:active, a#editIcon:focus, a#editIcon:visited  {
+div.showTask a#editIcon:hover, a#editIcon:active, a#editIcon:focus, a#editIcon:visited,
+            a#deleteIcon:hover, a#deleteIcon:active, a#deleteIcon:focus, a#deleteIcon:visited  {
     text-decoration: none !important;
     border-bottom: none !important;
     outline: 0;
