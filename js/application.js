@@ -36,6 +36,8 @@ window.navBtnStates = {allTasks: false, today: false, nxt7Days: false};
 window.selectedWorkspace = 'Inbox';
 window.taskEditingInProgress = false;
 window.editedTaskDate = '';
+window.editedTaskName = '';
+window.editedTaskDiv = null;
 
 /**
  * Called on the "onload" event, sets event handlers for various elements.

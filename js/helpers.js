@@ -197,14 +197,14 @@ function handleTaskEdit() {
     taskName = $(children[2]).text();
     taskDate = $(children[3]).text();
 
-    $(this).parent().remove();
+    window.editedTaskDiv = $(this).parent();
+    window.editedTaskDate = taskDate;
+    window.editedTaskName = taskName;
+    window.taskEditingInProgress = true;
 
     $('#addTask').trigger('click');
     $('#taskName').val(taskName);
     $('#taskDate').val(taskDate);
-
-    window.editedTaskDate = taskDate;
-    window.taskEditingInProgress = true;
 }
 
 function handleTaskClick(e) {
@@ -301,19 +301,27 @@ function setPriorityFlagStyle(color, newIcon, index, opacity) {
 }
 
 function addTask() {
+    addTaskHtml =
+            '<div class = "newTask" id = "newTask">' +
+                '<input type = "text" id = "taskName"/>' +
+                '<input type = "text" id = "taskDate" placeholder = "no due date"/>' +
+                '<button id = "createTask" class = "red">Add Task</button>' +
+                '<a id = "cancelAddTask" href = #>Cancel</a>' +
+                '<a id="icon" style = "margin-right: 50px;" name = "setPriority" href=#><i class="fa fa-flag-o"></i></a>' +
+                '<a id="icon" style = "margin-right: 15px;" name = "setAlarm" href=#><i class="fa fa-bell"></i></a>' +
+            '</div>';
+
     if(!window.addTaskStatus) {
         var setAlarm = false;
         var newPriority = 0;
 
-        $('#addTask').after(
-                        '<div class = "newTask" id = "newTask">' +
-                            '<input type = "text" id = "taskName"/>' +
-                            '<input type = "text" id = "taskDate" placeholder = "no due date"/>' +
-                            '<button id = "createTask" class = "red">Add Task</button>' +
-                            '<a id = "cancelAddTask" href = #>Cancel</a>' +
-                            '<a id="icon" style = "margin-right: 50px;" name = "setPriority" href=#><i class="fa fa-flag-o"></i></a>' +
-                            '<a id="icon" style = "margin-right: 15px;" name = "setAlarm" href=#><i class="fa fa-bell"></i></a>' +
-                        '</div>');
+        if(window.taskEditingInProgress) {
+            $(window.editedTaskDiv).replaceWith(addTaskHtml);
+        }
+        else {
+            $('#addTask').after(addTaskHtml);
+        }
+
         window.addTaskStatus = true;
         $('#taskName').focus();
 
@@ -344,6 +352,7 @@ function addTask() {
         $('#cancelAddTask').click(function() {
             $('#newTask').remove();
             window.addTaskStatus = false;
+            window.taskEditingInProgress = false;
             setAlarm = false;
         });
 
@@ -381,6 +390,7 @@ function addTask() {
                 if(setAlarm) {
                     setAlarm = false;
                 }
+
                 $('#newTask').after(
                                 '<div id = "div' + task.hash + '" class = "showTask">' +
                                     '<input id = "' + task.hash + '" type = "checkbox"/>' +
@@ -400,6 +410,11 @@ function addTask() {
                 chrome.storage.sync.set(
                             {'tasks': window.storedTasks},
                             function() {});
+
+                if(window.taskEditingInProgress) {
+                    $('#cancelAddTask').trigger('click');
+                    window.taskEditingInProgress = false;
+                }
             }
         });
 
@@ -410,7 +425,9 @@ function addTask() {
             $('#calendarBorder').css('top', top);
             $('#calendarBorder').css('left', left);
 
-            $('#selectTime').val($('#taskDate').val().split(' @ ')[1]);
+            if(window.taskEditingInProgress) {
+                $('#selectTime').val($('#taskDate').val().split(' @ ')[1]);
+            }
 
             $('#datepicker').datepicker({
                 altField: '#taskDate',
