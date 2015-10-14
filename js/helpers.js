@@ -358,6 +358,7 @@ function addTask() {
                 window.taskEditingInProgress = false;
                 $('#newTask').replaceWith($(window.editedTaskDiv));
                 $(window.editedTaskDiv).hover(taskHoverIn, taskHoverOut);
+                $('#' + window.editedTaskDiv.attr('id') + ' > #editIcon').click(handleTaskEdit);
             }
             else {
                 $('#newTask').remove();
