@@ -434,8 +434,9 @@ function addTask() {
             $('#calendarBorder').css('top', top);
             $('#calendarBorder').css('left', left);
 
-            if(window.taskEditingInProgress) {
-                $('#selectTime').val($('#taskDate').val().split(' @ ')[1]);
+            taskTime = $('#taskDate').val().split(' @ ')[1];
+            if(window.taskEditingInProgress && taskTime !== undefined) {
+                $('#selectTime').val(taskTime);
             }
 
             $('#datepicker').datepicker({
