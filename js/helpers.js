@@ -205,6 +205,7 @@ function handleTaskEdit() {
     $('#addTask').trigger('click');
     $('#taskName').val(taskName);
     $('#taskDate').val(taskDate);
+    $('#createTask').text('Update');
 }
 
 function handleTaskClick(e) {
@@ -350,10 +351,17 @@ function addTask() {
         $('a[priority = "4"]').click(function(e) {newPriority = 4; setPriorityFlagStyle('red', 'fa-flag', newPriority, 1);});
 
         $('#cancelAddTask').click(function() {
-            $('#newTask').remove();
             window.addTaskStatus = false;
-            window.taskEditingInProgress = false;
             setAlarm = false;
+
+            if(window.taskEditingInProgress) {
+                window.taskEditingInProgress = false;
+                $('#newTask').replaceWith($(window.editedTaskDiv));
+                $(window.editedTaskDiv).hover(taskHoverIn, taskHoverOut);
+            }
+            else {
+                $('#newTask').remove();
+            }
         });
 
         $('#createTask').click(function() {
